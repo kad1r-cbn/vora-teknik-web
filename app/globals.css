@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vora-bg: #000D26;
+  --color-vora-primary: #00B8F5;
+  --color-vora-primarydark: #0068C9;
+  --color-vora-cyan: #00D9FF;
+  --color-vora-metal: #D9E1EA;
+  --color-vora-orange: #FF6A00;
+  --color-vora-yellow: #FFD21A;
+  --color-vora-white: #FFFFFF;
+}
