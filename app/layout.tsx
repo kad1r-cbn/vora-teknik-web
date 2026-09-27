@@ -9,6 +9,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+
+    metadataBase: new URL("https://vorateknik.com"),
+
+  alternates: {
+    canonical: "/",
+  },
+
   title: "Vora Teknik Servis | İstanbul Kombi, Klima ve Petek Servisi",
 
   description:
@@ -23,6 +30,8 @@ export const metadata: Metadata = {
 
     description:
       "Kombi servisi, klima servisi, petek temizliği, bakım ve onarım hizmetleri.",
+
+    url: "https://vorateknik.com/petek-temizligi",
 
     type: "website",
     locale: "tr_TR",
