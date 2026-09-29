@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Petek Temizliği İstanbul | Vora Teknik Servis",
@@ -38,5 +39,42 @@ export default function ServiceLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+
+    "@id": "https://vorateknik.com/petek-temizligi#service",
+
+    name: "Petek Temizliği",
+
+    serviceType: "Petek Temizliği",
+
+    description:
+      "İstanbul ve Bahçelievler çevresinde petek temizliği, ısıtma sistemi kontrolü ve tesisat servis hizmetleri.",
+
+    url: "https://vorateknik.com/petek-temizligi",
+
+    provider: {
+      "@id": "https://vorateknik.com/#business",
+    },
+
+    areaServed: {
+      "@type": "City",
+      name: "İstanbul",
+    },
+  };
+
+  return (
+    <>
+      <Script
+        id="schema-petek-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceJsonLd),
+        }}
+      />
+
+      {children}
+    </>
+  );
 }
