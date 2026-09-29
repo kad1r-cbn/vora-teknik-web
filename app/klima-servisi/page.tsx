@@ -6,7 +6,6 @@ import {
   Phone,
   MapPin,
   Wind,
-  ShieldCheck,
   Wrench,
   Clock,
   CheckCircle,
@@ -14,9 +13,9 @@ import {
   ArrowRight,
   AlertTriangle,
   Settings,
+  Snowflake,
   Menu,
   X,
-  Snowflake,
 } from 'lucide-react';
 
 const faqs = [
@@ -48,87 +47,161 @@ export default function KlimaServisiPage() {
 
   return (
     <main className="min-h-screen bg-slate-900 text-white">
-      {/* HEADER / NAVBAR */}
-      <header className="sticky top-0 z-[110] w-full bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4 flex items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="text-2xl lg:text-3xl font-extrabold tracking-tight shrink-0"
-          >
-            Vora<span className="text-cyan-500">Teknik</span>
-          </Link>
 
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-bold" aria-label="Ana menü">
-            <Link href="/" className="text-slate-300 hover:text-cyan-400 transition-colors">
-              Ana Sayfa
-            </Link>
-            <Link href="/kombi-servisi" className="text-slate-300 hover:text-cyan-400 transition-colors">
-              Kombi Servisi
-            </Link>
-            <Link href="/klima-servisi" className="text-slate-300 hover:text-cyan-400 transition-colors">
-              Klima Servisi
-            </Link>
-            <Link href="/petek-temizligi" className="text-slate-300 hover:text-cyan-400 transition-colors">
-              Petek Temizliği
-            </Link>
-            <Link href="/#servis-talebi" className="text-slate-300 hover:text-cyan-400 transition-colors">
-              İletişim
-            </Link>
-          </nav>
+      {/* HEADER + NAVBAR */}
+      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-[100]">
 
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a
-              href="tel:+905365281116"
-              className="flex items-center gap-2 text-slate-200 hover:text-cyan-400 transition-colors font-bold"
+        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
+
+          <div className="flex items-center justify-between">
+
+            {/* LOGO */}
+            <Link
+              href="/"
+              className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
             >
-              <Phone size={18} className="text-cyan-500" />
-              <span className="hidden xl:inline">0536 528 11 16</span>
-            </a>
-            <a
-              href="tel:+905365281116"
-              className="inline-flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2.5 rounded-xl font-black transition-all shadow-lg shadow-cyan-500/20"
-            >
-              <Phone size={17} />
-              Hemen Ara
-            </a>
-          </div>
+              Vora<span className="text-cyan-500">Teknik</span>
+            </Link>
 
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
-            aria-expanded={mobileMenuOpen}
-            className="lg:hidden w-11 h-11 rounded-xl border border-slate-700 bg-slate-800 text-white flex items-center justify-center hover:border-cyan-500 transition-colors"
-          >
-            {mobileMenuOpen ? <X size={23} /> : <Menu size={23} />}
-          </button>
-        </div>
+            {/* DESKTOP NAV */}
+            <nav className="hidden lg:flex items-center gap-2">
 
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-800 bg-slate-950">
-            <nav className="px-6 py-4 space-y-1" aria-label="Mobil menü">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold">
+              <Link
+                href="/"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
+              >
                 Ana Sayfa
               </Link>
-              <Link href="/kombi-servisi" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold">
+
+              <Link
+                href="/kombi-servisi"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
+              >
                 Kombi Servisi
               </Link>
-              <Link href="/klima-servisi" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold">
+
+              <Link
+                href="/klima-servisi"
+                className="px-4 py-2.5 rounded-lg text-white bg-slate-800 hover:bg-slate-700 font-semibold transition-colors"
+              >
                 Klima Servisi
               </Link>
-              <Link href="/petek-temizligi" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold">
+
+              <Link
+                href="/petek-temizligi"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
+              >
                 Petek Temizliği
               </Link>
-              <Link href="/#servis-talebi" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold">
+
+              <a
+                href="/#servis-talebi"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
+              >
                 İletişim
-              </Link>
-              <a href="tel:+905365281116" className="mt-2 flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black transition-colors">
-                <Phone size={18} />
-                0536 528 11 16 — Hemen Ara
               </a>
+
             </nav>
+
+            {/* DESKTOP PHONE */}
+            <div className="hidden lg:flex items-center gap-4">
+
+              <a
+                href="tel:+905365281116"
+                className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors font-bold"
+              >
+                <Phone size={18} className="text-cyan-500" />
+                0536 528 11 16
+              </a>
+
+              <a
+                href="tel:+905365281116"
+                className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-black transition-colors"
+              >
+                <Phone size={17} />
+                Hemen Ara
+              </a>
+
+            </div>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              type="button"
+              aria-label={
+                mobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'
+              }
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden text-white p-2 rounded-lg hover:bg-slate-800 transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X size={28} />
+              ) : (
+                <Menu size={28} />
+              )}
+            </button>
+
           </div>
-        )}
+
+          {/* MOBILE NAV */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden pt-4 pb-2 border-t border-slate-800 mt-4">
+
+              <nav className="flex flex-col gap-2">
+
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Ana Sayfa
+                </Link>
+
+                <Link
+                  href="/kombi-servisi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Kombi Servisi
+                </Link>
+
+                <Link
+                  href="/klima-servisi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
+                >
+                  Klima Servisi
+                </Link>
+
+                <Link
+                  href="/petek-temizligi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Petek Temizliği
+                </Link>
+
+                <a
+                  href="/#servis-talebi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  İletişim
+                </a>
+
+                <a
+                  href="tel:+905365281116"
+                  className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black mt-2"
+                >
+                  <Phone size={18} />
+                  0536 528 11 16
+                </a>
+
+              </nav>
+
+            </div>
+          )}
+
+        </div>
       </header>
 
       {/* BREADCRUMB */}
@@ -137,36 +210,53 @@ export default function KlimaServisiPage() {
         className="w-full bg-slate-950 border-b border-slate-800"
       >
         <div className="w-full px-6 lg:px-20 2xl:px-32 py-4 text-sm text-slate-400">
-          <Link href="/" className="hover:text-cyan-400 transition-colors">
+
+          <Link
+            href="/"
+            className="hover:text-cyan-400 transition-colors"
+          >
             Ana Sayfa
           </Link>
 
           <span className="mx-2 text-slate-600">/</span>
 
-          <span className="text-slate-200">Klima Servisi</span>
+          <span className="text-slate-200">
+            Klima Servisi
+          </span>
+
         </div>
       </nav>
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950">
+
         <div className="absolute inset-0 pointer-events-none">
+
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+
           <div className="absolute top-20 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+
         </div>
 
         <div className="relative w-full px-6 lg:px-20 2xl:px-32 py-16 lg:py-24 max-w-[1800px] mx-auto">
+
           <div className="max-w-4xl">
+
             <div className="inline-flex items-center gap-2 bg-cyan-950/70 border border-cyan-800 text-cyan-400 px-4 py-2 rounded-full text-sm font-bold mb-7">
               <Wind size={17} />
               İstanbul Klima Servisi
             </div>
 
             <h1 className="text-4xl lg:text-6xl 2xl:text-7xl font-black leading-tight mb-7">
+
               İstanbul Klima Servisi
+
               <br />
+
               <span className="text-cyan-500">
                 Bakım, Arıza ve Montaj Hizmeti
               </span>
+
             </h1>
 
             <p className="text-lg lg:text-xl text-slate-300 leading-relaxed max-w-3xl">
@@ -178,6 +268,7 @@ export default function KlimaServisiPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
+
               <a
                 href="tel:+905365281116"
                 className="inline-flex items-center justify-center gap-3 bg-cyan-600 hover:bg-cyan-500 text-white px-7 py-4 rounded-xl font-black transition-all shadow-lg shadow-cyan-500/20"
@@ -195,15 +286,22 @@ export default function KlimaServisiPage() {
                 WhatsApp'tan Yazın
                 <ArrowRight size={20} />
               </a>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
       {/* SERVICES */}
       <section className="bg-white text-slate-900 py-20">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
+
           <div className="text-center max-w-3xl mx-auto mb-14">
+
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
               Klima Servis Hizmetleri
             </h2>
@@ -212,9 +310,11 @@ export default function KlimaServisiPage() {
               Klimanızın ihtiyacına göre bakım, arıza tespiti, onarım ve
               montaj işlemleri için servis planlaması yapılabilir.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
             {[
               {
                 icon: Wrench,
@@ -237,6 +337,7 @@ export default function KlimaServisiPage() {
                 text: 'Cihaz ve montaj alanının uygunluğuna göre klima montaj hizmetinin planlanması.',
               },
             ].map((item, index) => {
+
               const Icon = item.icon;
 
               return (
@@ -244,6 +345,7 @@ export default function KlimaServisiPage() {
                   key={index}
                   className="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:border-cyan-300 hover:shadow-xl transition-all"
                 >
+
                   <div className="w-14 h-14 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center mb-5">
                     <Icon size={28} />
                   </div>
@@ -255,18 +357,27 @@ export default function KlimaServisiPage() {
                   <p className="text-slate-600 leading-relaxed">
                     {item.text}
                   </p>
+
                 </div>
               );
+
             })}
+
           </div>
+
         </div>
+
       </section>
 
       {/* COMMON PROBLEMS */}
       <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+
           <div className="grid lg:grid-cols-2 gap-14 items-center">
+
             <div>
+
               <div className="inline-flex items-center gap-2 text-cyan-600 font-bold mb-4">
                 <AlertTriangle size={20} />
                 Sık Karşılaşılan Klima Sorunları
@@ -284,6 +395,7 @@ export default function KlimaServisiPage() {
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
+
                 {[
                   'Klima soğutmuyor',
                   'Klima yeterince ısıtmıyor',
@@ -294,22 +406,29 @@ export default function KlimaServisiPage() {
                   'İç ünite buzlanıyor',
                   'Dış ünite sorunları',
                 ].map((problem) => (
+
                   <div
                     key={problem}
                     className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl p-4 font-bold"
                   >
+
                     <CheckCircle
                       size={18}
                       className="text-cyan-500 flex-shrink-0"
                     />
 
                     {problem}
+
                   </div>
+
                 ))}
+
               </div>
+
             </div>
 
             <div className="bg-slate-900 rounded-3xl p-8 lg:p-10 shadow-2xl">
+
               <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
                 <Clock size={32} />
               </div>
@@ -325,6 +444,7 @@ export default function KlimaServisiPage() {
               </p>
 
               <div className="space-y-4">
+
                 <a
                   href="tel:+905365281116"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-black transition-colors"
@@ -340,16 +460,24 @@ export default function KlimaServisiPage() {
                   Online Servis Talebi
                   <ArrowRight size={20} />
                 </Link>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
       {/* PROCESS */}
       <section className="bg-white text-slate-900 py-20">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1400px] mx-auto">
+
           <div className="text-center max-w-3xl mx-auto mb-14">
+
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
               Klima Servis Süreci
             </h2>
@@ -357,9 +485,11 @@ export default function KlimaServisiPage() {
             <p className="text-slate-600 text-lg">
               Servis talebinden teknik kontrole kadar temel süreç.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
+
             {[
               {
                 number: '01',
@@ -377,10 +507,12 @@ export default function KlimaServisiPage() {
                 text: 'Gerekli işlem ve maliyet hakkında bilgi verildikten sonra uygun servis işlemi planlanır.',
               },
             ].map((step) => (
+
               <div
                 key={step.number}
                 className="relative border border-slate-200 rounded-2xl p-8 bg-slate-50"
               >
+
                 <span className="text-5xl font-black text-cyan-100">
                   {step.number}
                 </span>
@@ -392,16 +524,24 @@ export default function KlimaServisiPage() {
                 <p className="text-slate-600 leading-relaxed">
                   {step.text}
                 </p>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
       {/* BRANDS */}
       <section className="bg-slate-900 py-20">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+
           <div className="text-center">
+
             <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
               Servis Verilen Klima Markaları
             </h2>
@@ -412,6 +552,7 @@ export default function KlimaServisiPage() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
+
               {[
                 'DAIKIN',
                 'BOSCH',
@@ -420,28 +561,130 @@ export default function KlimaServisiPage() {
                 'E.C.A.',
                 'Vaillant',
               ].map((brand) => (
+
                 <div
                   key={brand}
                   className="px-7 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white font-black"
                 >
                   {brand}
                 </div>
+
               ))}
+
             </div>
+
           </div>
+
         </div>
+
+      </section>
+
+      {/* RELATED SERVICES */}
+      <section className="bg-slate-900 py-20 border-t border-slate-800">
+
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+
+          <div className="text-center mb-12">
+
+            <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
+              Diğer Teknik Servis Hizmetleri
+            </h2>
+
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Kombi ve petek servis hizmetlerimizi de inceleyebilirsiniz.
+            </p>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            <Link
+              href="/kombi-servisi"
+              className="group bg-slate-800 border border-slate-700 rounded-2xl p-7 hover:border-cyan-500 hover:-translate-y-1 transition-all"
+            >
+
+              <div className="flex items-center justify-between gap-5">
+
+                <div>
+
+                  <div className="text-cyan-400 font-bold mb-2">
+                    Kombi Servisi
+                  </div>
+
+                  <h3 className="text-xl font-black text-white mb-2">
+                    İstanbul Kombi Servisi
+                  </h3>
+
+                  <p className="text-slate-400">
+                    Kombi bakım, arıza tespiti ve onarım hizmetleri.
+                  </p>
+
+                </div>
+
+                <ArrowRight
+                  className="text-cyan-500 group-hover:translate-x-1 transition-transform"
+                  size={25}
+                />
+
+              </div>
+
+            </Link>
+
+            <Link
+              href="/petek-temizligi"
+              className="group bg-slate-800 border border-slate-700 rounded-2xl p-7 hover:border-cyan-500 hover:-translate-y-1 transition-all"
+            >
+
+              <div className="flex items-center justify-between gap-5">
+
+                <div>
+
+                  <div className="text-cyan-400 font-bold mb-2">
+                    Petek Temizliği
+                  </div>
+
+                  <h3 className="text-xl font-black text-white mb-2">
+                    İstanbul Petek Temizliği
+                  </h3>
+
+                  <p className="text-slate-400">
+                    Petek temizliği ve ısıtma sistemi servis hizmetleri.
+                  </p>
+
+                </div>
+
+                <ArrowRight
+                  className="text-cyan-500 group-hover:translate-x-1 transition-transform"
+                  size={25}
+                />
+
+              </div>
+
+            </Link>
+
+          </div>
+
+        </div>
+
       </section>
 
       {/* LOCAL SEO */}
       <section className="bg-slate-950 py-20">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+
           <div className="grid lg:grid-cols-2 gap-12">
+
             <div>
+
               <div className="flex items-center gap-3 mb-5">
+
                 <MapPin className="text-cyan-500" />
+
                 <span className="text-cyan-400 font-bold">
                   Servis Bölgesi
                 </span>
+
               </div>
 
               <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
@@ -454,9 +697,11 @@ export default function KlimaServisiPage() {
                 Servis uygunluğu adres, yoğunluk ve randevu durumuna göre
                 değişebilir.
               </p>
+
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
+
               {[
                 'Bahçelievler',
                 'Bakırköy',
@@ -471,23 +716,35 @@ export default function KlimaServisiPage() {
                 'Kadıköy',
                 'Üsküdar',
               ].map((district) => (
+
                 <div
                   key={district}
                   className="flex items-center gap-2 text-slate-300 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3"
                 >
+
                   <span className="w-2 h-2 rounded-full bg-cyan-500" />
+
                   {district} klima servisi
+
                 </div>
+
               ))}
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
       {/* FAQ */}
       <section className="bg-white text-slate-900 py-20">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1100px] mx-auto">
+
           <div className="text-center mb-12">
+
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
               Klima Servisi Hakkında Sıkça Sorulan Sorular
             </h2>
@@ -496,10 +753,13 @@ export default function KlimaServisiPage() {
               Klima bakım, arıza ve montaj süreçleriyle ilgili sık sorulan
               sorular.
             </p>
+
           </div>
 
           <div className="space-y-4">
+
             {faqs.map((faq, index) => {
+
               const isOpen = openFaq === index;
 
               return (
@@ -507,12 +767,14 @@ export default function KlimaServisiPage() {
                   key={faq.q}
                   className="border border-slate-200 rounded-2xl overflow-hidden"
                 >
+
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : index)}
                     aria-expanded={isOpen}
                     className="w-full p-5 flex items-center justify-between gap-5 text-left font-bold hover:bg-slate-50 transition-colors"
                   >
+
                     <span>{faq.q}</span>
 
                     <ChevronDown
@@ -523,6 +785,7 @@ export default function KlimaServisiPage() {
                           : 'text-slate-400'
                       }`}
                     />
+
                   </button>
 
                   {isOpen && (
@@ -530,16 +793,23 @@ export default function KlimaServisiPage() {
                       {faq.a}
                     </div>
                   )}
+
                 </div>
               );
+
             })}
+
           </div>
+
         </div>
+
       </section>
 
       {/* CTA */}
       <section className="bg-gradient-to-r from-cyan-700 to-cyan-600 py-16">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1300px] mx-auto text-center">
+
           <h2 className="text-3xl lg:text-4xl font-black text-white mb-5">
             Klima Servis Desteğine mi İhtiyacınız Var?
           </h2>
@@ -550,6 +820,7 @@ export default function KlimaServisiPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+
             <a
               href="tel:+905365281116"
               className="inline-flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-xl font-black hover:bg-slate-100 transition-colors"
@@ -559,21 +830,28 @@ export default function KlimaServisiPage() {
             </a>
 
             <Link
-              href="/"
+              href="/#servis-talebi"
               className="inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-xl font-black hover:bg-slate-800 transition-colors"
             >
-              Ana Sayfaya Dön
+              Online Servis Talebi
               <ArrowRight size={20} />
             </Link>
+
           </div>
+
         </div>
+
       </section>
 
       {/* FOOTER */}
       <footer className="bg-slate-950 border-t border-slate-800 py-10">
+
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
+
           <div className="flex flex-col md:flex-row justify-between gap-6">
+
             <div>
+
               <Link
                 href="/"
                 className="text-2xl font-extrabold text-white"
@@ -584,9 +862,11 @@ export default function KlimaServisiPage() {
               <p className="text-slate-500 text-sm mt-3">
                 İstanbul kombi, klima ve petek servis hizmetleri.
               </p>
+
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 text-sm">
+
               <Link
                 href="/"
                 className="text-slate-400 hover:text-cyan-400 transition-colors"
@@ -602,6 +882,13 @@ export default function KlimaServisiPage() {
               </Link>
 
               <Link
+                href="/klima-servisi"
+                className="text-cyan-400 font-semibold transition-colors"
+              >
+                Klima Servisi
+              </Link>
+
+              <Link
                 href="/petek-temizligi"
                 className="text-slate-400 hover:text-cyan-400 transition-colors"
               >
@@ -609,21 +896,27 @@ export default function KlimaServisiPage() {
               </Link>
 
               <a
-                href="tel:+905365281116"
+                href="/#servis-talebi"
                 className="text-slate-400 hover:text-cyan-400 transition-colors"
               >
                 İletişim
               </a>
+
             </div>
+
           </div>
 
           <div className="border-t border-slate-800 mt-8 pt-6">
+
             <p className="text-slate-600 text-xs">
               © {new Date().getFullYear()} Vora Teknik Servis. Tüm hakları
               saklıdır.
             </p>
+
           </div>
+
         </div>
+
       </footer>
 
       {/* WHATSAPP */}
@@ -636,6 +929,7 @@ export default function KlimaServisiPage() {
       >
         <Phone size={27} />
       </a>
+
     </main>
   );
 }
