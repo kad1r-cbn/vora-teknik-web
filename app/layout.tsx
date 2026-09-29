@@ -3,115 +3,65 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vorateknik.com"),
 
-    metadataBase: new URL("https://vorateknik.com"),
-
-  alternates: {
-    canonical: "/",
-  },
-
-  title: "Vora Teknik Servis | İstanbul Kombi, Klima ve Petek Servisi",
+  title: "Vora Teknik Servis | Garantili Kombi ve Klima Tamiri",
 
   description:
-    "Vora Teknik Servis; Bahçelievler ve İstanbul çevresinde kombi servisi, klima servisi, petek temizliği, bakım ve onarım hizmetleri sunar.",
+    "İstanbul geneli uzman teknisyenlerle kombi, klima bakım, onarım ve petek temizliği. Randevu saatine sadık, temiz işçilik.",
+
+  keywords: [
+    "kombi servisi",
+    "klima tamiri",
+    "petek temizliği",
+    "İstanbul kombi servisi",
+    "İstanbul klima servisi",
+    "İstanbul petek temizliği",
+    "İstanbul acil servis",
+    "Bahçelievler kombi servisi",
+    "Bosch kombi servisi",
+    "Demirdöküm servisi",
+    "Vaillant servisi",
+    "Daikin klima tamiri",
+    "klima montajı",
+  ],
 
   authors: [{ name: "Vora Teknik Servis" }],
   creator: "Vora Teknik Servis",
   publisher: "Vora Teknik Servis",
 
-  openGraph: {
-    title: "Vora Teknik Servis | İstanbul Kombi ve Klima Servisi",
-
-    description:
-      "Kombi servisi, klima servisi, petek temizliği, bakım ve onarım hizmetleri.",
-
-    url: "https://vorateknik.com/petek-temizligi",
-
-    type: "website",
-    locale: "tr_TR",
-    siteName: "Vora Teknik Servis",
-  },
-
-  twitter: {
-    card: "summary",
-    title: "Vora Teknik Servis | İstanbul Kombi ve Klima Servisi",
-
-    description:
-      "Kombi, klima ve petek servisi için Vora Teknik Servis.",
+  alternates: {
+    canonical: "/",
   },
 
   robots: {
     index: true,
     follow: true,
-
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
     },
   },
-};
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HVACBusiness",
-
-  name: "Vora Teknik Servis",
-
-  description:
-    "Bahçelievler ve İstanbul çevresinde kombi, klima ve petek temizliği servisi.",
-
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Kocasinan Merkez Mah. Irmak Sokak",
-    addressLocality: "Bahçelievler",
-    addressRegion: "İstanbul",
-    addressCountry: "TR",
+  openGraph: {
+    title: "Vora Teknik Servis | Kombi, Klima ve Petek Servisi",
+    description:
+      "İstanbul geneli kombi, klima bakım ve onarımı ile petek temizliği hizmetleri.",
+    url: "https://vorateknik.com/",
+    siteName: "Vora Teknik Servis",
+    type: "website",
+    locale: "tr_TR",
   },
 
-  telephone: "+905365281116",
-
-  areaServed: {
-    "@type": "City",
-    name: "İstanbul",
+  twitter: {
+    card: "summary_large_image",
+    title: "Vora Teknik Servis | Kombi ve Klima Servisi",
+    description:
+      "İstanbul geneli kombi, klima ve petek temizliği servis hizmetleri.",
   },
-
-  priceRange: "₺₺",
-
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-
-      opens: "08:00",
-      closes: "23:59",
-    },
-
-    {
-      "@type": "OpeningHoursSpecification",
-
-      dayOfWeek: "Sunday",
-
-      opens: "00:00",
-      closes: "23:59",
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -119,6 +69,49 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "@id": "https://vorateknik.com/#business",
+
+    "name": "Vora Teknik Servis",
+
+    "url": "https://vorateknik.com/",
+
+    "description":
+      "İstanbul geneli profesyonel kombi, klima ve petek temizliği servis hizmetleri.",
+
+    "telephone": "+905365281116",
+
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Irmak Sokak",
+      "addressLocality": "Bahçelievler",
+      "addressRegion": "İstanbul",
+      "addressCountry": "TR",
+    },
+
+    "areaServed": {
+      "@type": "City",
+      "name": "İstanbul",
+    },
+
+    "priceRange": "₺₺",
+
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      "opens": "00:00",
+      "closes": "23:59",
+    },
+  };
+
   return (
     <html lang="tr">
       <body className={inter.className}>
