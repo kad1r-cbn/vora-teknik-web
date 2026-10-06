@@ -48,154 +48,160 @@ export default function PetekTemizligiPage() {
   return (
     <main className="min-h-screen bg-slate-900 text-white">
 
-      {/* HEADER / NAVBAR */}
-      <header className="sticky top-0 z-[100] w-full bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4 flex items-center justify-between gap-6">
+      {/* HEADER + NAVBAR */}
+      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-100">
 
-          {/* LOGO */}
-          <Link
-            href="/"
-            className="text-2xl lg:text-3xl font-extrabold tracking-tight shrink-0"
-          >
-            Vora<span className="text-cyan-500">Teknik</span>
-          </Link>
+        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
 
-          {/* DESKTOP NAV */}
-          <nav
-            className="hidden lg:flex items-center gap-2 text-sm font-semibold"
-            aria-label="Ana menü"
-          >
+          <div className="flex items-center justify-between">
+
+            {/* LOGO */}
             <Link
               href="/"
-              className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
+              className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
             >
-              Ana Sayfa
+              Vora<span className="text-cyan-500">Teknik</span>
             </Link>
 
-            <Link
-              href="/kombi-servisi"
-              className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-            >
-              Kombi Servisi
-            </Link>
+            {/* DESKTOP NAV */}
+            <nav className="hidden lg:flex items-center gap-2">
 
-            <Link
-              href="/klima-servisi"
-              className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-            >
-              Klima Servisi
-            </Link>
-
-            {/* AKTİF SAYFA */}
-            <Link
-              href="/petek-temizligi"
-              className="px-4 py-2.5 rounded-lg text-white bg-slate-800 hover:bg-slate-700 font-semibold transition-colors"
-            >
-              Petek Temizliği
-            </Link>
-
-            <Link
-              href="/#servis-talebi"
-              className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-            >
-              İletişim
-            </Link>
-          </nav>
-
-          {/* DESKTOP PHONE */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a
-              href="tel:+905365281116"
-              className="flex items-center gap-2 text-slate-200 hover:text-cyan-400 transition-colors font-bold"
-            >
-              <Phone size={18} className="text-cyan-500" />
-              <span className="hidden xl:inline">
-                0536 528 11 16
-              </span>
-            </a>
-
-            <a
-              href="tel:+905365281116"
-              className="inline-flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2.5 rounded-xl font-black transition-all shadow-lg shadow-cyan-500/20"
-            >
-              <Phone size={17} />
-              Hemen Ara
-            </a>
-          </div>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
-            aria-expanded={mobileMenuOpen}
-            className="lg:hidden w-11 h-11 rounded-xl border border-slate-700 bg-slate-800 text-white flex items-center justify-center hover:border-cyan-500 transition-colors"
-          >
-            {mobileMenuOpen ? (
-              <X size={23} />
-            ) : (
-              <Menu size={23} />
-            )}
-          </button>
-        </div>
-
-        {/* MOBILE MENU */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-800 bg-slate-950">
-            <nav
-              className="px-6 py-4 space-y-1"
-              aria-label="Mobil menü"
-            >
               <Link
                 href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
               >
                 Ana Sayfa
               </Link>
 
               <Link
                 href="/kombi-servisi"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
               >
                 Kombi Servisi
               </Link>
 
               <Link
                 href="/klima-servisi"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
               >
                 Klima Servisi
               </Link>
 
               <Link
                 href="/petek-temizligi"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl bg-slate-800 text-white font-bold transition-colors"
+                className="px-4 py-2.5 rounded-lg text-white bg-slate-800 hover:bg-slate-700 font-semibold transition-colors"
               >
                 Petek Temizliği
               </Link>
 
-              <Link
+              <a
                 href="/#servis-talebi"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyan-400 transition-colors font-bold"
+                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
               >
                 İletişim
-              </Link>
+              </a>
+
+            </nav>
+
+            {/* DESKTOP PHONE */}
+            <div className="hidden lg:flex items-center gap-4">
 
               <a
                 href="tel:+905365281116"
-                className="mt-2 flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black transition-colors"
+                className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors font-bold"
               >
-                <Phone size={18} />
-                0536 528 11 16 — Hemen Ara
+                <Phone size={18} className="text-cyan-500" />
+                0536 528 11 16
               </a>
-            </nav>
+
+              <a
+                href="tel:+905365281116"
+                className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-black transition-colors"
+              >
+                <Phone size={17} />
+                Hemen Ara
+              </a>
+
+            </div>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              type="button"
+              aria-label={
+                mobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'
+              }
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden text-white p-2 rounded-lg hover:bg-slate-800 transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X size={28} />
+              ) : (
+                <Menu size={28} />
+              )}
+            </button>
+
           </div>
-        )}
+
+          {/* MOBILE NAV */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden pt-4 pb-2 border-t border-slate-800 mt-4">
+
+              <nav className="flex flex-col gap-2">
+
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Ana Sayfa
+                </Link>
+
+                <Link
+                  href="/kombi-servisi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Kombi Servisi
+                </Link>
+
+                <Link
+                  href="/klima-servisi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  Klima Servisi
+                </Link>
+
+                <Link
+                  href="/petek-temizligi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
+                >
+                  Petek Temizliği
+                </Link>
+
+                <a
+                  href="/#servis-talebi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
+                >
+                  İletişim
+                </a>
+
+                <a
+                  href="tel:+905365281116"
+                  className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black mt-2"
+                >
+                  <Phone size={18} />
+                  0536 528 11 16
+                </a>
+
+              </nav>
+
+            </div>
+          )}
+
+        </div>
       </header>
 
       {/* BREADCRUMB */}
@@ -220,7 +226,7 @@ export default function PetekTemizligiPage() {
       </nav>
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950">
+      <section className="relative overflow-hidden bg-linear-to-b from-slate-900 to-slate-950">
 
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
@@ -353,7 +359,7 @@ export default function PetekTemizligiPage() {
       {/* COMMON PROBLEMS */}
       <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="grid lg:grid-cols-2 gap-14 items-center">
 
@@ -394,7 +400,7 @@ export default function PetekTemizligiPage() {
                   >
                     <CheckCircle
                       size={18}
-                      className="text-cyan-500 flex-shrink-0"
+                      className="text-cyan-500 shrink-0"
                     />
 
                     {problem}
@@ -449,7 +455,7 @@ export default function PetekTemizligiPage() {
       {/* PROCESS */}
       <section className="bg-white text-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1400px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-350 mx-auto">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
 
@@ -511,7 +517,7 @@ export default function PetekTemizligiPage() {
       {/* RELATED SERVICES */}
       <section className="bg-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="text-center mb-12">
 
@@ -596,7 +602,7 @@ export default function PetekTemizligiPage() {
       {/* LOCAL SEO */}
       <section className="bg-slate-950 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="grid lg:grid-cols-2 gap-12">
 
@@ -662,7 +668,7 @@ export default function PetekTemizligiPage() {
       {/* FAQ */}
       <section className="bg-white text-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1100px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-275 mx-auto">
 
           <div className="text-center mb-12">
 
@@ -701,7 +707,7 @@ export default function PetekTemizligiPage() {
 
                     <ChevronDown
                       size={22}
-                      className={`flex-shrink-0 transition-transform ${
+                      className={`shrink-0 transition-transform ${
                         isOpen
                           ? 'rotate-180 text-cyan-500'
                           : 'text-slate-400'
@@ -725,9 +731,9 @@ export default function PetekTemizligiPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-cyan-700 to-cyan-600 py-16">
+      <section className="bg-linear-to-r from-cyan-700 to-cyan-600 py-16">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1300px] mx-auto text-center">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-325 mx-auto text-center">
 
           <h2 className="text-3xl lg:text-4xl font-black text-white mb-5">
             Petek Temizliği Desteğine mi İhtiyacınız Var?

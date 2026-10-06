@@ -18,6 +18,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { supabase } from '../utils/supabase';
+import { istanbulIlceleri } from './data/istanbul-ilceleri';
 
 export default function Home() {
   const [fullName, setFullName] = useState('');
@@ -94,7 +95,7 @@ export default function Home() {
     <main className="min-h-screen bg-slate-900 relative selection:bg-cyan-500 selection:text-white pb-28 lg:pb-0 overflow-x-hidden">
 
       {/* HEADER + NAVBAR */}
-      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-[100]">
+      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-100">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
 
@@ -444,7 +445,7 @@ export default function Home() {
               className={`w-full py-5 rounded-xl font-black text-white text-lg tracking-wide transition-all ${
                 isSubmitting
                   ? 'bg-slate-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 shadow-lg'
+                  : 'bg-linear-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 shadow-lg'
               }`}
             >
               {isSubmitting
@@ -684,7 +685,7 @@ export default function Home() {
       {/* FAQ */}
       <section className="w-full bg-slate-50 py-20 border-t border-slate-200">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1200px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-300 mx-auto">
 
           <div className="text-center mb-12">
 
@@ -736,7 +737,7 @@ export default function Home() {
                     <span>{faq.q}</span>
 
                     <ChevronDown
-                      className={`flex-shrink-0 transition-transform ${
+                      className={`shrink-0 transition-transform ${
                         isOpen
                           ? 'rotate-180 text-cyan-500'
                           : 'text-slate-400'
@@ -780,39 +781,26 @@ export default function Home() {
               planlamaktadır.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-3 gap-x-3">
 
-              {[
-                'Bahçelievler',
-                'Bakırköy',
-                'Bağcılar',
-                'Esenler',
-                'Güngören',
-                'Zeytinburnu',
-                'Şişli',
-                'Beşiktaş',
-                'Kâğıthane',
-                'Sarıyer',
-                'Eyüpsultan',
-                'Fatih',
-                'Kadıköy',
-                'Üsküdar',
-                'Ümraniye',
-                'Ataşehir',
-                'Maltepe',
-                'Pendik',
-              ].map((ilce) => (
+              {istanbulIlceleri.map((ilce) => (
 
-                <div
-                  key={ilce}
-                  className="text-slate-300 text-sm font-medium flex items-center gap-2"
+                <Link
+                  key={ilce.slug}
+                  href={`/istanbul/${ilce.slug}`}
+                  className="group flex items-center gap-2 rounded-lg px-3 py-2.5 text-slate-300 text-sm font-medium hover:text-white hover:bg-slate-800 transition-colors"
                 >
 
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-700" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-700 group-hover:bg-cyan-400 shrink-0 transition-colors" />
 
-                  {ilce}
+                  <span>{ilce.name}</span>
 
-                </div>
+                  <ArrowRight
+                    size={14}
+                    className="ml-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-400 transition-all"
+                  />
+
+                </Link>
 
               ))}
 
@@ -820,7 +808,7 @@ export default function Home() {
 
           </div>
 
-          <div className="bg-slate-800 p-2 rounded-3xl border border-slate-700 shadow-2xl overflow-hidden h-[350px]">
+          <div className="bg-slate-800 p-2 rounded-3xl border border-slate-700 shadow-2xl overflow-hidden h-87.5">
 
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48174.52445892015!2d28.81057410041214!3d41.00511894751433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb62086e3381%3A0xe2128b97394db437!2zQmFow6dlbGlldmxlci_EsHN0YW5idWw!5e0!3m2!1str!2str"
@@ -870,7 +858,7 @@ export default function Home() {
 
                   <MapPin
                     size={18}
-                    className="text-cyan-500 flex-shrink-0 mt-0.5"
+                    className="text-cyan-500 shrink-0 mt-0.5"
                   />
 
                   <span>
@@ -888,7 +876,7 @@ export default function Home() {
 
                   <Phone
                     size={18}
-                    className="text-cyan-500 flex-shrink-0"
+                    className="text-cyan-500 shrink-0"
                   />
 
                   0536 528 11 16
@@ -902,7 +890,7 @@ export default function Home() {
 
                   <Phone
                     size={18}
-                    className="text-cyan-500 flex-shrink-0"
+                    className="text-cyan-500 shrink-0"
                   />
 
                   0538 818 82 36
@@ -1061,7 +1049,7 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp üzerinden Vora Teknik Servis ile iletişime geç"
-        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-10 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform z-50 flex items-center justify-center z-[110]"
+        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-10 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform z-50 flex items-center justify-center"
       >
         <Phone size={27} />
       </a>
