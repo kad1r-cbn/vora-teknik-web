@@ -49,7 +49,7 @@ export default function KlimaServisiPage() {
     <main className="min-h-screen bg-slate-900 text-white">
 
       {/* HEADER + NAVBAR */}
-      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-[100]">
+      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-100">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
 
@@ -161,7 +161,7 @@ export default function KlimaServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  Kombi Servisi
+                  🔥 Kombi Servisi
                 </Link>
 
                 <Link
@@ -169,7 +169,7 @@ export default function KlimaServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
                 >
-                  Klima Servisi
+                  ❄️ Klima Servisi
                 </Link>
 
                 <Link
@@ -177,7 +177,7 @@ export default function KlimaServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  Petek Temizliği
+                  💧 Petek Temizliği
                 </Link>
 
                 <a
@@ -185,7 +185,7 @@ export default function KlimaServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  İletişim
+                  📞 İletişim
                 </a>
 
                 <a
@@ -228,7 +228,7 @@ export default function KlimaServisiPage() {
       </nav>
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950">
+      <section className="relative overflow-hidden bg-linear-to-b from-slate-900 to-slate-950">
 
         <div className="absolute inset-0 pointer-events-none">
 
@@ -372,7 +372,7 @@ export default function KlimaServisiPage() {
       {/* COMMON PROBLEMS */}
       <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="grid lg:grid-cols-2 gap-14 items-center">
 
@@ -414,7 +414,7 @@ export default function KlimaServisiPage() {
 
                     <CheckCircle
                       size={18}
-                      className="text-cyan-500 flex-shrink-0"
+                      className="text-cyan-500 shrink-0"
                     />
 
                     {problem}
@@ -474,7 +474,7 @@ export default function KlimaServisiPage() {
       {/* PROCESS */}
       <section className="bg-white text-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1400px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-350 mx-auto">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
 
@@ -538,7 +538,7 @@ export default function KlimaServisiPage() {
       {/* BRANDS */}
       <section className="bg-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="text-center">
 
@@ -582,7 +582,7 @@ export default function KlimaServisiPage() {
       {/* RELATED SERVICES */}
       <section className="bg-slate-900 py-20 border-t border-slate-800">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="text-center mb-12">
 
@@ -671,7 +671,7 @@ export default function KlimaServisiPage() {
       {/* LOCAL SEO */}
       <section className="bg-slate-950 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="grid lg:grid-cols-2 gap-12">
 
@@ -741,7 +741,7 @@ export default function KlimaServisiPage() {
       {/* FAQ */}
       <section className="bg-white text-slate-900 py-20">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1100px] mx-auto">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-275 mx-auto">
 
           <div className="text-center mb-12">
 
@@ -779,7 +779,7 @@ export default function KlimaServisiPage() {
 
                     <ChevronDown
                       size={22}
-                      className={`flex-shrink-0 transition-transform ${
+                      className={`shrink-0 transition-transform ${
                         isOpen
                           ? 'rotate-180 text-cyan-500'
                           : 'text-slate-400'
@@ -806,9 +806,9 @@ export default function KlimaServisiPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-cyan-700 to-cyan-600 py-16">
+      <section className="bg-linear-to-r from-cyan-700 to-cyan-600 py-16">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1300px] mx-auto text-center">
+        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-325 mx-auto text-center">
 
           <h2 className="text-3xl lg:text-4xl font-black text-white mb-5">
             Klima Servis Desteğine mi İhtiyacınız Var?

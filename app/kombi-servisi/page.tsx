@@ -160,15 +160,15 @@ export default function KombiServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
                 >
-                  Kombi Servisi
+                  🔥 Kombi Servisi
                 </Link>
 
                 <Link
                   href="/klima-servisi"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
+                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  Klima Servisi
+                  ❄️ Klima Servisi
                 </Link>
 
                 <Link
@@ -176,7 +176,7 @@ export default function KombiServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  Petek Temizliği
+                  💧 Petek Temizliği
                 </Link>
 
                 <a
@@ -184,7 +184,7 @@ export default function KombiServisiPage() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
                 >
-                  İletişim
+                  📞 İletişim
                 </a>
 
                 <a
