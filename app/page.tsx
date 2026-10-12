@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { VoraHeroBackground, VoraReveal, VoraScrollProgress } from './components/VoraScrollEffects';
 import { useState } from 'react';
 import {
   ShieldCheck,
@@ -94,10 +96,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-900 relative selection:bg-cyan-500 selection:text-white pb-28 lg:pb-0 overflow-x-hidden">
 
-      {/* HEADER + NAVBAR */}
-      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-100">
+      <VoraScrollProgress />
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
+      {/* HEADER + NAVBAR */}
+      <header className="w-full bg-vora-bg border-b border-cyan-400/10 sticky top-0 z-100">
+
+        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 sm:px-8 lg:px-12 2xl:px-16">
 
           <div className="flex items-center justify-between">
 
@@ -106,7 +110,7 @@ export default function Home() {
               href="/"
               className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
             >
-              Vora<span className="text-cyan-500">Teknik</span>
+              VORA <span className="text-vora-cyan">TEKNİK</span>
             </Link>
 
             {/* DESKTOP NAV */}
@@ -137,7 +141,7 @@ export default function Home() {
                 href="/petek-temizligi"
                 className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
               >
-                Petek Temizliği
+                Petek TemizliÄŸi
               </Link>
 
               <a
@@ -248,234 +252,192 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="w-full px-6 lg:px-20 2xl:px-32 py-12 lg:py-0 lg:min-h-[calc(100vh-80px)] grid lg:grid-cols-2 gap-12 lg:gap-24 2xl:gap-32 items-center relative z-10">
+      {/* HERO - VORA_HOME_HERO_V2_SCROLL */}
+      <section className="relative isolate overflow-hidden bg-vora-bg text-white">
+        <VoraHeroBackground />
 
-        <div className="space-y-8">
-
-          <div className="inline-flex items-center gap-2 bg-cyan-950 border border-cyan-800 text-cyan-400 px-5 py-2 rounded-full text-sm font-bold tracking-wide">
-            <ShieldCheck size={17} />
-            İstanbul Teknik Servis
-          </div>
-
-          <h1 className="text-4xl lg:text-5xl 2xl:text-7xl font-black text-white leading-tight">
-            İstanbul Kombi ve Klima Servisi
-            <br />
-            <span className="text-cyan-500">
-              Hızlı ve Profesyonel Çözüm
-            </span>
-          </h1>
-
-          <p className="text-lg lg:text-xl 2xl:text-2xl text-slate-300 font-medium leading-relaxed">
-            Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul
-            genelinde kombi, klima ve petek servis hizmetleri için servis
-            planlaması yapar.
-          </p>
-
-          <div className="space-y-4 pt-4 max-w-2xl">
-
-            <div className="flex items-start gap-5 p-5 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-              <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
-                <Clock size={28} />
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white text-lg">
-                  Planlı Servis
-                </h3>
-
-                <p className="text-sm text-slate-400 mt-1">
-                  Servis talepleriniz adres ve randevu durumuna göre
-                  planlanır.
-                </p>
-              </div>
+        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-5 pb-20 pt-14 sm:px-8 lg:min-h-161.25 lg:grid-cols-[minmax(0,1.08fr)_minmax(365px,0.92fr)] lg:gap-14 lg:px-12 lg:pb-24 lg:pt-16 2xl:px-16">
+          {/* Sol alan */}
+          <div className="max-w-185">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#071b36]/80 px-4 py-2 text-xs font-semibold tracking-wide text-cyan-200 backdrop-blur-sm sm:text-sm">
+              <MapPin size={17} className="text-cyan-400" />
+              İstanbul Genelinde Teknik Servis
             </div>
 
-            <div className="flex items-start gap-5 p-5 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+            <h1 className="max-w-200 text-[clamp(2.65rem,5.2vw,5.4rem)] font-black leading-[1.04] tracking-[-0.045em] text-white">
+              İstanbul'da<br />
+              <span className="text-vora-cyan">Kombi, Klima</span> ve<br />
+              Petek Servisi
+            </h1>
 
-              <div className="p-3 bg-cyan-500/10 rounded-xl text-cyan-400">
-                <CheckCircle size={28} />
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white text-lg">
-                  Temiz İşçilik
-                </h3>
-
-                <p className="text-sm text-slate-400 mt-1">
-                  Servis sırasında çalışma alanının düzenli tutulmasına
-                  önem verilir.
-                </p>
-              </div>
-
-            </div>
-
-            <div className="flex items-start gap-5 p-5 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-
-              <div className="p-3 bg-orange-500/10 rounded-xl text-orange-500">
-                <ShieldCheck size={28} />
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white text-lg">
-                  Garanti Seçenekleri
-                </h3>
-
-                <p className="text-sm text-slate-400 mt-1">
-                  Yapılan işleme ve kullanılan parçaya göre garanti
-                  koşulları servis öncesinde açıklanır.
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* SERVICE FORM */}
-        <div
-          id="servis-talebi"
-          className="bg-white p-8 lg:p-10 2xl:p-12 rounded-3xl shadow-2xl border-4 border-slate-800 relative z-20 w-full max-w-xl 2xl:max-w-2xl mx-auto lg:ml-auto"
-        >
-
-          <div className="absolute -top-6 right-4 bg-orange-500 text-white p-4 rounded-2xl shadow-xl rotate-12">
-            <Wrench size={28} />
-          </div>
-
-          <h2 className="text-3xl 2xl:text-4xl font-black text-slate-900 mb-2">
-            Hemen Servis Çağır
-          </h2>
-
-          <p className="text-slate-500 font-medium mb-8">
-            Formu doldurun, servis ekibimiz sizinle iletişime geçsin.
-          </p>
-
-          <form
-            onSubmit={handleServiceRequest}
-            className="space-y-6"
-          >
-
-            <div>
-
-              <label
-                htmlFor="fullName"
-                className="block text-sm font-bold text-slate-700 mb-2"
-              >
-                Adınız Soyadınız
-              </label>
-
-              <input
-                id="fullName"
-                name="fullName"
-                type="text"
-                autoComplete="name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-cyan-500 outline-none transition-all bg-slate-50 font-medium text-slate-900"
-                placeholder="Örn: Ahmet Yılmaz"
-                disabled={isSubmitting}
-              />
-
-            </div>
-
-            <div>
-
-              <label
-                htmlFor="phone"
-                className="block text-sm font-bold text-slate-700 mb-2"
-              >
-                Telefon Numaranız
-              </label>
-
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-cyan-500 outline-none transition-all bg-slate-50 font-medium text-slate-900"
-                placeholder="05XX XXX XX XX"
-                disabled={isSubmitting}
-              />
-
-            </div>
-
-            <div>
-
-              <label
-                htmlFor="deviceType"
-                className="block text-sm font-bold text-slate-700 mb-2"
-              >
-                Hizmet Türü
-              </label>
-
-              <select
-                id="deviceType"
-                name="deviceType"
-                value={deviceType}
-                onChange={(e) => setDeviceType(e.target.value)}
-                className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-cyan-500 outline-none transition-all bg-slate-50 appearance-none font-bold text-slate-900 cursor-pointer"
-                disabled={isSubmitting}
-              >
-                <option value="Kombi">
-                  Kombi Arızası / Bakımı
-                </option>
-
-                <option value="Klima">
-                  Klima Arızası / Montajı
-                </option>
-
-                <option value="Petek">
-                  Petek Temizliği
-                </option>
-
-                <option value="Diğer">
-                  Diğer / Emin Değilim
-                </option>
-              </select>
-
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full py-5 rounded-xl font-black text-white text-lg tracking-wide transition-all ${
-                isSubmitting
-                  ? 'bg-slate-400 cursor-not-allowed'
-                  : 'bg-linear-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 shadow-lg'
-              }`}
-            >
-              {isSubmitting
-                ? 'Gönderiliyor...'
-                : 'SERVİS TALEBİ OLUŞTUR'}
-            </button>
-
-            {submitStatus.message && (
-              <div
-                className={`p-4 rounded-xl text-sm font-bold border ${
-                  submitStatus.type === 'success'
-                    ? 'bg-green-50 text-green-700 border-green-200'
-                    : 'bg-red-50 text-red-700 border-red-200'
-                }`}
-              >
-                {submitStatus.message}
-              </div>
-            )}
-
-            <p className="text-[11px] text-center text-slate-400">
-              Kişisel verileriniz KVKK kapsamında korunmaktadır.
+            <p className="mt-6 max-w-155 text-base font-medium leading-relaxed text-slate-100/95 sm:text-lg lg:text-xl">
+              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul genelinde kombi,
+              klima ve petek temizliği için servis taleplerinizi planlar.
             </p>
 
-          </form>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="tel:+905365281116"
+                className="inline-flex min-h-13 items-center justify-center gap-3 rounded-xl bg-[#00C9EE] px-6 py-3 text-base font-extrabold text-[#00142C] shadow-xl shadow-cyan-950/30 transition hover:bg-vora-cyan focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                <Phone size={19} /> Hemen Ara <ArrowRight size={18} />
+              </a>
+              <a
+                href="https://wa.me/905365281116?text=Merhaba%2C%20Vora%20Teknik%20Servis%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-13 items-center justify-center gap-3 rounded-xl border border-cyan-400 bg-[#00142C]/70 px-6 py-3 text-base font-bold text-white transition hover:bg-cyan-900/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                WhatsApp&apos;tan Yaz <ArrowRight size={18} />
+              </a>
+            </div>
 
+            <div className="mt-9 grid max-w-187.5 grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/10 text-vora-cyan"><ShieldCheck size={23} /></div>
+                <div><p className="text-sm font-bold">Garanti Bilgilendirmesi</p><p className="text-xs text-slate-200/90">İşlem öncesi koşullar</p></div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/10 text-vora-cyan"><Clock size={23} /></div>
+                <div><p className="text-sm font-bold">Planlı Servis</p><p className="text-xs text-slate-200/90">Randevuya göre hizmet</p></div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/10 text-vora-cyan"><CheckCircle size={23} /></div>
+                <div><p className="text-sm font-bold">Temiz İşçilik</p><p className="text-xs text-slate-200/90">Özenli çalışma</p></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sag alan: mevcut Supabase form mantigi korunur */}
+          <div
+            id="servis-talebi"
+            className="relative mx-auto w-full max-w-132.5 scroll-mt-28 rounded-[26px] border border-white/60 bg-white p-6 text-slate-900 shadow-[0_25px_70px_rgba(0,9,28,0.35)] sm:p-8 lg:ml-auto lg:p-9"
+          >
+            <div className="absolute -right-2 -top-5 flex h-14 w-14 rotate-12 items-center justify-center rounded-2xl bg-vora-primary text-white shadow-xl shadow-cyan-900/20 sm:right-5">
+              <Wrench size={26} />
+            </div>
+            <h2 className="pr-8 text-2xl font-black tracking-tight text-vora-bg sm:text-3xl">Hemen Servis Talebi Oluştur</h2>
+            <p className="mb-7 mt-2 text-sm font-medium text-slate-500 sm:text-base">
+              Formu doldurun, servis ekibimiz sizinle iletişime geçsin.
+            </p>
+            <form onSubmit={handleServiceRequest} className="space-y-4">
+              <div>
+                <label htmlFor="fullName" className="mb-1.5 block text-sm font-bold text-slate-700">Adınız Soyadınız</label>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  placeholder="Örn: Ahmet Yılmaz"
+                  disabled={isSubmitting}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 font-medium text-vora-bg outline-none transition focus:border-vora-primary focus:ring-2 focus:ring-cyan-100 disabled:opacity-60"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="mb-1.5 block text-sm font-bold text-slate-700">Telefon Numaranız</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="05XX XXX XX XX"
+                  disabled={isSubmitting}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 font-medium text-vora-bg outline-none transition focus:border-vora-primary focus:ring-2 focus:ring-cyan-100 disabled:opacity-60"
+                />
+              </div>
+              <div>
+                <label htmlFor="deviceType" className="mb-1.5 block text-sm font-bold text-slate-700">Hizmet Türü</label>
+                <select
+                  id="deviceType"
+                  name="deviceType"
+                  value={deviceType}
+                  onChange={(e) => setDeviceType(e.target.value)}
+                  disabled={isSubmitting}
+                  className="w-full cursor-pointer appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 font-bold text-vora-bg outline-none transition focus:border-vora-primary focus:ring-2 focus:ring-cyan-100 disabled:opacity-60"
+                >
+                  <option value="Kombi">Kombi Arızası / Bakımı</option>
+                  <option value="Klima">Klima Arızası / Montajı</option>
+                  <option value="Petek">Petek Temizliği</option>
+                  <option value="DiÄŸer">Diğer / Emin Değilim</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full rounded-xl px-5 py-4 text-base font-black transition sm:text-lg ${isSubmitting ? 'cursor-not-allowed bg-slate-400 text-white' : 'bg-linear-to-r from-[#009BE8] to-[#00C9EE] text-white shadow-lg shadow-cyan-500/20 hover:brightness-110'}`}
+              >
+                {isSubmitting ? 'Gönderiliyor...' : 'Servis Talebi Oluştur →'}
+              </button>
+              {submitStatus.message && (
+                <div className={`rounded-xl border p-3 text-sm font-bold ${submitStatus.type === 'success' ? 'border-green-200 bg-green-50 text-green-700' : 'border-red-200 bg-red-50 text-red-700'}`} role="status">
+                  {submitStatus.message}
+                </div>
+              )}
+              <p className="text-center text-xs text-slate-500">İletişim bilgileriniz yalnızca servis talebiniz için kullanılır.</p>
+            </form>
+          </div>
         </div>
-
       </section>
 
-      {/* BRANDS */}
+      {/* HERO ALTINDAKI 3 HIZMET KARTI */}
+      <section className="relative z-20 bg-[#F3F8FF] pb-9" aria-label="Öne çıkan hizmetler">
+        <div className="relative mx-auto -mt-7 grid w-full max-w-[1600px] grid-cols-1 gap-4 px-5 sm:px-8 md:grid-cols-3 lg:px-12 2xl:px-16">
+          <VoraReveal delay={0.04} className="h-full min-w-0">
+      <Link href="/kombi-servisi" className="group flex min-h-36 items-center gap-4 rounded-2xl border border-white bg-white p-4 shadow-[0_16px_35px_rgba(0,15,50,0.13)] transition hover:-translate-y-1 hover:shadow-xl">
+            
+         <Image
+            src="/images/hizmet-kombi.webp"
+            alt="Vora Teknik Servis kombi bakım ve onarım hizmeti"
+            width={320}
+            height={320}
+            loading="lazy"
+            className="h-28 w-28 shrink-0 rounded-xl bg-slate-50 object-contain sm:h-32 sm:w-32 xl:h-36 xl:w-36"
+            />
+
+            <div className="min-w-0"><div className="flex items-center gap-2"><Flame size={23} className="shrink-0 text-orange-500" /><h3 className="text-lg font-black text-vora-bg">Kombi Servisi</h3></div><p className="mt-2 text-sm leading-snug text-slate-600">Bakım, arıza tespiti ve teknik destek.</p><span className="mt-2 inline-flex items-center gap-1 text-sm font-extrabold text-vora-primarydark">Detaylı Bilgi <ArrowRight size={16} className="transition group-hover:translate-x-1" /></span></div>
+          </Link>
+          </VoraReveal>
+          <VoraReveal delay={0.11} className="h-full min-w-0">
+<Link href="/klima-servisi" className="group flex min-h-36 items-center gap-4 rounded-2xl border border-white bg-white p-4 shadow-[0_16px_35px_rgba(0,15,50,0.13)] transition hover:-translate-y-1 hover:shadow-xl">
+            
+<Image
+  src="/images/hizmet-klima.webp"
+  alt="Vora Teknik Servis klima bakım ve montaj hizmeti"
+  width={320}
+  height={320}
+  loading="lazy"
+  className="h-28 w-28 shrink-0 rounded-xl bg-slate-50 object-contain sm:h-32 sm:w-32 xl:h-36 xl:w-36"
+/>
+
+            <div className="min-w-0"><div className="flex items-center gap-2"><Wind size={23} className="shrink-0 text-vora-primary" /><h3 className="text-lg font-black text-vora-bg">Klima Servisi</h3></div><p className="mt-2 text-sm leading-snug text-slate-600">Klima bakımı, montaj ve arıza tespiti.</p><span className="mt-2 inline-flex items-center gap-1 text-sm font-extrabold text-vora-primarydark">Detaylı Bilgi <ArrowRight size={16} className="transition group-hover:translate-x-1" /></span></div>
+          </Link>
+          </VoraReveal>
+          <VoraReveal delay={0.18} className="h-full min-w-0">
+<Link href="/petek-temizligi" className="group flex min-h-36 items-center gap-4 rounded-2xl border border-white bg-white p-4 shadow-[0_16px_35px_rgba(0,15,50,0.13)] transition hover:-translate-y-1 hover:shadow-xl">
+            
+<Image
+  src="/images/hizmet-petek.webp"
+  alt="Vora Teknik Servis petek temizliği hizmeti"
+  width={320}
+  height={320}
+  loading="lazy"
+  className="h-28 w-28 shrink-0 rounded-xl bg-slate-50 object-contain sm:h-32 sm:w-32 xl:h-36 xl:w-36"
+/>
+
+            <div className="min-w-0"><div className="flex items-center gap-2"><Droplets size={23} className="shrink-0 text-vora-primary" /><h3 className="text-lg font-black text-vora-bg">Petek Temizliği</h3></div><p className="mt-2 text-sm leading-snug text-slate-600">Petek ve ısıtma sistemi temizliği.</p><span className="mt-2 inline-flex items-center gap-1 text-sm font-extrabold text-vora-primarydark">Detaylı Bilgi <ArrowRight size={16} className="transition group-hover:translate-x-1" /></span></div>
+          </Link>
+          </VoraReveal>
+        </div>
+      </section>
+
+            {/* BRANDS */}
       <section className="w-full bg-slate-950 py-8 border-y border-slate-800">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32">
@@ -533,9 +495,10 @@ export default function Home() {
           <div className="grid lg:grid-cols-3 gap-8">
 
             {/* KOMBI */}
-            <Link
+            <VoraReveal delay={0.02} className="h-full min-w-0">
+<Link
               href="/kombi-servisi"
-              className="group bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="group block h-full bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
 
               <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
@@ -579,11 +542,13 @@ export default function Home() {
               </span>
 
             </Link>
+          </VoraReveal>
 
             {/* KLİMA */}
-            <Link
+            <VoraReveal delay={0.11} className="h-full min-w-0">
+<Link
               href="/klima-servisi"
-              className="group bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="group block h-full bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
 
               <div className="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
@@ -627,11 +592,13 @@ export default function Home() {
               </span>
 
             </Link>
+          </VoraReveal>
 
             {/* PETEK */}
-            <Link
+            <VoraReveal delay={0.2} className="h-full min-w-0">
+<Link
               href="/petek-temizligi"
-              className="group bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="group block h-full bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
 
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -639,19 +606,19 @@ export default function Home() {
               </div>
 
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                Petek Temizliği
+                Petek TemizliÄŸi
               </h3>
 
               <p className="text-slate-600 mb-6 leading-relaxed">
                 Petek ve ısıtma tesisatı kontrolü, temizlik ve ısınma
-                problemlerinin değerlendirilmesi.
+                problemlerinin deÄŸerlendirilmesi.
               </p>
 
               <ul className="space-y-2 text-sm font-bold text-slate-700 mb-7">
 
                 <li className="flex items-center gap-2">
                   <CheckCircle size={16} className="text-cyan-500" />
-                  Petek Temizliği
+                  Petek TemizliÄŸi
                 </li>
 
                 <li className="flex items-center gap-2">
@@ -675,6 +642,7 @@ export default function Home() {
               </span>
 
             </Link>
+          </VoraReveal>
 
           </div>
 
@@ -708,7 +676,7 @@ export default function Home() {
                 a: 'Kombi bakımının cihazın çalışma durumuna göre düzenli olarak yapılması önerilir. Özellikle yoğun kullanım dönemi öncesinde cihazın kontrol edilmesi faydalı olabilir.',
               },
               {
-                q: 'Klima neden yeterince soğutmuyor?',
+                q: 'Klima neden yeterince soÄŸutmuyor?',
                 a: 'Filtrelerin kirli olması, hava akışının engellenmesi veya teknik bir problem gibi farklı nedenler olabilir. Kesin neden için cihazın kontrol edilmesi gerekir.',
               },
               {
@@ -933,7 +901,7 @@ export default function Home() {
                     href="/petek-temizligi"
                     className="text-slate-400 hover:text-cyan-400 transition-colors"
                   >
-                    Petek Temizliği
+                    Petek TemizliÄŸi
                   </Link>
                 </li>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, ArrowRight, CheckCircle2, Menu } from "lucide-react";
 import { istanbulIlceleri } from "../../data/istanbul-ilceleri";
+import DistrictHeroImage from "../../components/DistrictHeroImage";
 
 type Props = {
   params: Promise<{
@@ -238,16 +239,13 @@ export default async function IlcePage({ params }: Props) {
 <section className="relative min-h-[calc(100svh-85px)] flex items-end overflow-hidden">
 
   {/* ARKA PLAN GÖRSELİ */}
-  <div className="absolute inset-0">
+  <div 
+  
+   className="absolute inset-0">
+   <DistrictHeroImage src={ilce.image} districtName={ilce.name} />
 
-    <Image
-      src={ilce.image}
-      alt={`${ilce.name} İstanbul`}
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover scale-105"
-    />
+
+
 
     {/* Koyu katman */}
     <div className="absolute inset-0 bg-slate-950/55" />
