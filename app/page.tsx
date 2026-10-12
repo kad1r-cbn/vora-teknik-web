@@ -365,7 +365,7 @@ export default function Home() {
                   <option value="Kombi">Kombi Arızası / Bakımı</option>
                   <option value="Klima">Klima Arızası / Montajı</option>
                   <option value="Petek">Petek Temizliği</option>
-                  <option value="DiÄŸer">Diğer / Emin Değilim</option>
+                  <option value="Diğer">Diğer / Emin Değilim</option>
                 </select>
               </div>
               <button
@@ -606,19 +606,19 @@ export default function Home() {
               </div>
 
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                Petek TemizliÄŸi
+                Petek Temizliği
               </h3>
 
               <p className="text-slate-600 mb-6 leading-relaxed">
                 Petek ve ısıtma tesisatı kontrolü, temizlik ve ısınma
-                problemlerinin deÄŸerlendirilmesi.
+                problemlerinin değerlendirilmesi.
               </p>
 
               <ul className="space-y-2 text-sm font-bold text-slate-700 mb-7">
 
                 <li className="flex items-center gap-2">
                   <CheckCircle size={16} className="text-cyan-500" />
-                  Petek TemizliÄŸi
+                  Petek Temizliği
                 </li>
 
                 <li className="flex items-center gap-2">
@@ -676,7 +676,7 @@ export default function Home() {
                 a: 'Kombi bakımının cihazın çalışma durumuna göre düzenli olarak yapılması önerilir. Özellikle yoğun kullanım dönemi öncesinde cihazın kontrol edilmesi faydalı olabilir.',
               },
               {
-                q: 'Klima neden yeterince soÄŸutmuyor?',
+                q: 'Klima neden yeterince soğutmuyor?',
                 a: 'Filtrelerin kirli olması, hava akışının engellenmesi veya teknik bir problem gibi farklı nedenler olabilir. Kesin neden için cihazın kontrol edilmesi gerekir.',
               },
               {
@@ -901,7 +901,7 @@ export default function Home() {
                     href="/petek-temizligi"
                     className="text-slate-400 hover:text-cyan-400 transition-colors"
                   >
-                    Petek TemizliÄŸi
+                    Petek Temizliği
                   </Link>
                 </li>
 
