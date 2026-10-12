@@ -31,6 +31,7 @@ export function VoraScrollProgress() {
 
 // Sadece gorseli kaydir: metin ve form sabit kalir, LCP icin next/image priority kullanilir.
 
+
 export function VoraHeroBackground() {
   const sceneRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -40,7 +41,6 @@ export function VoraHeroBackground() {
     offset: ["start start", "end start"],
   });
 
-  // Hafif parallax: gereksiz büyütme yok.
   const parallaxY = useTransform(
     scrollYProgress,
     [0, 1],
@@ -57,10 +57,27 @@ export function VoraHeroBackground() {
     <div
       ref={sceneRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-vora-bg"
     >
+      {/* MOBİL: Kontrollü yükseklikte İstanbul manzarası */}
+      <div className="absolute inset-x-0 top-0 h-85 overflow-hidden sm:h-97.5 lg:hidden">
+        <Image
+          src="/images/istanbul-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[72%_center]"
+        />
+
+        <div className="absolute inset-0 bg-linear-to-r from-vora-bg/65 via-vora-bg/35 to-vora-bg/15" />
+
+        <div className="absolute inset-0 bg-linear-to-b from-vora-bg/20 via-vora-bg/40 to-vora-bg" />
+      </div>
+
+      {/* MASAÜSTÜ: Mevcut parallax görünümü */}
       <motion.div
-        className="absolute inset-[-3%]"
+        className="absolute inset-[-3%] hidden lg:block"
         style={
           reduceMotion
             ? undefined
@@ -80,11 +97,9 @@ export function VoraHeroBackground() {
         />
       </motion.div>
 
-      {/* Soldaki yazılar okunabilir kalır */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,13,38,0.90)_0%,rgba(0,13,38,0.72)_30%,rgba(0,13,38,0.25)_65%,rgba(0,13,38,0.12)_100%)]" />
+      <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(0,13,38,0.90)_0%,rgba(0,13,38,0.72)_30%,rgba(0,13,38,0.25)_65%,rgba(0,13,38,0.12)_100%)] lg:block" />
 
-      {/* Alt bölümde koyu geçiş */}
-      <div className="absolute inset-0 bg-linear-to-t from-[#000D26]/55 via-transparent to-[#000D26]/10" />
+      <div className="absolute inset-0 hidden bg-linear-to-t from-vora-bg/55 via-transparent to-vora-bg/10 lg:block" />
     </div>
   );
 }
