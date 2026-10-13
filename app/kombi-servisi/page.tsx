@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { VoraReveal, VoraScrollProgress } from '../components/VoraScrollEffects';
+import VoraHeader from '../components/VoraHeader';
 import { useState } from 'react';
 import {
   Phone,
@@ -16,8 +17,6 @@ import {
   ArrowRight,
   AlertTriangle,
   Settings,
-  Menu,
-  X,
 } from 'lucide-react';
 
 const faqs = [
@@ -45,166 +44,12 @@ const faqs = [
 
 export default function KombiServisiPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-vora-bg text-white">
       <VoraScrollProgress />
       {/* HEADER + NAVBAR */}
-      <header className="sticky top-0 z-100 w-full border-b border-cyan-400/10 bg-vora-bg">
-
-        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 sm:px-8 lg:px-12 2xl:px-16">
-
-          <div className="flex items-center justify-between">
-
-            {/* LOGO */}
-            <Link
-              href="/"
-              className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
-            >
-              VORA <span className="text-vora-cyan">TEKNİK</span>
-            </Link>
-
-            {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-2">
-
-              <Link
-                href="/"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Ana Sayfa
-              </Link>
-
-              <Link
-                href="/kombi-servisi"
-                className="px-4 py-2.5 rounded-lg text-white bg-slate-800 hover:bg-slate-700 font-semibold transition-colors"
-              >
-                Kombi Servisi
-              </Link>
-
-              <Link
-                href="/klima-servisi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Klima Servisi
-              </Link>
-
-              <Link
-                href="/petek-temizligi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Petek Temizliği
-              </Link>
-
-              <a
-                href="/#servis-talebi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                İletişim
-              </a>
-
-            </nav>
-
-            {/* DESKTOP PHONE */}
-            <div className="hidden lg:flex items-center gap-4">
-
-              <a
-                href="tel:+905365281116"
-                className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors font-bold"
-              >
-                <Phone size={18} className="text-cyan-500" />
-                0536 528 11 16
-              </a>
-
-              <a
-                href="tel:+905365281116"
-                className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-black transition-colors"
-              >
-                <Phone size={17} />
-                Hemen Ara
-              </a>
-
-            </div>
-
-            {/* MOBILE MENU BUTTON */}
-            <button
-              type="button"
-              aria-label={
-                mobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'
-              }
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2 rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              {mobileMenuOpen ? (
-                <X size={28} />
-              ) : (
-                <Menu size={28} />
-              )}
-            </button>
-
-          </div>
-
-          {/* MOBILE NAV */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden pt-4 pb-2 border-t border-slate-800 mt-4">
-
-              <nav className="flex flex-col gap-2">
-
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  Ana Sayfa
-                </Link>
-
-                <Link
-                  href="/kombi-servisi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
-                >
-                  🔥 Kombi Servisi
-                </Link>
-
-                <Link
-                  href="/klima-servisi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  ❄️ Klima Servisi
-                </Link>
-
-                <Link
-                  href="/petek-temizligi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  💧 Petek Temizliği
-                </Link>
-
-                <a
-                  href="/#servis-talebi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  📞 İletişim
-                </a>
-
-                <a
-                  href="tel:+905365281116"
-                  className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black mt-2"
-                >
-                  <Phone size={18} />
-                  0536 528 11 16
-                </a>
-
-              </nav>
-
-            </div>
-          )}
-
-        </div>
-      </header>
+      <VoraHeader active="kombi" />
 
       {/* BREADCRUMB */}
       <nav
@@ -239,7 +84,7 @@ export default function KombiServisiPage() {
               <span className="mt-3 block text-vora-cyan">Bakım, Arıza Tespiti ve Onarım</span>
             </h1>
             <p className="mt-7 max-w-[700px] text-base font-medium leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
-              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul genelinde kombi bakım, arıza tespiti ve onarım hizmetleri için servis planlaması yapar. Kombinizde yaşadığınız sorunu teknisyen kontrolüyle değerlendirerek uygun servis sürecini oluşturuyoruz.
+              Vora Teknik Servis, İstanbul genelinde kombi bakım, arıza tespiti ve onarım hizmetleri için servis planlaması yapar. Kombinizde yaşadığınız sorunu teknisyen kontrolüyle değerlendirerek uygun servis sürecini oluşturuyoruz.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href="tel:+905365281116" className="inline-flex min-h-13 items-center justify-center gap-3 rounded-xl bg-vora-cyan px-6 py-3 text-base font-extrabold text-vora-bg shadow-lg shadow-cyan-950/20 transition hover:bg-[#72edff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
@@ -249,6 +94,9 @@ export default function KombiServisiPage() {
                 WhatsApp'tan Yazın <ArrowRight size={18} />
               </a>
             </div>
+            <p className="mt-4 text-sm font-semibold text-slate-200">
+              Alternatif çağrı hattı: <a href="tel:+905388188236" className="text-vora-cyan underline-offset-4 hover:underline">0538 818 82 36</a>
+            </p>
             <p className="mt-7 flex items-center gap-2 text-sm text-slate-300">
               <CheckCircle size={18} className="shrink-0 text-vora-cyan" />
               İstanbul genelinde telefon ve WhatsApp üzerinden servis talebi
@@ -521,7 +369,7 @@ export default function KombiServisiPage() {
               </h2>
 
               <p className="text-slate-400 leading-relaxed text-lg">
-                Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul'un
+                Vora Teknik Servis, İstanbul'un
                 farklı ilçelerinde kombi servis taleplerini planlamaktadır.
                 Servis uygunluğu adres, yoğunluk ve randevu durumuna göre
                 değişebilir.
@@ -655,6 +503,11 @@ export default function KombiServisiPage() {
               <p className="text-slate-500 text-sm mt-3">
                 İstanbul kombi, klima ve petek servis hizmetleri.
               </p>
+              <div className="mt-4 flex flex-col gap-2 text-sm">
+                <a href="tel:+905365281116" className="inline-flex items-center gap-2 text-slate-300 hover:text-vora-cyan"><Phone size={16} /> 0536 528 11 16</a>
+                <a href="tel:+905388188236" className="inline-flex items-center gap-2 text-slate-300 hover:text-vora-cyan"><Phone size={16} /> 0538 818 82 36</a>
+                <span className="text-xs font-semibold text-cyan-200">Her gün 00:00–23:59</span>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 text-sm">
@@ -685,7 +538,8 @@ export default function KombiServisiPage() {
               >
                 İletişim
               </a>
-            </div>
+              <Link href="/hizmet-bolgeleri" className="text-slate-400 hover:text-vora-cyan transition-colors">Hizmet Bölgelerimiz</Link>
+              </div>
           </div>
 
           <div className="border-t border-slate-800 mt-8 pt-6">

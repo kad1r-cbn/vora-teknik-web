@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, ArrowRight, CheckCircle2, Menu } from "lucide-react";
+import { Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 import { istanbulIlceleri } from "../../data/istanbul-ilceleri";
 import DistrictHeroImage from "../../components/DistrictHeroImage";
 import { VoraReveal, VoraScrollProgress } from "../../components/VoraScrollEffects";
+import VoraHeader from "../../components/VoraHeader";
 
 type Props = {
   params: Promise<{
@@ -91,7 +92,7 @@ export default async function IlcePage({ params }: Props) {
   const faqItems = [
     {
       question: `${ilce.name} kombi servisi yapıyor musunuz?`,
-      answer: `Evet. Vora Teknik Servis, ${ilce.name} ve çevresinde kombi arıza tespiti, bakım ve teknik servis taleplerini planlamaktadır. Servis için 0536 528 11 16 numarasından iletişime geçebilirsiniz.`,
+      answer: `Evet. Vora Teknik Servis, ${ilce.name} ve çevresinde kombi arıza tespiti, bakım ve teknik servis taleplerini planlamaktadır. Servis için 0536 528 11 16 veya 0538 818 82 36 numaralarından iletişime geçebilirsiniz.`,
     },
     {
       question: `${ilce.name} klima servisi hizmeti veriyor musunuz?`,
@@ -133,8 +134,8 @@ export default async function IlcePage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "İstanbul",
-        item: "https://vorateknik.com/istanbul",
+        name: "Hizmet Bölgelerimiz",
+        item: "https://vorateknik.com/hizmet-bolgeleri",
       },
       {
         "@type": "ListItem",
@@ -158,90 +159,7 @@ export default async function IlcePage({ params }: Props) {
       />
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-100 w-full border-b border-cyan-400/10 bg-vora-bg/95 backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-3 px-5 py-4 sm:gap-5 sm:px-8 lg:px-12 2xl:px-16">
-          <Link
-            href="/"
-            className="shrink-0 text-2xl font-extrabold tracking-tight lg:text-3xl"
-            aria-label="Vora Teknik Servis ana sayfa"
-          >
-            VORA <span className="text-vora-cyan">TEKNİK</span>
-          </Link>
-
-          <nav
-            className="hidden lg:flex items-center gap-2 text-sm font-semibold"
-            aria-label="Ana menü"
-          >
-            <Link href="/" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
-              Ana Sayfa
-            </Link>
-            <Link href="/kombi-servisi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
-              Kombi Servisi
-            </Link>
-            <Link href="/klima-servisi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
-              Klima Servisi
-            </Link>
-            <Link href="/petek-temizligi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
-              Petek Temizliği
-            </Link>
-            <Link href="/#servis-talebi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
-              İletişim
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href="tel:+905365281116"
-              className="hidden lg:inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg transition-colors"
-            >
-              <Phone size={18} />
-              Hemen Ara
-            </a>
-
-            <a
-              href="tel:+905365281116"
-              className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-500 text-slate-950"
-              aria-label="Vora Teknik Servis'i ara"
-            >
-              <Phone size={18} />
-            </a>
-
-            <details className="relative lg:hidden">
-              <summary
-                className="list-none inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-slate-800 text-white cursor-pointer"
-                aria-label="Mobil menüyü aç"
-              >
-                <Menu size={21} />
-              </summary>
-
-              <nav
-                className="absolute right-0 top-[calc(100%+10px)] w-[min(88vw,320px)] rounded-2xl border border-slate-700 bg-slate-900 shadow-2xl p-2"
-                aria-label="Mobil menü"
-              >
-                <Link href="/" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
-                  Ana Sayfa
-                </Link>
-                <Link href="/kombi-servisi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
-                  🔥 Kombi Servisi
-                </Link>
-                <Link href="/klima-servisi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
-                  ❄️ Klima Servisi
-                </Link>
-                <Link href="/petek-temizligi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
-                  💧 Petek Temizliği
-                </Link>
-                <Link href="/#servis-talebi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
-                  📞 İletişim
-                </Link>
-                <a href="tel:+905365281116" className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-3.5 font-bold text-slate-950">
-                  <Phone size={18} />
-                  0536 528 11 16
-                </a>
-              </nav>
-            </details>
-          </div>
-        </div>
-      </header>
+      <VoraHeader active="ilce" />
 
      {/* HERO */}
 <section className="relative isolate flex min-h-[610px] items-end overflow-hidden bg-vora-bg sm:min-h-[660px] lg:min-h-[calc(100svh-85px)]">
@@ -551,6 +469,13 @@ className="inline-flex items-center justify-center gap-2 border border-white/20 
           >
             <Phone size={19} />
             0536 528 11 16
+          </a>
+          <a
+            href="tel:+905388188236"
+            className="ml-0 mt-3 inline-flex items-center gap-2 rounded-xl border border-cyan-400/50 bg-slate-800 px-7 py-4 font-bold text-white transition-colors hover:bg-slate-700 sm:ml-3"
+          >
+            <Phone size={19} />
+            0538 818 82 36
           </a>
 
         </div>

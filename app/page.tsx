@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { VoraHeroBackground, VoraReveal, VoraScrollProgress } from './components/VoraScrollEffects';
+import VoraHeader from './components/VoraHeader';
+import VoraBrandsMarquee from './components/VoraBrandsMarquee';
 import { useState } from 'react';
 import {
   ShieldCheck,
@@ -15,8 +17,6 @@ import {
   Wind,
   Droplets,
   ChevronDown,
-  Menu,
-  X,
   ArrowRight,
 } from 'lucide-react';
 import { supabase } from '../utils/supabase';
@@ -33,7 +33,6 @@ export default function Home() {
   });
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleServiceRequest = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,158 +98,7 @@ export default function Home() {
       <VoraScrollProgress />
 
       {/* HEADER + NAVBAR */}
-      <header className="w-full bg-vora-bg border-b border-cyan-400/10 sticky top-0 z-100">
-
-        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 sm:px-8 lg:px-12 2xl:px-16">
-
-          <div className="flex items-center justify-between">
-
-            {/* LOGO */}
-            <Link
-              href="/"
-              className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
-            >
-              VORA <span className="text-vora-cyan">TEKNİK</span>
-            </Link>
-
-            {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-2">
-
-              <Link
-                href="/"
-                className="px-4 py-2.5 rounded-lg text-white bg-slate-800 hover:bg-slate-700 font-semibold transition-colors"
-              >
-                Ana Sayfa
-              </Link>
-
-              <Link
-                href="/kombi-servisi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Kombi Servisi
-              </Link>
-
-              <Link
-                href="/klima-servisi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Klima Servisi
-              </Link>
-
-              <Link
-                href="/petek-temizligi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                Petek Temizliği
-              </Link>
-
-              <a
-                href="#servis-talebi"
-                className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-semibold transition-colors"
-              >
-                İletişim
-              </a>
-
-            </nav>
-
-            {/* DESKTOP PHONE */}
-            <div className="hidden lg:flex items-center gap-4">
-
-              <a
-                href="tel:+905365281116"
-                className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors font-bold"
-              >
-                <Phone size={18} className="text-cyan-500" />
-                0536 528 11 16
-              </a>
-
-              <a
-                href="tel:+905365281116"
-                className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-black transition-colors"
-              >
-                <Phone size={17} />
-                Hemen Ara
-              </a>
-
-            </div>
-
-            {/* MOBILE MENU BUTTON */}
-            <button
-              type="button"
-              aria-label="Menüyü aç"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2 rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              {mobileMenuOpen ? (
-                <X size={28} />
-              ) : (
-                <Menu size={28} />
-              )}
-            </button>
-
-          </div>
-
-          {/* MOBILE NAV */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden pt-4 pb-2 border-t border-slate-800 mt-4">
-
-              <nav className="flex flex-col gap-2">
-
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl bg-slate-800 text-white font-bold"
-                >
-                  Ana Sayfa
-                </Link>
-
-                <Link
-                  href="/kombi-servisi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  🔥 Kombi Servisi
-                </Link>
-
-                <Link
-                  href="/klima-servisi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  ❄️ Klima Servisi
-                </Link>
-
-                <Link
-                  href="/petek-temizligi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  💧 Petek Temizliği
-                </Link>
-
-                <a
-                  href="#servis-talebi"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white font-bold transition-colors"
-                >
-                  📞 İletişim
-                </a>
-
-                <a
-                  href="tel:+905365281116"
-                  className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-3 rounded-xl font-black mt-2"
-                >
-                  <Phone size={18} />
-                  0536 528 11 16
-                </a>
-
-              </nav>
-
-            </div>
-          )}
-
-        </div>
-      </header>
+      <VoraHeader active="home" />
 
       {/* HERO - VORA_HOME_HERO_V2_SCROLL */}
       <section className="relative isolate overflow-hidden bg-vora-bg text-white">
@@ -271,7 +119,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-155 text-base font-medium leading-relaxed text-slate-100/95 sm:text-lg lg:text-xl">
-              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul genelinde kombi,
+              Vora Teknik Servis, İstanbul genelinde kombi,
               klima ve petek temizliği için servis taleplerinizi planlar.
             </p>
 
@@ -291,6 +139,11 @@ export default function Home() {
                 WhatsApp&apos;tan Yaz <ArrowRight size={18} />
               </a>
             </div>
+
+            <p className="mt-4 text-sm font-semibold text-slate-200">
+              Alternatif çağrı hattı: <a href="tel:+905388188236" className="text-vora-cyan underline-offset-4 hover:underline">0538 818 82 36</a>
+              <span className="ml-2 text-cyan-100/80">• Her gün 00:00–23:59</span>
+            </p>
 
             <div className="mt-9 grid max-w-187.5 grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-3">
               <div className="flex items-center gap-3">
@@ -437,39 +290,8 @@ export default function Home() {
         </div>
       </section>
 
-            {/* BRANDS */}
-      <section className="w-full bg-slate-950 py-8 border-y border-slate-800">
-
-        <div className="w-full px-6 lg:px-20 2xl:px-32">
-
-          <p className="text-center text-slate-500 text-sm font-bold uppercase tracking-widest mb-6">
-            Servis Verilen Markalar
-          </p>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 opacity-70">
-
-            {[
-              'BOSCH',
-              'Vaillant',
-              'DemirDöküm',
-              'DAIKIN',
-              'BAYMAK',
-              'E.C.A',
-              'Buderus',
-            ].map((brand) => (
-              <span
-                key={brand}
-                className="text-2xl font-black text-white"
-              >
-                {brand}
-              </span>
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
+            {/* BRANDS - VORA_MARKA_SERIDI_V1 */}
+      <VoraBrandsMarquee />
 
       {/* SERVICES */}
       <section
@@ -740,11 +562,11 @@ export default function Home() {
 
             <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
               <MapPin className="text-cyan-500" />
-              Bahçelievler Merkezli İstanbul Servisi
+              İstanbul Genelinde Teknik Servis
             </h2>
 
             <p className="text-slate-400 mb-8 leading-relaxed">
-              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul'un
+              Vora Teknik Servis, İstanbul'un
               farklı ilçelerinde kombi, klima ve petek servis taleplerini
               planlamaktadır.
             </p>
@@ -817,7 +639,7 @@ export default function Home() {
 
               <p className="text-slate-400 text-sm leading-relaxed">
                 İstanbul geneli kombi, klima ve petek servis hizmetleri.
-                Bahçelievler merkezli servis planlaması.
+                İstanbul genelinde servis planlaması.
               </p>
 
               <div className="space-y-3">
@@ -926,6 +748,11 @@ export default function Home() {
                     Ana Sayfa
                   </Link>
                 </li>
+                <li>
+                  <Link href="/hizmet-bolgeleri" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                    Hizmet Bölgelerimiz
+                  </Link>
+                </li>
 
                 <li>
                   <a
@@ -966,21 +793,14 @@ export default function Home() {
               </h3>
 
               <ul className="space-y-3 text-sm text-slate-400">
-
                 <li className="flex justify-between gap-4 border-b border-slate-800 pb-2">
-                  <span>Pzt - Cmt:</span>
-                  <span className="text-white font-medium">
-                    08:00 - 23:59
-                  </span>
+                  <span>Pazartesi – Pazar:</span>
+                  <span className="font-bold text-white">00:00 – 23:59</span>
                 </li>
-
                 <li className="flex justify-between gap-4 pb-2">
-                  <span>Pazar:</span>
-                  <span className="text-orange-500 font-bold">
-                    7/24
-                  </span>
+                  <span>Hizmet:</span>
+                  <span className="font-bold text-vora-cyan">7/24</span>
                 </li>
-
               </ul>
 
               <a

@@ -51,7 +51,7 @@ export default function DistrictHeroImage({ src, districtName }: Props) {
 
       {/* Telefonda fotografi uzun hero boyunca esnetme: ustte sinirli yukseklikte goster. */}
       {!imageFailed && (
-        <div className="absolute inset-x-0 top-0 h-[410px] overflow-hidden sm:h-[510px] lg:inset-0 lg:h-full">
+        <div className="absolute inset-x-0 top-0 h-102.5 overflow-hidden sm:h-127.5 lg:inset-0 lg:h-full">
           <Image
             src={src}
             alt={`${districtName} ilçe manzarası`}

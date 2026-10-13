@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://vorateknik.com"),
 
-  title: "Vora Teknik Servis | Garantili Kombi ve Klima Tamiri",
+  title: "Vora Teknik Servis | İstanbul Kombi, Klima ve Petek Servisi",
 
   description:
-    "İstanbul geneli uzman teknisyenlerle kombi, klima bakım, onarım ve petek temizliği. Randevu saatine sadık, temiz işçilik.",
+    "Bahçelievler merkezli Vora Teknik Servis ile İstanbul genelinde kombi bakım ve arıza tespiti, klima servisi ve petek temizliği için servis talebi oluşturun.",
 
   keywords: [
     "kombi servisi",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Vora Teknik Servis | Kombi ve Klima Servisi",
+    title: "Vora Teknik Servis | Kombi, Klima ve Petek Servisi",
     description:
       "İstanbul geneli kombi, klima ve petek temizliği servis hizmetleri.",
   },
@@ -81,11 +81,11 @@ export default function RootLayout({
     "description":
       "İstanbul geneli profesyonel kombi, klima ve petek temizliği servis hizmetleri.",
 
-    "telephone": "+905365281116",
+    "telephone": ["+905365281116", "+905388188236"],
 
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Irmak Sokak",
+      "streetAddress": "Kocasinan Merkez Mah. Irmak Sokak",
       "addressLocality": "Bahçelievler",
       "addressRegion": "İstanbul",
       "addressCountry": "TR",
@@ -106,6 +106,8 @@ export default function RootLayout({
         "Wednesday",
         "Thursday",
         "Friday",
+        "Saturday",
+        "Sunday",
       ],
       "opens": "00:00",
       "closes": "23:59",

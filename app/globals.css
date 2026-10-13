@@ -10,3 +10,39 @@
   --color-vora-yellow: #FFD21A;
   --color-vora-white: #FFFFFF;
 }
+
+/* Marka seridi: JS gerektirmeyen, performans dostu sonsuz yatay akış. */
+@keyframes vora-brand-move {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.vora-brand-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+.vora-brand-track {
+  display: flex;
+  width: max-content;
+  animation-name: vora-brand-move;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+.vora-brand-cluster {
+  display: flex;
+  flex: 0 0 auto;
+  list-style: none;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+  margin: 0;
+}
+.vora-brand-viewport:hover .vora-brand-track,
+.vora-brand-viewport:focus-within .vora-brand-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vora-brand-track { animation: none; width: auto; flex-wrap: wrap; will-change: auto; }
+  .vora-brand-cluster { flex-wrap: wrap; }
+  .vora-brand-cluster[aria-hidden="true"] { display: none; }
+  .vora-brand-viewport { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+}
