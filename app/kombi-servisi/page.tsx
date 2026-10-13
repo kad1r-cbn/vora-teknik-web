@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { VoraReveal, VoraScrollProgress } from '../components/VoraScrollEffects';
 import { useState } from 'react';
 import {
   Phone,
@@ -46,11 +48,12 @@ export default function KombiServisiPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-slate-900 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-vora-bg text-white">
+      <VoraScrollProgress />
       {/* HEADER + NAVBAR */}
-      <header className="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-100">
+      <header className="sticky top-0 z-100 w-full border-b border-cyan-400/10 bg-vora-bg">
 
-        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4">
+        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 sm:px-8 lg:px-12 2xl:px-16">
 
           <div className="flex items-center justify-between">
 
@@ -59,7 +62,7 @@ export default function KombiServisiPage() {
               href="/"
               className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white"
             >
-              Vora<span className="text-cyan-500">Teknik</span>
+              VORA <span className="text-vora-cyan">TEKNİK</span>
             </Link>
 
             {/* DESKTOP NAV */}
@@ -208,7 +211,7 @@ export default function KombiServisiPage() {
         aria-label="Sayfa yolu"
         className="w-full bg-slate-950 border-b border-slate-800"
       >
-        <div className="w-full px-6 lg:px-20 2xl:px-32 py-4 text-sm text-slate-400">
+        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 text-sm text-slate-400 sm:px-8 lg:px-12 2xl:px-16">
           <Link href="/" className="hover:text-cyan-400 transition-colors">
             Ana Sayfa
           </Link>
@@ -217,60 +220,58 @@ export default function KombiServisiPage() {
         </div>
       </nav>
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-linear-to-b from-slate-900 to-slate-950">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-          <div className="absolute top-20 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+      {/* HERO - VORA_SERVIS_HERO_V2 */}
+      <section className="relative isolate overflow-hidden bg-vora-bg">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute -left-24 top-4 h-80 w-80 rounded-full bg-vora-primary/10 blur-3xl" />
+          <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-vora-cyan/10 blur-3xl" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent to-[#05132B]/85" />
         </div>
 
-        <div className="relative w-full px-6 lg:px-20 2xl:px-32 py-16 lg:py-24 max-w-[1800px] mx-auto">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-cyan-950/70 border border-cyan-800 text-cyan-400 px-4 py-2 rounded-full text-sm font-bold mb-7">
-              <Flame size={17} />
+        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:gap-14 lg:px-12 lg:py-24 2xl:px-16">
+          <div className="min-w-0 max-w-[780px]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#071B36]/80 px-4 py-2 text-xs font-semibold tracking-wide text-cyan-200 backdrop-blur-sm sm:text-sm">
+              <Flame size={17} className="text-vora-cyan" />
               İstanbul Kombi Servisi
             </div>
-
-            <h1 className="text-4xl lg:text-6xl 2xl:text-7xl font-black leading-tight mb-7">
+            <h1 className="text-[clamp(2.35rem,5vw,4.7rem)] font-black leading-[1.06] tracking-[-0.04em] text-white">
               İstanbul Kombi Servisi
-              <br />
-              <span className="text-cyan-500">
-                Bakım, Arıza Tespiti ve Onarım
-              </span>
+              <span className="mt-3 block text-vora-cyan">Bakım, Arıza Tespiti ve Onarım</span>
             </h1>
-
-            <p className="text-lg lg:text-xl text-slate-300 leading-relaxed max-w-3xl">
-              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul
-              genelinde kombi bakım, arıza tespiti ve onarım hizmetleri için
-              servis planlaması yapar. Kombinizde yaşadığınız sorunu
-              teknisyen kontrolüyle değerlendirerek uygun servis sürecini
-              oluşturuyoruz.
+            <p className="mt-7 max-w-[700px] text-base font-medium leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
+              Vora Teknik Servis, Bahçelievler merkezli olarak İstanbul genelinde kombi bakım, arıza tespiti ve onarım hizmetleri için servis planlaması yapar. Kombinizde yaşadığınız sorunu teknisyen kontrolüyle değerlendirerek uygun servis sürecini oluşturuyoruz.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <a
-                href="tel:+905365281116"
-                className="inline-flex items-center justify-center gap-3 bg-cyan-600 hover:bg-cyan-500 text-white px-7 py-4 rounded-xl font-black transition-all shadow-lg shadow-cyan-500/20"
-              >
-                <Phone size={20} />
-                Kombi Servisi Ara
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a href="tel:+905365281116" className="inline-flex min-h-13 items-center justify-center gap-3 rounded-xl bg-vora-cyan px-6 py-3 text-base font-extrabold text-vora-bg shadow-lg shadow-cyan-950/20 transition hover:bg-[#72edff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <Phone size={19} /> Kombi Servisi Ara
               </a>
-
-              <a
-                href="https://wa.me/905365281116"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-7 py-4 rounded-xl font-black transition-all"
-              >
-                WhatsApp'tan Yazın
-                <ArrowRight size={20} />
+              <a href="https://wa.me/905365281116" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-cyan-400/60 bg-vora-bg/65 px-6 py-3 text-base font-bold text-white transition hover:bg-cyan-900/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                WhatsApp'tan Yazın <ArrowRight size={18} />
               </a>
             </div>
+            <p className="mt-7 flex items-center gap-2 text-sm text-slate-300">
+              <CheckCircle size={18} className="shrink-0 text-vora-cyan" />
+              İstanbul genelinde telefon ve WhatsApp üzerinden servis talebi
+            </p>
           </div>
+
+          <VoraReveal className="w-full min-w-0 lg:ml-auto">
+            <div className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-white/10 p-2 shadow-[0_25px_80px_rgba(0,0,0,0.32)]">
+              <div className="relative h-[250px] overflow-hidden rounded-[22px] bg-[#142d46] sm:h-[365px] lg:h-[470px] xl:h-[490px]">
+                <Image src="/images/hizmet-kombi.webp" alt="Modern yaşam alanındaki kombi cihazı" fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover object-center" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-vora-bg/75 via-vora-bg/15 to-transparent" />
+              </div>
+              <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/20 bg-[#00142C]/70 px-4 py-3 backdrop-blur-md sm:right-auto">
+                <p className="text-xs font-semibold tracking-widest text-cyan-200">VORA TEKNİK SERVİS</p>
+                <p className="mt-1 text-base font-bold text-white">Kombi Bakım ve Onarım</p>
+              </div>
+            </div>
+          </VoraReveal>
         </div>
       </section>
 
       {/* SERVICE FEATURES */}
+      <VoraReveal>
       <section className="bg-white text-slate-900 py-20">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -329,8 +330,10 @@ export default function KombiServisiPage() {
           </div>
         </div>
       </section>
+      </VoraReveal>
 
       {/* COMMON PROBLEMS */}
+      <VoraReveal>
       <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
@@ -411,8 +414,10 @@ export default function KombiServisiPage() {
           </div>
         </div>
       </section>
+      </VoraReveal>
 
       {/* HOW IT WORKS */}
+      <VoraReveal>
       <section className="bg-white text-slate-900 py-20">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -463,6 +468,7 @@ export default function KombiServisiPage() {
           </div>
         </div>
       </section>
+      </VoraReveal>
 
       {/* BRANDS */}
       <section className="bg-slate-900 py-20">
