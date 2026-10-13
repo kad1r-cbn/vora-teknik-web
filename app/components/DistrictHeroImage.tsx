@@ -49,16 +49,20 @@ export default function DistrictHeroImage({ src, districtName }: Props) {
         {districtName.toLocaleUpperCase("tr-TR")}
       </span>
 
+      {/* Telefonda fotografi uzun hero boyunca esnetme: ustte sinirli yukseklikte goster. */}
       {!imageFailed && (
-        <Image
-          src={src}
-          alt={`${districtName} ilçe manzarası`}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover scale-105"
-          onError={() => setImageFailed(true)}
-        />
+        <div className="absolute inset-x-0 top-0 h-[410px] overflow-hidden sm:h-[510px] lg:inset-0 lg:h-full">
+          <Image
+            src={src}
+            alt={`${districtName} ilçe manzarası`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center lg:scale-[1.02]"
+            onError={() => setImageFailed(true)}
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-[#081a2b]/10 via-[#081a2b]/25 to-[#081a2b] lg:hidden" />
+        </div>
       )}
     </div>
   );

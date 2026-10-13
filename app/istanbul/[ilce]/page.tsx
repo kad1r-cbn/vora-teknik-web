@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Phone, ArrowRight, CheckCircle2, Menu } from "lucide-react";
 import { istanbulIlceleri } from "../../data/istanbul-ilceleri";
 import DistrictHeroImage from "../../components/DistrictHeroImage";
+import { VoraReveal, VoraScrollProgress } from "../../components/VoraScrollEffects";
 
 type Props = {
   params: Promise<{
@@ -146,6 +147,7 @@ export default async function IlcePage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <VoraScrollProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -156,14 +158,14 @@ export default async function IlcePage({ params }: Props) {
       />
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-100 w-full bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-20 2xl:px-32 py-3.5 lg:py-4 flex items-center justify-between gap-3 sm:gap-5">
+      <header className="sticky top-0 z-100 w-full border-b border-cyan-400/10 bg-vora-bg/95 backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-3 px-5 py-4 sm:gap-5 sm:px-8 lg:px-12 2xl:px-16">
           <Link
             href="/"
-            className="shrink-0 text-lg sm:text-xl font-bold tracking-tight"
+            className="shrink-0 text-2xl font-extrabold tracking-tight lg:text-3xl"
             aria-label="Vora Teknik Servis ana sayfa"
           >
-            VORA <span className="text-cyan-400">TEKNİK</span>
+            VORA <span className="text-vora-cyan">TEKNİK</span>
           </Link>
 
           <nav
@@ -181,6 +183,9 @@ export default async function IlcePage({ params }: Props) {
             </Link>
             <Link href="/petek-temizligi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
               Petek Temizliği
+            </Link>
+            <Link href="/#servis-talebi" className="px-4 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+              İletişim
             </Link>
           </nav>
 
@@ -225,6 +230,9 @@ export default async function IlcePage({ params }: Props) {
                 <Link href="/petek-temizligi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
                   💧 Petek Temizliği
                 </Link>
+                <Link href="/#servis-talebi" className="block rounded-xl px-4 py-3.5 text-slate-200 hover:bg-slate-800 hover:text-white font-semibold">
+                  📞 İletişim
+                </Link>
                 <a href="tel:+905365281116" className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-3.5 font-bold text-slate-950">
                   <Phone size={18} />
                   0536 528 11 16
@@ -236,7 +244,7 @@ export default async function IlcePage({ params }: Props) {
       </header>
 
      {/* HERO */}
-<section className="relative min-h-[calc(100svh-85px)] flex items-end overflow-hidden">
+<section className="relative isolate flex min-h-[610px] items-end overflow-hidden bg-vora-bg sm:min-h-[660px] lg:min-h-[calc(100svh-85px)]">
 
   {/* ARKA PLAN GÖRSELİ */}
   <div 
@@ -248,19 +256,19 @@ export default async function IlcePage({ params }: Props) {
 
 
     {/* Koyu katman */}
-    <div className="absolute inset-0 bg-slate-950/55" />
+    <div className="absolute inset-0 bg-slate-950/20 lg:bg-slate-950/50" />
 
     {/* Alt gradient */}
-    <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/55 to-slate-950/10" />
+    <div className="absolute inset-0 bg-linear-to-t from-vora-bg via-vora-bg/45 to-transparent lg:from-slate-950 lg:via-slate-950/55 lg:to-slate-950/10" />
 
     {/* Sağ taraf gradient */}
-    <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/40 to-transparent" />
+    <div className="absolute inset-0 hidden bg-linear-to-r from-slate-950/90 via-slate-950/40 to-transparent lg:block" />
 
   </div>
 
 
   {/* HERO İÇERİK */}
-  <div className="relative z-10 w-full max-w-[1800px] mx-auto px-[clamp(24px,5vw,96px)] pb-[clamp(60px,9vh,120px)] pt-[clamp(120px,18vh,220px)]">
+  <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-14 pt-36 sm:px-8 sm:pb-20 sm:pt-40 lg:px-12 lg:pb-24 lg:pt-48 2xl:px-16">
 
     <div className="max-w-275">
 
@@ -274,7 +282,7 @@ export default async function IlcePage({ params }: Props) {
 
 
       {/* BAŞLIK */}
-      <h1 className="text-[clamp(3rem,5.2vw,6.5rem)] font-bold tracking-[-0.04em] leading-[0.95] text-white">
+      <h1 className="break-words text-[clamp(2.25rem,9vw,3.75rem)] font-extrabold leading-[1.07] tracking-[-0.04em] text-white sm:text-[clamp(3.5rem,6vw,5.5rem)] lg:text-[clamp(4rem,5.2vw,6.5rem)]">
 
         {ilce.name}
 
@@ -286,7 +294,7 @@ export default async function IlcePage({ params }: Props) {
 
 
       {/* AÇIKLAMA */}
-      <p className="mt-8 text-[clamp(1.05rem,1.35vw,1.5rem)] text-slate-200 leading-relaxed max-w-190">
+      <p className="mt-6 max-w-190 text-base leading-relaxed text-slate-200 sm:mt-8 sm:text-lg lg:text-[1.35rem]">
 
         {ilce.name} ve çevresinde kombi servisi, klima servisi
         ve petek temizliği için profesyonel teknik destek.
@@ -295,7 +303,7 @@ export default async function IlcePage({ params }: Props) {
 
 
       {/* BUTONLAR */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-9">
+      <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:gap-4">
 
         <a
           href="tel:+905365281116"
@@ -369,7 +377,7 @@ className="inline-flex items-center justify-center gap-2 border border-white/20 
       {/* İLÇE İÇERİĞİ */}
       <section className="border-t border-slate-800 bg-white text-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
-          <div className="max-w-4xl">
+          <VoraReveal className="max-w-4xl">
             <p className="text-cyan-600 font-bold tracking-wide mb-3">
               {ilce.name} TEKNİK SERVİS
             </p>
@@ -393,7 +401,7 @@ className="inline-flex items-center justify-center gap-2 border border-white/20 
                 </div>
               ))}
             </div>
-          </div>
+          </VoraReveal>
         </div>
       </section>
 
@@ -410,7 +418,7 @@ className="inline-flex items-center justify-center gap-2 border border-white/20 
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <VoraReveal className="grid gap-6 md:grid-cols-3">
 
           <Link
             href="/kombi-servisi"
@@ -466,7 +474,7 @@ className="inline-flex items-center justify-center gap-2 border border-white/20 
             </span>
           </Link>
 
-        </div>
+        </VoraReveal>
       </section>
 
       {/* SSS */}
