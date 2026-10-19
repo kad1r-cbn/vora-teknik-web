@@ -46,3 +46,17 @@
   .vora-brand-cluster[aria-hidden="true"] { display: none; }
   .vora-brand-viewport { overflow: visible; -webkit-mask-image: none; mask-image: none; }
 }
+
+/* VORA_KOMBI_V3 - yalnizca kombi hero fotografinda sinematik hareket */
+@keyframes vora-kombi-v3-cinematic {
+  0% { transform: scale(1.025) translate3d(0,0,0); }
+  50% { transform: scale(1.075) translate3d(-0.8%, -0.6%,0); }
+  100% { transform: scale(1.045) translate3d(0.6%,0.2%,0); }
+}
+.vora-kombi-v3-image {
+  animation: vora-kombi-v3-cinematic 24s ease-in-out infinite alternate;
+  transform-origin: 55% 50%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vora-kombi-v3-image { animation: none; transform: none; }
+}

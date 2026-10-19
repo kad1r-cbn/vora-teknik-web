@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { VoraReveal, VoraScrollProgress } from '../components/VoraScrollEffects';
 import VoraHeader from '../components/VoraHeader';
+import VoraBrandsMarquee from '../components/VoraBrandsMarquee';
+import { KombiV3QuickNav, KombiV3Insights } from '../components/VoraKombiV3'; // VORA_KOMBI_V3
 import { useState } from 'react';
 import {
   Phone,
@@ -74,7 +76,7 @@ export default function KombiServisiPage() {
         </div>
 
         <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:gap-14 lg:px-12 lg:py-24 2xl:px-16">
-          <div className="min-w-0 max-w-[780px]">
+          <div className="min-w-0 max-w-195">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#071B36]/80 px-4 py-2 text-xs font-semibold tracking-wide text-cyan-200 backdrop-blur-sm sm:text-sm">
               <Flame size={17} className="text-vora-cyan" />
               İstanbul Kombi Servisi
@@ -83,7 +85,7 @@ export default function KombiServisiPage() {
               İstanbul Kombi Servisi
               <span className="mt-3 block text-vora-cyan">Bakım, Arıza Tespiti ve Onarım</span>
             </h1>
-            <p className="mt-7 max-w-[700px] text-base font-medium leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
+            <p className="mt-7 max-w-175 text-base font-medium leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
               Vora Teknik Servis, İstanbul genelinde kombi bakım, arıza tespiti ve onarım hizmetleri için servis planlaması yapar. Kombinizde yaşadığınız sorunu teknisyen kontrolüyle değerlendirerek uygun servis sürecini oluşturuyoruz.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -105,8 +107,8 @@ export default function KombiServisiPage() {
 
           <VoraReveal className="w-full min-w-0 lg:ml-auto">
             <div className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-white/10 p-2 shadow-[0_25px_80px_rgba(0,0,0,0.32)]">
-              <div className="relative h-[250px] overflow-hidden rounded-[22px] bg-[#142d46] sm:h-[365px] lg:h-[470px] xl:h-[490px]">
-                <Image src="/images/hizmet-kombi.webp" alt="Modern yaşam alanındaki kombi cihazı" fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover object-center" />
+              <div className="relative h-62.5 overflow-hidden rounded-[22px] bg-[#142d46] sm:h-91.25 lg:h-117.5 xl:h-122.5">
+                <Image src="/images/hizmet-kombi.webp" alt="Modern yaşam alanındaki kombi cihazı" fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover object-center vora-kombi-v3-image" />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-vora-bg/75 via-vora-bg/15 to-transparent" />
               </div>
               <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/20 bg-[#00142C]/70 px-4 py-3 backdrop-blur-md sm:right-auto">
@@ -118,9 +120,11 @@ export default function KombiServisiPage() {
         </div>
       </section>
 
+      <KombiV3QuickNav />
+
       {/* SERVICE FEATURES */}
       <VoraReveal>
-      <section className="bg-white text-slate-900 py-20">
+      <section id="kombi-hizmetler"  className="bg-white text-slate-900 py-20">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
@@ -182,7 +186,7 @@ export default function KombiServisiPage() {
 
       {/* COMMON PROBLEMS */}
       <VoraReveal>
-      <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
+      <section id="kombi-arizalar"  className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -264,9 +268,11 @@ export default function KombiServisiPage() {
       </section>
       </VoraReveal>
 
+      <KombiV3Insights />
+
       {/* HOW IT WORKS */}
       <VoraReveal>
-      <section className="bg-white text-slate-900 py-20">
+      <section id="kombi-servis-sureci"  className="bg-white text-slate-900 py-20">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
@@ -318,39 +324,8 @@ export default function KombiServisiPage() {
       </section>
       </VoraReveal>
 
-      {/* BRANDS */}
-      <section className="bg-slate-900 py-20">
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
-          <div className="text-center">
-            <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
-              Servis Verilen Kombi Markaları
-            </h2>
-
-            <p className="text-slate-400 max-w-2xl mx-auto mb-10">
-              Marka ve modele göre servis kapsamını önceden teyit ederek
-              planlama yapabilirsiniz.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                'BOSCH',
-                'Vaillant',
-                'DemirDöküm',
-                'BAYMAK',
-                'E.C.A.',
-                'Buderus',
-              ].map((brand) => (
-                <div
-                  key={brand}
-                  className="px-7 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white font-black"
-                >
-                  {brand}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* BRANDS - VORA_KOMBI_MARKA_SERIDI_V3_1 */}
+      <VoraBrandsMarquee service="kombi" />
 
       {/* LOCAL SEO */}
       <section className="bg-slate-950 py-20">
@@ -378,26 +353,28 @@ export default function KombiServisiPage() {
 
             <div className="grid sm:grid-cols-2 gap-3">
               {[
-                'Bahçelievler',
-                'Bakırköy',
-                'Bağcılar',
-                'Güngören',
-                'Esenler',
-                'Zeytinburnu',
-                'Fatih',
-                'Şişli',
-                'Beşiktaş',
-                'Kâğıthane',
-                'Kadıköy',
-                'Üsküdar',
+                {name: 'Bahçelievler', slug: 'bahcelievler'},
+                {name: 'Bakırköy', slug: 'bakirkoy'},
+                {name: 'Bağcılar', slug: 'bagcilar'},
+                {name: 'Güngören', slug: 'gungoren'},
+                {name: 'Esenler', slug: 'esenler'},
+                {name: 'Zeytinburnu', slug: 'zeytinburnu'},
+                {name: 'Fatih', slug: 'fatih'},
+                {name: 'Şişli', slug: 'sisli'},
+                {name: 'Beşiktaş', slug: 'besiktas'},
+                {name: 'Kağıthane', slug: 'kagithane'},
+                {name: 'Kadıköy', slug: 'kadikoy'},
+                {name: 'Üsküdar', slug: 'uskudar'},
               ].map((district) => (
-                <div
-                  key={district}
-                  className="flex items-center gap-2 text-slate-300 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3"
+                <Link
+                  key={district.slug}
+                  href={`/istanbul/${district.slug}`}
+                  className="group flex min-h-12 items-center gap-3 rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/35 hover:bg-cyan-300/10 hover:text-white"
                 >
-                  <span className="w-2 h-2 rounded-full bg-cyan-500" />
-                  {district} kombi servisi
-                </div>
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400" />
+                  <span className="flex-1">{district.name} kombi servisi</span>
+                  <ArrowRight size={15} className="text-cyan-300 opacity-65 transition group-hover:translate-x-1 group-hover:opacity-100" />
+                </Link>
               ))}
             </div>
           </div>
@@ -405,7 +382,7 @@ export default function KombiServisiPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white text-slate-900 py-20">
+      <section id="kombi-sss"  className="bg-white text-slate-900 py-20">
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-275 mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-black mb-4">
@@ -493,11 +470,8 @@ export default function KombiServisiPage() {
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between gap-6">
             <div>
-              <Link
-                href="/"
-                className="text-2xl font-extrabold text-white"
-              >
-                Vora<span className="text-cyan-500">Teknik</span>
+              <Link href="/" aria-label="Vora Teknik Servis ana sayfa" className="inline-flex items-center">
+                <Image src="/images/vora-logo-header.webp" alt="VORA Teknik Servis amblemi" width={270} height={122} className="h-[64px] w-auto max-w-[185px] object-contain" />
               </Link>
 
               <p className="text-slate-500 text-sm mt-3">
