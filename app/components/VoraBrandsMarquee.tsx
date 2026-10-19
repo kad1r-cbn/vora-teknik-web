@@ -13,7 +13,17 @@ const brands = [
   "Termo Teknik", "Kermi", "Korado",
 ];
 
-export default function VoraBrandsMarquee() {
+// Kombi sayfasinda yalnizca ilgili marka adlarini goster.
+// Liste yetkili/ureticinin resmi servisi olma iddiasi degildir.
+const kombiBrands = [
+  "Bosch", "Buderus", "Vaillant", "DemirDöküm", "Baymak", "E.C.A.",
+  "Viessmann", "Ariston", "Ferroli", "Protherm", "Warmhaus", "Airfel",
+  "Alarko", "Immergas", "Baxi",
+];
+
+export default function VoraBrandsMarquee({ service = "all" }: { service?: "all" | "kombi" }) {
+  const isKombi = service === "kombi";
+  const displayedBrands = isKombi ? kombiBrands : brands;
   return (
     <section
       id="markalar"
@@ -35,11 +45,12 @@ export default function VoraBrandsMarquee() {
               id="markalar-baslik"
               className="text-[clamp(1.65rem,3vw,2.55rem)] font-black leading-[1.12] tracking-tight text-white"
             >
-              Servis Verilen <span className="text-vora-cyan">Markalar</span>
+              {isKombi ? "Kombi Servisi" : "Servis Verilen"} <span className="text-vora-cyan">{isKombi ? "Markaları" : "Markalar"}</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-              Kombi, klima ve petek/radyatör sistemleri için marka ve modele göre servis
-              taleplerini değerlendiriyoruz.
+              {isKombi
+                ? "Bosch, Vaillant, Buderus ve diğer kombi markalarında bakım ve arıza tespiti taleplerini marka ve modele göre değerlendiriyoruz."
+                : "Kombi, klima ve petek/radyatör sistemleri için marka ve modele göre servis taleplerini değerlendiriyoruz."}
             </p>
           </div>
 
@@ -47,20 +58,20 @@ export default function VoraBrandsMarquee() {
             href="/#servis-talebi"
             className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-sm font-bold text-cyan-100 transition hover:border-cyan-300 hover:bg-cyan-400/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
           >
-            Markamı Sor <ArrowRight size={17} aria-hidden="true" />
+            {isKombi ? "Kombi Markamı Sor" : "Markamı Sor"} <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
 
         {/* Tek şerit: eşit iki kopya ile kesintisiz CSS animasyonu. */}
-        <div className="vora-brand-viewport relative w-full min-w-0" aria-label="Teknik servis markaları">
-          <div className="vora-brand-track" style={{ animationDuration: "85s" }}>
+        <div className="vora-brand-viewport relative w-full min-w-0" aria-label={isKombi ? "Kombi servis markaları" : "Teknik servis markaları"}>
+          <div className="vora-brand-track" style={{ animationDuration: isKombi ? "48s" : "85s" }}>
             {[false, true].map((duplicate) => (
               <ul
                 key={duplicate ? "tekrar" : "markalar"}
                 aria-hidden={duplicate}
                 className="vora-brand-cluster"
               >
-                {brands.map((brand) => (
+                {displayedBrands.map((brand) => (
                   <li
                     key={brand}
                     className="flex min-h-15 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-extrabold tracking-tight text-slate-100 shadow-sm transition-colors hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-white sm:min-h-17 sm:rounded-2xl sm:px-7 sm:text-base lg:px-8 lg:text-lg"
