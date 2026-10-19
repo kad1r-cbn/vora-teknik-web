@@ -29,9 +29,9 @@ export function VoraScrollProgress() {
   );
 }
 
-// Sadece gorseli kaydir: metin ve form sabit kalir, LCP icin next/image priority kullanilir.
-
-
+// VORA_CINEMATIC_CORPORATE_V3: mevcut Istanbul fotografinin yavas sinematik hareketi.
+// Video, yeni gorsel veya ek animasyon kutuphanesi kullanilmaz.
+// Hero metni, butonlar ve form sabit kalir. Reduced-motion'a saygi duyulur.
 export function VoraHeroBackground() {
   const sceneRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -40,27 +40,21 @@ export function VoraHeroBackground() {
     target: sceneRef,
     offset: ["start start", "end start"],
   });
-
-  const parallaxY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "2%"]
-  );
-
-  const parallaxScale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [1, 1.02]
-  );
+  const scrollLift = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const scrollZoom = useTransform(scrollYProgress, [0, 1], [1, 1.085]);
 
   return (
     <div
       ref={sceneRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-vora-bg"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#041126]"
     >
-      {/* MOBİL: Kontrollü yükseklikte İstanbul manzarası */}
-      <div className="absolute inset-x-0 top-0 h-85 overflow-hidden sm:h-97.5 lg:hidden">
+      {/* Mobilde yalnizca hafif ve yavas panorama. */}
+      <motion.div
+        className="absolute inset-x-[-9%] -top-10 h-[460px] sm:h-[540px] lg:hidden"
+        animate={reduceMotion ? undefined : { x: ["-1%", "1.2%", "-1%"], scale: [1.035, 1.07, 1.035] }}
+        transition={reduceMotion ? undefined : { duration: 32, ease: "easeInOut", repeat: Infinity }}
+      >
         <Image
           src="/images/istanbul-hero.webp"
           alt=""
@@ -69,37 +63,34 @@ export function VoraHeroBackground() {
           sizes="100vw"
           className="object-cover object-[72%_center]"
         />
-
-        <div className="absolute inset-0 bg-linear-to-r from-vora-bg/65 via-vora-bg/35 to-vora-bg/15" />
-
-        <div className="absolute inset-0 bg-linear-to-b from-vora-bg/20 via-vora-bg/40 to-vora-bg" />
-      </div>
-
-      {/* MASAÜSTÜ: Mevcut parallax görünümü */}
-      <motion.div
-        className="absolute inset-[-3%] hidden lg:block"
-        style={
-          reduceMotion
-            ? undefined
-            : {
-                y: parallaxY,
-                scale: parallaxScale,
-              }
-        }
-      >
-        <Image
-          src="/images/istanbul-hero.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_53%]"
-        />
       </motion.div>
 
-      <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(0,13,38,0.90)_0%,rgba(0,13,38,0.72)_30%,rgba(0,13,38,0.25)_65%,rgba(0,13,38,0.12)_100%)] lg:block" />
+      {/* Masaustunde scroll derinligi ve bagimsiz yavas kamera hareketi. */}
+      <motion.div
+        className="absolute inset-[-12%] hidden lg:block"
+        style={reduceMotion ? undefined : { y: scrollLift, scale: scrollZoom }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={reduceMotion ? undefined : { x: ["-1.1%", "1.4%", "-1.1%"], scale: [1.035, 1.105, 1.035] }}
+          transition={reduceMotion ? undefined : { duration: 38, ease: "easeInOut", repeat: Infinity }}
+        >
+          <Image
+            src="/images/istanbul-hero.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_53%]"
+          />
+        </motion.div>
+      </motion.div>
 
-      <div className="absolute inset-0 hidden bg-linear-to-t from-vora-bg/55 via-transparent to-vora-bg/10 lg:block" />
+      {/* Fotografi gorunur birakirken baslik ve formun kontrastini korur. */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,12,32,0.57)_0%,rgba(2,12,32,0.70)_37%,rgba(2,12,32,0.96)_94%)] lg:hidden" />
+      <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(2,11,29,0.91)_0%,rgba(2,13,32,0.72)_31%,rgba(2,13,32,0.38)_58%,rgba(2,13,32,0.70)_100%)] lg:block" />
+      <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgba(2,12,32,0.05)_35%,rgba(2,12,32,0.85)_100%)] lg:block" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_73%_20%,rgba(10,173,215,0.11)_0%,transparent_48%)]" />
     </div>
   );
 }

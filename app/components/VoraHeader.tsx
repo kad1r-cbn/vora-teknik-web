@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 
 type Active = "home" | "kombi" | "klima" | "petek" | "bolgeler" | "ilce";
@@ -17,13 +18,44 @@ const links = [
 
 export default function VoraHeader({ active }: { active: Active }) {
   const [isOpen, setIsOpen] = useState(false);
+  // VORA_TRANSPARENT_NAVBAR_V3_1: Hero uzerinde seffaf, kaydirinca cam navigasyon.
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    if (active !== "home") return;
+    const syncScroll = () => setIsScrolled(window.scrollY > 40);
+    syncScroll();
+    window.addEventListener("scroll", syncScroll, { passive: true });
+    return () => window.removeEventListener("scroll", syncScroll);
+  }, [active]);
 
   return (
-    <header className="sticky top-0 z-100 w-full border-b border-cyan-400/10 bg-vora-bg/95 text-white backdrop-blur-lg">
+    <header
+      className={`top-0 z-100 w-full text-white transition-[background-color,border-color,box-shadow] duration-500 ${
+        active === "home"
+          ? `fixed inset-x-0 border-b ${
+              isScrolled || isOpen
+                ? "border-cyan-300/15 bg-[#05172d]/95 shadow-[0_14px_40px_rgba(0,8,25,0.28)] backdrop-blur-xl"
+                : "border-transparent bg-transparent"
+            }`
+          : "sticky border-b border-cyan-400/10 bg-vora-bg/95 backdrop-blur-lg"
+      }`}
+    >
       <div className="mx-auto w-full max-w-[1600px] px-4 py-3.5 sm:px-7 xl:px-8 2xl:px-12">
         <div className="flex min-h-11 items-center justify-between gap-3">
-          <Link href="/" className="shrink-0 whitespace-nowrap text-[22px] font-extrabold tracking-tight text-white 2xl:text-[27px]" aria-label="Vora Teknik Servis ana sayfa">
-            VORA <span className="text-vora-cyan">TEKNİK</span>
+          <Link
+            href="/"
+            className="group flex shrink-0 items-center rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+            aria-label="Vora Teknik Servis ana sayfa"
+          >
+            <Image
+              src="/images/vora-logo-header.webp"
+              alt="Vora Kombi Klima Teknik Servis amblemi"
+              width={900}
+              height={409}
+              priority
+              sizes="(max-width: 639px) 148px, (max-width: 1535px) 186px, 205px"
+              className="h-[60px] w-auto max-w-[148px] object-contain transition-[filter] duration-500 group-hover:brightness-110 sm:h-[78px] sm:max-w-[186px] 2xl:h-[86px] 2xl:max-w-[205px]"
+            />
           </Link>
 
           <nav aria-label="Ana menü" className="hidden min-w-0 items-center gap-0.5 xl:flex">
