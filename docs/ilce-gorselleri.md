@@ -2,7 +2,7 @@
 
 Üretim tarihi: **27 Ekim 2026**.
 
-Eksik ilçe görselleri OpenAI görsel üretim aracıyla bu proje için üretildi. Aşağıdaki 33 görsel fotogerçekçi, **yapay zekâyla oluşturulmuş temsili ilçe görselleridir**; belirli bir noktadan çekilmiş belgesel fotoğraf veya birebir mimari doğruluk iddiası taşımaz. İlçe sayfalarında bu ayrım görünür biçimde belirtilir.
+Eksik ilçe görselleri OpenAI görsel üretim aracıyla bu proje için üretildi. Aşağıdaki 34 görsel fotogerçekçi, **yapay zekâyla oluşturulmuş temsili ilçe görselleridir**; belirli bir noktadan çekilmiş belgesel fotoğraf veya birebir mimari doğruluk iddiası taşımaz. İlçe sayfalarında bu ayrım görünür biçimde belirtilir.
 
 İç kesimdeki ilçeler için kıyı manzarası kullanılmadı. Arnavutköy ilçesi Durusu/Terkos kırsal dokusuyla ele alındı; Beşiktaş sınırındaki aynı adlı Boğaz mahallesiyle karıştırılmadı. Her ilçenin kendi dosyası ve ayrı üretim istemi vardır; aynı görsel farklı ilçeler için çoğaltılmadı.
 
@@ -14,6 +14,7 @@ Görseller geniş kadrajlı üretilip mevcut kadraj oranı korunarak en fazla 14
 | Arnavutköy | `public/images/istanbul/arnavutkoy.webp` | Durusu/Terkos çevresinde göl, köy yerleşimi ve kırsal alan |
 | Ataşehir | `public/images/istanbul/atasehir.webp` | Modern finans merkezi silüeti ve kent parkı |
 | Avcılar | `public/images/istanbul/avcilar.webp` | Marmara kıyı yürüyüş yolu ve konut dokusu |
+| Bahçelievler | `public/images/istanbul/bahcelievler.webp` | Şirinevler karakterinden ilham alan yoğun konut dokusu, ağaçlı cadde ve mahalle parkı |
 | Başakşehir | `public/images/istanbul/basaksehir.webp` | Çağdaş konut yerleşimleri ve geniş yeşil park |
 | Bayrampaşa | `public/images/istanbul/bayrampasa.webp` | Deniz kıyısı olmayan yoğun kent dokusu ve mahalle parkı |
 | Beykoz | `public/images/istanbul/beykoz.webp` | Boğaz kıyısı, Anadolu Hisarı karakteri ve koruluk yamaçlar |
@@ -46,4 +47,4 @@ Görseller geniş kadrajlı üretilip mevcut kadraj oranı korunarak en fazla 14
 
 ## Korunan mevcut görseller
 
-Bağcılar, Bakırköy, Beşiktaş, Kadıköy ve Üsküdar için mevcut Wikimedia Commons görselleri değiştirilmedi. Fotoğrafçı ve lisans bağlantıları [görsel kaynakları sayfasında](../public/fotograf-kaynaklari.html) korunur. Bahçelievler için depoda zaten bulunan görsel de değiştirilmedi; mevcut kaynak dosyalarında bu dosyanın fotoğrafçı/lisans kaydı bulunmadığı için yeni bir kaynak iddiası eklenmedi.
+Bağcılar, Bakırköy, Beşiktaş, Kadıköy ve Üsküdar için mevcut Wikimedia Commons görselleri değiştirilmedi. Fotoğrafçı ve lisans bağlantıları [görsel kaynakları sayfasında](../public/fotograf-kaynaklari.html) korunur. Bahçelievler için önceki dosyanın kaynak kaydı bulunmadığından yeni bir yapay zekâ görseli üretildi ve görünür temsili görsel etiketiyle kullanıldı. Böylece 39 ilçenin tamamında kendi görseli bulunur: 34 yapay zekâ üretimi ve kaynak bilgileri korunan 5 Wikimedia Commons fotoğrafı.
