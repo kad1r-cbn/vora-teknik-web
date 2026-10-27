@@ -24,7 +24,7 @@ export default function VoraHeader({ active }: { active: Active }) {
     if (!isOpen) return;
 
     const frame = requestAnimationFrame(() => {
-      menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+      menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus({ preventScroll: true });
     });
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -34,7 +34,10 @@ export default function VoraHeader({ active }: { active: Active }) {
       }
     };
     const onOutsidePointer = (event: PointerEvent) => {
-      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+      if (
+        event.target instanceof Node &&
+        !headerRef.current?.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -58,14 +61,14 @@ export default function VoraHeader({ active }: { active: Active }) {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-100 w-full border-b border-[#000d26]/10 bg-[#f6faff]/95 text-[#000d26] backdrop-blur-xl"
+      className="sticky top-0 z-100 w-full border-b border-white/10 bg-[#000d26]/97 text-[#f6faff] backdrop-blur-xl"
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="flex h-[76px] items-center justify-between gap-6 lg:h-[88px]">
           <Link
             href="/"
             aria-label="Vora Teknik, ana sayfa"
-            className="group inline-flex shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-6 focus-visible:outline-[#000d26]"
+            className="group inline-flex shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-6 focus-visible:outline-[#00d9ff]"
             onClick={() => setIsOpen(false)}
           >
             <Image
@@ -74,20 +77,26 @@ export default function VoraHeader({ active }: { active: Active }) {
               width={900}
               height={409}
               sizes="(max-width: 639px) 128px, 154px"
-              className="h-[58px] w-[128px] object-contain lg:h-[70px] lg:w-[154px]"
+              className="vora-nav-logo h-[58px] w-[128px] object-contain brightness-[0.88] saturate-[0.9] lg:h-[70px] lg:w-[154px]"
             />
           </Link>
 
-          <nav aria-label="Ana menü" className="hidden items-center gap-5 lg:flex xl:gap-8">
+          <nav
+            aria-label="Ana menü"
+            className="hidden items-center gap-5 lg:flex xl:gap-8"
+          >
             {links.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={active === item.active ? "page" : undefined}
-                className={`group relative py-3 text-[13px] font-medium transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#000d26] ${active === item.active ? "text-[#000d26]" : "text-[#000d26]/70 hover:text-[#000d26]"}`}
+                className={`group relative py-3 text-[13px] font-medium transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00d9ff] ${active === item.active ? "text-[#00d9ff]" : "text-white/75 hover:text-white"}`}
               >
                 {item.label}
-                <span aria-hidden="true" className={`absolute right-0 bottom-1 left-0 h-px origin-left bg-[#000d26] transition-transform duration-300 motion-reduce:transition-none ${active === item.active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                <span
+                  aria-hidden="true"
+                  className={`absolute right-0 bottom-1 left-0 h-px origin-left bg-[#00d9ff] transition-transform duration-300 motion-reduce:transition-none ${active === item.active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                />
               </Link>
             ))}
           </nav>
@@ -96,11 +105,15 @@ export default function VoraHeader({ active }: { active: Active }) {
             <a
               href="tel:+905365281116"
               aria-label="Vora Teknik'i ara: 0536 528 11 16"
-              className="group inline-flex size-11 items-center justify-center gap-2.5 rounded-full bg-[#000d26] text-[13px] font-semibold text-[#f6faff] transition-colors hover:bg-[#123a5c] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#000d26] sm:min-h-12 sm:w-auto sm:px-5"
+              className="group inline-flex size-11 items-center justify-center gap-2.5 rounded-full bg-[#00d9ff] text-[13px] font-semibold text-[#000d26] transition-colors hover:bg-[#8aefff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00d9ff] sm:min-h-12 sm:w-auto sm:px-5"
             >
               <Phone size={15} strokeWidth={1.7} aria-hidden="true" />
               <span className="hidden sm:inline">0536 528 11 16</span>
-              <ArrowUpRight size={15} aria-hidden="true" className="hidden transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none lg:block" />
+              <ArrowUpRight
+                size={15}
+                aria-hidden="true"
+                className="hidden transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none lg:block"
+              />
             </a>
             <button
               ref={toggleRef}
@@ -109,9 +122,13 @@ export default function VoraHeader({ active }: { active: Active }) {
               aria-controls="vora-mobile-menu"
               aria-expanded={isOpen}
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex size-11 items-center justify-center rounded-full border border-[#000d26]/20 transition-colors hover:bg-[#000d26]/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#000d26] lg:hidden"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00d9ff] lg:hidden"
             >
-              {isOpen ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
+              {isOpen ? (
+                <X size={21} aria-hidden="true" />
+              ) : (
+                <Menu size={21} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
@@ -121,9 +138,14 @@ export default function VoraHeader({ active }: { active: Active }) {
           id="vora-mobile-menu"
           aria-label="Mobil menü"
           hidden={!isOpen}
-          className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#000d26]/10 pb-6 lg:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-76px)] overflow-y-auto border-y border-white/15 bg-[#000d26] px-5 pb-6 shadow-xl sm:px-8 lg:hidden"
         >
-          <Link href="/" onClick={() => setIsOpen(false)} aria-current={active === "home" ? "page" : undefined} className="flex min-h-12 items-center justify-between border-b border-[#000d26]/10 py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#000d26]">
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            aria-current={active === "home" ? "page" : undefined}
+            className="flex min-h-12 items-center justify-between border-b border-white/15 py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00d9ff]"
+          >
             Ana sayfa <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
           {links.map((item) => (
@@ -132,15 +154,21 @@ export default function VoraHeader({ active }: { active: Active }) {
               href={item.href}
               onClick={() => setIsOpen(false)}
               aria-current={active === item.active ? "page" : undefined}
-              className="flex min-h-12 items-center justify-between border-b border-[#000d26]/10 py-3 text-sm font-medium transition-colors hover:text-[#0068c9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#000d26]"
+              className="flex min-h-12 items-center justify-between border-b border-white/15 py-3 text-sm font-medium transition-colors hover:text-[#00d9ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00d9ff]"
             >
               {item.label} <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           ))}
-          <Link href="/#servis-talebi" onClick={() => setIsOpen(false)} className="mt-5 flex min-h-12 items-center justify-between rounded-xl bg-[#00d9ff] px-4 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#000d26]">
+          <Link
+            href="/#servis-talebi"
+            onClick={() => setIsOpen(false)}
+            className="mt-5 flex min-h-12 items-center justify-between rounded-xl bg-[#00d9ff] px-4 text-sm font-semibold text-[#000d26] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00d9ff]"
+          >
             Servis talebi oluştur <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
-          <p className="mt-4 text-xs text-[#000d26]/65">Bahçelievler merkezli, İstanbul genelinde.</p>
+          <p className="mt-4 text-xs text-white/65">
+            Bahçelievler merkezli, İstanbul genelinde.
+          </p>
         </nav>
       </div>
     </header>

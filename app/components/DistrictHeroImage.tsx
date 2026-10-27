@@ -60,7 +60,13 @@ export default function DistrictHeroImage({ src, districtName }: Props) {
         <div className="absolute inset-x-0 top-0 h-102.5 overflow-hidden sm:h-127.5 lg:inset-0 lg:h-full">
           <Image
             src={imageSrc}
-            alt={imageFailed ? "İstanbul Boğazı ve şehir manzarası" : isGenerated ? `${districtName} ilçesinden ilham alan yapay zekâ ile oluşturulmuş temsili manzara` : `${districtName} ilçe manzarası`}
+            alt={
+              imageFailed
+                ? "İstanbul Boğazı ve şehir manzarası"
+                : isGenerated
+                  ? `${districtName} ilçesinden ilham alan yapay zekâ ile oluşturulmuş temsili manzara`
+                  : `${districtName} ilçe manzarası`
+            }
             fill
             preload
             sizes="100vw"
@@ -69,7 +75,6 @@ export default function DistrictHeroImage({ src, districtName }: Props) {
           />
           <div className="absolute inset-0 bg-linear-to-b from-[#000d26]/10 via-[#000d26]/25 to-[#000d26] lg:hidden" />
         </div>
-        {isGenerated && !imageFailed && <span className="absolute right-4 top-4 z-20 max-w-48 rounded-md border border-white/20 bg-[#000d26]/85 px-3 py-2 text-[9px] leading-relaxed text-[#c4f5ff] backdrop-blur-sm sm:right-6 sm:top-6">Yapay zekâyla oluşturulmuş<br />temsili ilçe görseli</span>}
       </>
     </div>
   );

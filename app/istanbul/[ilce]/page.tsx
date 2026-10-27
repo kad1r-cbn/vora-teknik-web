@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { createPageMetadata } from "../../lib/seo";
+import { createDistrictServiceSchema, createPageMetadata } from "../../lib/seo";
 import StructuredData from "../../components/StructuredData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${ilce.name} Kombi, Klima ve Petek Servisi | Vora Teknik Servis`;
+  const title = `${ilce.name} Kombi, Klima ve Petek Servisi | Vora Teknik`;
   const description = `${ilce.name} ve çevresinde kombi servisi, klima servisi ve petek temizliği. Vora Teknik Servis ile telefon veya WhatsApp üzerinden servis talebi oluşturun.`;
 
   return createPageMetadata({
@@ -134,6 +134,10 @@ export default async function IlcePage({ params }: Props) {
         className="vora-secondary min-h-screen bg-[#000d26] text-white"
       >
         <VoraScrollProgress />
+        <StructuredData
+          id="district-service-schema"
+          data={createDistrictServiceSchema(ilce)}
+        />
         <StructuredData id="district-faq-schema" data={faqJsonLd} />
         <StructuredData
           id="district-breadcrumb-schema"

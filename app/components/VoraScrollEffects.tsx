@@ -60,6 +60,7 @@ type VoraRevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: "rise" | "fade" | "scale";
 };
 
 /** Initial HTML stays visible and usable without JavaScript. */
@@ -67,13 +68,19 @@ export function VoraReveal({
   children,
   className = "",
   delay = 0,
+  variant = "rise",
 }: VoraRevealProps) {
   const reduceMotion = useReducedMotion();
+  const reveal = {
+    rise: { opacity: [0.35, 1], y: [24, 0] },
+    fade: { opacity: [0.25, 1] },
+    scale: { opacity: [0.4, 1], scale: [0.97, 1] },
+  }[variant];
   return (
     <motion.div
       className={className}
       initial={false}
-      whileInView={reduceMotion ? undefined : { opacity: [0.3, 1], y: [24, 0] }}
+      whileInView={reduceMotion ? undefined : reveal}
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
     >

@@ -207,7 +207,11 @@ export default function Home() {
             </VoraReveal>
             <div className="service-card-grid">
               {services.map((service, index) => (
-                <VoraReveal key={service.href} delay={index * 0.08}>
+                <VoraReveal
+                  key={service.href}
+                  delay={index * 0.1}
+                  variant="scale"
+                >
                   <Link className="service-card" href={service.href}>
                     <div className="service-card-image">
                       <Image
@@ -250,7 +254,7 @@ export default function Home() {
           aria-labelledby="regions-heading"
         >
           <div className="vora-container regions-layout">
-            <VoraReveal className="regions-copy">
+            <VoraReveal className="regions-copy" variant="fade">
               <span className="eyebrow">03 / HİZMET BÖLGELERİ</span>
               <h2 id="regions-heading">
                 Bu şehrin

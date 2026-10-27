@@ -71,3 +71,24 @@ export function createServiceSchema({
     ],
   };
 }
+
+export function createDistrictServiceSchema(district: { name: string; slug: string }) {
+  const url = `${site.url}/istanbul/${district.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: `${district.name} Kombi, Klima ve Petek Servisi`,
+    description: `${district.name} bölgesinde kombi, klima ve petek hizmetleri için servis planlaması. Adrese uygun hizmet kapsamı ve randevu talep üzerine doğrulanır.`,
+    serviceType: ["Kombi servisi", "Klima servisi", "Petek temizliği"],
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    provider: { "@id": `${site.url}/#business` },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: district.name,
+      containedInPlace: { "@type": "City", name: "İstanbul" },
+    },
+  };
+}
