@@ -1,10 +1,8 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { VoraReveal, VoraScrollProgress } from '../components/VoraScrollEffects';
 import VoraHeader from '../components/VoraHeader';
-import { useState } from 'react';
+import VoraFooter from '../components/VoraFooter';
 import {
   Phone,
   MapPin,
@@ -12,7 +10,6 @@ import {
   Wrench,
   Clock,
   CheckCircle,
-  ChevronDown,
   ArrowRight,
   AlertTriangle,
   Settings,
@@ -43,102 +40,84 @@ const faqs = [
 ];
 
 export default function PetekTemizligiPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
   return (
-    <main className="min-h-screen overflow-x-hidden bg-vora-bg text-white">
+    <>
+      <VoraHeader active="petek" />
+    <main id="main-content" className="vora-secondary min-h-screen overflow-x-hidden bg-[#000d26] text-white">
       <VoraScrollProgress />
 
       {/* HEADER + NAVBAR */}
-      <VoraHeader active="petek" />
 
       {/* BREADCRUMB */}
       <nav
         aria-label="Sayfa yolu"
-        className="w-full bg-slate-950 border-b border-slate-800"
+        className="w-full bg-[#000d26] border-b border-[#203b59]"
       >
-        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 text-sm text-slate-400 sm:px-8 lg:px-12 2xl:px-16">
+        <div className="mx-auto w-full max-w-[1600px] px-5 py-4 text-sm text-[#a8bed4] sm:px-8 lg:px-12 2xl:px-16">
           <Link
             href="/"
-            className="hover:text-cyan-400 transition-colors"
+            className="hover:text-[#00d9ff] transition-colors"
           >
             Ana Sayfa
           </Link>
 
-          <span className="mx-2 text-slate-600">/</span>
+          <span className="mx-2 text-[#52657b]">/</span>
 
-          <span className="text-slate-200">
+          <span className="text-[#e2e8f0]">
             Petek Temizliği
           </span>
         </div>
       </nav>
 
-      {/* HERO - VORA_SERVIS_HERO_V2 */}
-      <section className="relative isolate overflow-hidden bg-vora-bg">
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute -left-24 top-4 h-80 w-80 rounded-full bg-vora-primary/10 blur-3xl" />
-          <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-vora-cyan/10 blur-3xl" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent to-[#05132B]/85" />
-        </div>
-
-        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:gap-14 lg:px-12 lg:py-24 2xl:px-16">
-          <div className="min-w-0 max-w-[780px]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#071B36]/80 px-4 py-2 text-xs font-semibold tracking-wide text-cyan-200 backdrop-blur-sm sm:text-sm">
-              <Droplets size={17} className="text-vora-cyan" />
-              İstanbul Petek Temizliği
-            </div>
-            <h1 className="text-[clamp(2.35rem,5vw,4.7rem)] font-black leading-[1.06] tracking-[-0.04em] text-white">
-              İstanbul Petek Temizliği
-              <span className="mt-3 block text-vora-cyan">Isıtma Sistemleri İçin Bakım ve Temizlik</span>
+      <section className="relative overflow-hidden bg-[#000d26] px-5 py-14 text-[#ffffff] sm:px-8 sm:py-20 lg:px-12 lg:py-24" aria-labelledby="service-title">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div>
+            <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold tracking-[0.18em] text-[#00d9ff]">
+              <span className="h-px w-8 bg-[#00d9ff]" aria-hidden="true" /> 03 / TESİSAT & BAKIM
+            </p>
+            <h1 id="service-title" className="max-w-2xl text-[clamp(2.6rem,5.2vw,5rem)] font-medium leading-[1.04] tracking-[-0.055em]">
+              İstanbul<br />Petek temizliği.
             </h1>
-            <p className="mt-7 max-w-[700px] text-base font-medium leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
-              Vora Teknik Servis, İstanbul genelinde petek ve ısıtma tesisatı temizliği için servis planlaması yapar. Peteklerin ısıtma performansındaki sorunların değerlendirilmesi ve tesisatın kontrol edilmesi için teknisyen desteği sağlıyoruz.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="tel:+905365281116" className="inline-flex min-h-13 items-center justify-center gap-3 rounded-xl bg-vora-cyan px-6 py-3 text-base font-extrabold text-vora-bg shadow-lg shadow-cyan-950/20 transition hover:bg-[#72edff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
-                <Phone size={19} /> Petek Servisi Ara
-              </a>
-              <a href="https://wa.me/905365281116" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl border border-cyan-400/60 bg-vora-bg/65 px-6 py-3 text-base font-bold text-white transition hover:bg-cyan-900/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
-                WhatsApp'tan Yazın <ArrowRight size={18} />
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#cbd5e1] sm:text-lg">Vora Teknik Servis, İstanbul genelinde petek ve ısıtma tesisatı temizliği için servis planlaması yapar. Peteklerin ısıtma performansındaki sorunların değerlendirilmesi ve tesisatın kontrol edilmesi için teknisyen desteği sağlıyoruz.</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/#servis-talebi" className="inline-flex min-h-13 items-center justify-center gap-5 rounded-full bg-[#00d9ff] px-6 py-3 text-sm font-semibold text-[#000d26] transition hover:bg-[#7deaff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00d9ff]">
+                Servis talebi oluştur <ArrowRight size={18} />
+              </Link>
+              <a href="tel:+905365281116" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-medium transition hover:bg-white/10">
+                <Phone size={17} /> 0536 528 11 16
               </a>
             </div>
-            <p className="mt-4 text-sm font-semibold text-slate-200">
-              Alternatif çağrı hattı: <a href="tel:+905388188236" className="text-vora-cyan underline-offset-4 hover:underline">0538 818 82 36</a>
-            </p>
-            <p className="mt-7 flex items-center gap-2 text-sm text-slate-300">
-              <CheckCircle size={18} className="shrink-0 text-vora-cyan" />
-              İstanbul genelinde telefon ve WhatsApp üzerinden servis talebi
-            </p>
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/15 pt-5 text-xs text-[#cbd5e1]">
+              <span className="flex items-center gap-2"><CheckCircle size={15} className="text-[#00d9ff]" /> İstanbul genelinde servis planlaması</span>
+              <a href="https://wa.me/905365281116" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">WhatsApp üzerinden iletişim</a>
+            </div>
           </div>
-
-          <VoraReveal className="w-full min-w-0 lg:ml-auto">
-            <div className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-white/10 p-2 shadow-[0_25px_80px_rgba(0,0,0,0.32)]">
-              <div className="relative h-[250px] overflow-hidden rounded-[22px] bg-[#142d46] sm:h-[365px] lg:h-[470px] xl:h-[490px]">
-                <Image src="/images/hizmet-petek.webp" alt="Modern yaşam alanındaki petek ve radyatör sistemi" fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover object-center" />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-vora-bg/75 via-vora-bg/15 to-transparent" />
-              </div>
-              <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/20 bg-[#00142C]/70 px-4 py-3 backdrop-blur-md sm:right-auto">
-                <p className="text-xs font-semibold tracking-widest text-cyan-200">VORA TEKNİK SERVİS</p>
-                <p className="mt-1 text-base font-bold text-white">Petek ve Tesisat Temizliği</p>
+          <VoraReveal className="relative min-w-0">
+            <div className="relative aspect-[4/4.15] overflow-hidden rounded-2xl bg-[#0b2f52]">
+              <Image src="/images/hizmet-petek.webp" alt="Aydınlık bir yaşam alanında petek radyatör" fill priority sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-7 pb-7 pt-24">
+                <p className="text-[10px] font-semibold tracking-[0.2em] text-white/80">VORA TEKNİK SERVİS</p>
+                <p className="mt-3 text-3xl font-medium leading-tight tracking-[-0.04em] text-white">Evin her köşesine<br />dengeli sıcaklık.</p>
               </div>
             </div>
+            <p className="mt-4 flex items-center justify-between gap-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[#a8bed4]"><span>Petek ve tesisat temizliği</span><span>İstanbul</span></p>
           </VoraReveal>
         </div>
       </section>
 
       {/* SERVICES */}
       <VoraReveal>
-      <section className="bg-white text-slate-900 py-20">
+      <section className="bg-[#ffffff] text-[#0b2343] py-20">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
 
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-4">
               Petek ve Isıtma Tesisatı Hizmetleri
             </h2>
 
-            <p className="text-slate-600 text-lg leading-relaxed">
+            <p className="text-[#52657b] text-lg leading-relaxed">
               Peteklerin çalışma durumuna ve tesisatın ihtiyaçlarına göre
               kontrol, temizlik ve servis planlaması yapılabilir.
             </p>
@@ -175,18 +154,18 @@ export default function PetekTemizligiPage() {
               return (
                 <div
                   key={index}
-                  className="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:border-cyan-300 hover:shadow-xl transition-all"
+                  className="bg-[#eef5fb] border border-[#dbe5ee] rounded-2xl p-7 hover:border-[#00b8f5] hover:shadow-xl transition-all"
                 >
 
-                  <div className="w-14 h-14 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center mb-5">
+                  <div className="w-14 h-14 rounded-xl bg-[#e1f5fc] text-[#0068c9] flex items-center justify-center mb-5">
                     <Icon size={28} />
                   </div>
 
-                  <h3 className="text-xl font-black mb-3">
+                  <h3 className="text-xl font-semibold mb-3">
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#52657b] leading-relaxed">
                     {item.text}
                   </p>
 
@@ -201,7 +180,7 @@ export default function PetekTemizligiPage() {
 
       {/* COMMON PROBLEMS */}
       <VoraReveal>
-      <section className="bg-slate-50 text-slate-900 py-20 border-y border-slate-200">
+      <section className="bg-[#eef5fb] text-[#0b2343] py-20 border-y border-[#dbe5ee]">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
@@ -209,16 +188,16 @@ export default function PetekTemizligiPage() {
 
             <div>
 
-              <div className="inline-flex items-center gap-2 text-cyan-600 font-bold mb-4">
+              <div className="inline-flex items-center gap-2 text-[#0068c9] font-bold mb-4">
                 <AlertTriangle size={20} />
                 Sık Karşılaşılan Petek Sorunları
               </div>
 
-              <h2 className="text-3xl lg:text-4xl font-black mb-6">
+              <h2 className="text-3xl lg:text-4xl font-semibold mb-6">
                 Peteklerinizde bu sorunlardan biri mi var?
               </h2>
 
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+              <p className="text-[#52657b] text-lg leading-relaxed mb-8">
                 Peteklerin yeterince ısınmaması veya ısı dağılımının
                 düzensiz olması farklı nedenlerden kaynaklanabilir. Sorunun
                 kaynağını belirlemek için peteklerin ve ısıtma sisteminin
@@ -240,11 +219,11 @@ export default function PetekTemizligiPage() {
 
                   <div
                     key={problem}
-                    className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl p-4 font-bold"
+                    className="flex items-center gap-3 bg-[#ffffff] border border-[#dbe5ee] rounded-xl p-4 font-bold"
                   >
                     <CheckCircle
                       size={18}
-                      className="text-cyan-500 shrink-0"
+                      className="text-[#0068c9] shrink-0"
                     />
 
                     {problem}
@@ -255,17 +234,17 @@ export default function PetekTemizligiPage() {
               </div>
             </div>
 
-            <div className="bg-slate-900 rounded-3xl p-8 lg:p-10 shadow-2xl">
+            <div className="bg-[#071e3d] rounded-2xl p-8 lg:p-10 shadow-2xl">
 
-              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-[#00d9ff]/10 text-[#00d9ff] flex items-center justify-center mb-6">
                 <Clock size={32} />
               </div>
 
-              <h3 className="text-2xl font-black text-white mb-4">
+              <h3 className="text-2xl font-semibold text-white mb-4">
                 Petek Temizliği Servisi Oluşturun
               </h3>
 
-              <p className="text-slate-400 leading-relaxed mb-8">
+              <p className="text-[#a8bed4] leading-relaxed mb-8">
                 Peteklerdeki problemi kısaca anlatabilir veya doğrudan
                 servis ekibimizle iletişime geçebilirsiniz. Adres, petek
                 sayısı ve sistem bilgilerinize göre servis planlaması yapılır.
@@ -275,7 +254,7 @@ export default function PetekTemizligiPage() {
 
                 <a
                   href="tel:+905365281116"
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-black transition-colors"
+                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#0068c9] hover:bg-[#00578d] text-white font-semibold transition-colors"
                 >
                   <Phone size={20} />
                   0536 528 11 16
@@ -283,7 +262,7 @@ export default function PetekTemizligiPage() {
 
                 <Link
                   href="/#servis-talebi"
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-black transition-colors"
+                  className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#0b2f52] hover:bg-[#17496b] border border-[#2c4968] text-white font-semibold transition-colors"
                 >
                   Online Servis Talebi
                   <ArrowRight size={20} />
@@ -299,17 +278,17 @@ export default function PetekTemizligiPage() {
 
       {/* PROCESS */}
       <VoraReveal>
-      <section className="bg-white text-slate-900 py-20">
+      <section className="bg-[#ffffff] text-[#0b2343] py-20">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-350 mx-auto">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
 
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-4">
               Petek Temizliği Servis Süreci
             </h2>
 
-            <p className="text-slate-600 text-lg">
+            <p className="text-[#52657b] text-lg">
               Servis talebinden tesisat kontrolüne kadar temel süreç.
             </p>
 
@@ -337,18 +316,18 @@ export default function PetekTemizligiPage() {
 
               <div
                 key={step.number}
-                className="relative border border-slate-200 rounded-2xl p-8 bg-slate-50"
+                className="relative border border-[#dbe5ee] rounded-2xl p-8 bg-[#eef5fb]"
               >
 
-                <span className="text-5xl font-black text-cyan-100">
+                <span className="text-5xl font-semibold text-[#0082b8]">
                   {step.number}
                 </span>
 
-                <h3 className="text-xl font-black mt-4 mb-3">
+                <h3 className="text-xl font-semibold mt-4 mb-3">
                   {step.title}
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#52657b] leading-relaxed">
                   {step.text}
                 </p>
 
@@ -362,17 +341,17 @@ export default function PetekTemizligiPage() {
       </VoraReveal>
 
       {/* RELATED SERVICES */}
-      <section className="bg-slate-900 py-20">
+      <section className="bg-[#071e3d] py-20">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
           <div className="text-center mb-12">
 
-            <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-4">
               Diğer Teknik Servis Hizmetleri
             </h2>
 
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-[#a8bed4] max-w-2xl mx-auto">
               Kombi ve klima servis hizmetlerimizi de inceleyebilirsiniz.
             </p>
 
@@ -382,29 +361,29 @@ export default function PetekTemizligiPage() {
 
             <Link
               href="/kombi-servisi"
-              className="group bg-slate-800 border border-slate-700 rounded-2xl p-7 hover:border-cyan-500 hover:-translate-y-1 transition-all"
+              className="group bg-[#0b2f52] border border-[#2c4968] rounded-2xl p-7 hover:border-[#00b8f5] hover:-translate-y-1 transition-all"
             >
 
               <div className="flex items-center justify-between gap-5">
 
                 <div>
 
-                  <div className="text-cyan-400 font-bold mb-2">
+                  <div className="text-[#00d9ff] font-bold mb-2">
                     Kombi Servisi
                   </div>
 
-                  <h3 className="text-xl font-black text-white mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     İstanbul Kombi Servisi
                   </h3>
 
-                  <p className="text-slate-400">
+                  <p className="text-[#a8bed4]">
                     Kombi bakım, arıza tespiti ve onarım hizmetleri.
                   </p>
 
                 </div>
 
                 <ArrowRight
-                  className="text-cyan-500 group-hover:translate-x-1 transition-transform"
+                  className="text-[#00d9ff] group-hover:translate-x-1 transition-transform"
                   size={25}
                 />
 
@@ -413,29 +392,29 @@ export default function PetekTemizligiPage() {
 
             <Link
               href="/klima-servisi"
-              className="group bg-slate-800 border border-slate-700 rounded-2xl p-7 hover:border-cyan-500 hover:-translate-y-1 transition-all"
+              className="group bg-[#0b2f52] border border-[#2c4968] rounded-2xl p-7 hover:border-[#00b8f5] hover:-translate-y-1 transition-all"
             >
 
               <div className="flex items-center justify-between gap-5">
 
                 <div>
 
-                  <div className="text-cyan-400 font-bold mb-2">
+                  <div className="text-[#00d9ff] font-bold mb-2">
                     Klima Servisi
                   </div>
 
-                  <h3 className="text-xl font-black text-white mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     İstanbul Klima Servisi
                   </h3>
 
-                  <p className="text-slate-400">
+                  <p className="text-[#a8bed4]">
                     Klima bakım, arıza tespiti ve montaj hizmetleri.
                   </p>
 
                 </div>
 
                 <ArrowRight
-                  className="text-cyan-500 group-hover:translate-x-1 transition-transform"
+                  className="text-[#00d9ff] group-hover:translate-x-1 transition-transform"
                   size={25}
                 />
 
@@ -447,7 +426,7 @@ export default function PetekTemizligiPage() {
       </section>
 
       {/* LOCAL SEO */}
-      <section className="bg-slate-950 py-20">
+      <section className="bg-[#000d26] py-20">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-375 mx-auto">
 
@@ -456,19 +435,19 @@ export default function PetekTemizligiPage() {
             <div>
 
               <div className="flex items-center gap-3 mb-5">
-                <MapPin className="text-cyan-500" />
+                <MapPin className="text-[#00d9ff]" />
 
-                <span className="text-cyan-400 font-bold">
+                <span className="text-[#00d9ff] font-bold">
                   Servis Bölgesi
                 </span>
               </div>
 
-              <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
-                Bahçelievler ve İstanbul'da Petek Temizliği
+              <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
+                Bahçelievler ve İstanbul&apos;da Petek Temizliği
               </h2>
 
-              <p className="text-slate-400 leading-relaxed text-lg">
-                Vora Teknik Servis, İstanbul'un
+              <p className="text-[#a8bed4] leading-relaxed text-lg">
+                Vora Teknik Servis, İstanbul&apos;un
                 farklı ilçelerinde petek ve ısıtma sistemi servis taleplerini
                 planlamaktadır. Servis uygunluğu adres, yoğunluk ve randevu
                 durumuna göre değişebilir.
@@ -479,31 +458,28 @@ export default function PetekTemizligiPage() {
             <div className="grid sm:grid-cols-2 gap-3">
 
               {[
-                'Bahçelievler',
-                'Bakırköy',
-                'Bağcılar',
-                'Güngören',
-                'Esenler',
-                'Zeytinburnu',
-                'Fatih',
-                'Şişli',
-                'Beşiktaş',
-                'Kâğıthane',
-                'Kadıköy',
-                'Üsküdar',
+                { name: 'Bahçelievler', slug: 'bahcelievler' },
+                { name: 'Bakırköy', slug: 'bakirkoy' },
+                { name: 'Bağcılar', slug: 'bagcilar' },
+                { name: 'Güngören', slug: 'gungoren' },
+                { name: 'Esenler', slug: 'esenler' },
+                { name: 'Zeytinburnu', slug: 'zeytinburnu' },
+                { name: 'Fatih', slug: 'fatih' },
+                { name: 'Şişli', slug: 'sisli' },
+                { name: 'Beşiktaş', slug: 'besiktas' },
+                { name: 'Kağıthane', slug: 'kagithane' },
+                { name: 'Kadıköy', slug: 'kadikoy' },
+                { name: 'Üsküdar', slug: 'uskudar' },
               ].map((district) => (
-
-                <div
-                  key={district}
-                  className="flex items-center gap-2 text-slate-300 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3"
+                <Link
+                  key={district.slug}
+                  href={`/istanbul/${district.slug}`}
+                  className="group flex min-h-12 items-center gap-3 rounded-xl border border-[#203b59] bg-[#071e3d] px-4 py-3 text-sm text-[#cbd5e1] transition hover:border-[#00b8f5] hover:text-white"
                 >
-
-                  <span className="w-2 h-2 rounded-full bg-cyan-500" />
-
-                  {district} petek temizliği
-
-                </div>
-
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#00d9ff]" />
+                  <span className="flex-1">{district.name} petek temizliği</span>
+                  <ArrowRight size={15} className="text-[#00d9ff] transition-transform group-hover:translate-x-1" />
+                </Link>
               ))}
 
             </div>
@@ -512,81 +488,36 @@ export default function PetekTemizligiPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-white text-slate-900 py-20">
-
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-275 mx-auto">
-
-          <div className="text-center mb-12">
-
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">
-              Petek Temizliği Hakkında Sıkça Sorulan Sorular
-            </h2>
-
-            <p className="text-slate-500">
-              Petek temizliği ve ısıtma sistemi hakkında sık sorulan sorular.
-            </p>
-
+      <section id="petek-sss" className="bg-[#ffffff] px-5 py-20 text-[#0b2343] sm:px-8 lg:px-12 lg:py-28" aria-labelledby="faq-heading">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          <div>
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0068c9]">Aklınızdaki sorular</p>
+            <h2 id="faq-heading" className="max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl">Petek temizliği hakkında sıkça sorulan sorular</h2>
+            <p className="mt-5 max-w-sm text-base leading-7 text-[#52657b]">Tesisatın bakımı, uygulama ve servis planlaması.</p>
           </div>
-
-          <div className="space-y-4">
-
-            {faqs.map((faq, index) => {
-
-              const isOpen = openFaq === index;
-
-              return (
-                <div
-                  key={faq.q}
-                  className="border border-slate-200 rounded-2xl overflow-hidden"
-                >
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenFaq(isOpen ? null : index)
-                    }
-                    aria-expanded={isOpen}
-                    className="w-full p-5 flex items-center justify-between gap-5 text-left font-bold hover:bg-slate-50 transition-colors"
-                  >
-
-                    <span>{faq.q}</span>
-
-                    <ChevronDown
-                      size={22}
-                      className={`shrink-0 transition-transform ${
-                        isOpen
-                          ? 'rotate-180 text-cyan-500'
-                          : 'text-slate-400'
-                      }`}
-                    />
-
-                  </button>
-
-                  {isOpen && (
-                    <div className="px-5 pb-5 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
-                      {faq.a}
-                    </div>
-                  )}
-
-                </div>
-              );
-            })}
-
+          <div className="border-t border-[#dbe5ee]">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="group border-b border-[#dbe5ee]">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 text-left text-base font-medium leading-relaxed marker:content-none sm:text-lg">
+                  <span>{faq.q}</span><span aria-hidden="true" className="text-2xl font-light leading-6 text-[#0068c9] transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="max-w-2xl pb-6 pr-8 text-sm leading-7 text-[#52657b]">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-linear-to-r from-cyan-700 to-cyan-600 py-16">
+      <section className="bg-linear-to-r from-[#0068c9] to-[#0b2f52] py-16">
 
         <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-325 mx-auto text-center">
 
-          <h2 className="text-3xl lg:text-4xl font-black text-white mb-5">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-5">
             Petek Temizliği Desteğine mi İhtiyacınız Var?
           </h2>
 
-          <p className="text-cyan-50 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-[#dcf3ff] text-lg max-w-2xl mx-auto mb-8">
             Peteklerinizdeki problemi anlatın veya doğrudan servis ekibimizle
             iletişime geçin.
           </p>
@@ -595,7 +526,7 @@ export default function PetekTemizligiPage() {
 
             <a
               href="tel:+905365281116"
-              className="inline-flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-xl font-black hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#0b2343] px-8 py-4 rounded-xl font-semibold hover:bg-[#e8f2fa] transition-colors"
             >
               <Phone size={20} />
               0536 528 11 16
@@ -603,7 +534,7 @@ export default function PetekTemizligiPage() {
 
             <Link
               href="/#servis-talebi"
-              className="inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-xl font-black hover:bg-slate-800 transition-colors"
+              className="inline-flex items-center justify-center gap-3 bg-[#071e3d] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#0b2f52] transition-colors"
             >
               Online Servis Talebi
               <ArrowRight size={20} />
@@ -613,86 +544,6 @@ export default function PetekTemizligiPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-950 border-t border-slate-800 py-10">
-
-        <div className="w-full px-6 lg:px-20 2xl:px-32 max-w-[1800px] mx-auto">
-
-          <div className="flex flex-col md:flex-row justify-between gap-6">
-
-            <div>
-
-              <Link
-                href="/"
-                className="text-2xl font-extrabold text-white"
-              >
-                Vora<span className="text-cyan-500">Teknik</span>
-              </Link>
-
-              <p className="text-slate-500 text-sm mt-3">
-                İstanbul kombi, klima ve petek servis hizmetleri.
-              </p>
-              <div className="mt-4 flex flex-col gap-2 text-sm">
-                <a href="tel:+905365281116" className="inline-flex items-center gap-2 text-slate-300 hover:text-vora-cyan"><Phone size={16} /> 0536 528 11 16</a>
-                <a href="tel:+905388188236" className="inline-flex items-center gap-2 text-slate-300 hover:text-vora-cyan"><Phone size={16} /> 0538 818 82 36</a>
-                <span className="text-xs font-semibold text-cyan-200">Her gün 00:00–23:59</span>
-              </div>
-
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 text-sm">
-
-              <Link
-                href="/"
-                className="text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                Ana Sayfa
-              </Link>
-
-              <Link
-                href="/kombi-servisi"
-                className="text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                Kombi Servisi
-              </Link>
-
-              <Link
-                href="/klima-servisi"
-                className="text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                Klima Servisi
-              </Link>
-
-              <Link
-                href="/petek-temizligi"
-                className="text-cyan-400 font-semibold transition-colors"
-              >
-                Petek Temizliği
-              </Link>
-
-              <Link
-                href="/#servis-talebi"
-                className="text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                İletişim
-              </Link>
-
-              <Link href="/hizmet-bolgeleri" className="text-slate-400 hover:text-vora-cyan transition-colors">Hizmet Bölgelerimiz</Link>
-              </div>
-
-          </div>
-
-          <div className="border-t border-slate-800 mt-8 pt-6">
-
-            <p className="text-slate-600 text-xs">
-              © {new Date().getFullYear()} Vora Teknik Servis. Tüm hakları
-              saklıdır.
-            </p>
-
-          </div>
-
-        </div>
-      </footer>
 
       {/* WHATSAPP */}
       <a
@@ -700,11 +551,13 @@ export default function PetekTemizligiPage() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp üzerinden Vora Teknik Servis ile iletişime geç"
-        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-10 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform z-50 flex items-center justify-center"
+        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-10 bg-[#00d9ff] text-[#000d26] p-4 rounded-full shadow-[0_4px_20px_rgba(0,217,255,0.35)] hover:scale-110 transition-transform z-50 flex items-center justify-center"
       >
         <Phone size={27} />
       </a>
 
     </main>
+      <VoraFooter />
+    </>
   );
 }

@@ -1,79 +1,24 @@
-import type { Metadata } from "next";
-import Script from "next/script";
+import StructuredData from "../components/StructuredData";
+import { createPageMetadata, createServiceSchema } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Petek Temizliği İstanbul | Vora Teknik Servis",
+const description =
+  "İstanbul'da petek temizliği, ısınma sorunlarının kontrolü ve ısıtma tesisatı bakımı. Bahçelievler merkezli Vora Teknik ile servis planlaması yapın.";
 
-  description:
-    "İstanbul ve Bahçelievler çevresinde petek temizliği, ısıtma sistemi kontrolü ve tesisat servis hizmetleri. Vora Teknik Servis.",
-
-  alternates: {
-    canonical: "/petek-temizligi",
-  },
-
-  openGraph: {
-    title: "Petek Temizliği İstanbul | Vora Teknik Servis",
-
-    description:
-      "İstanbul ve Bahçelievler çevresinde petek temizliği, ısıtma sistemi kontrolü ve tesisat servis hizmetleri.",
-
-    url: "https://vorateknik.com/petek-temizligi",
-
-    type: "website",
-    locale: "tr_TR",
-    siteName: "Vora Teknik Servis",
-  },
-
-  twitter: {
-    card: "summary",
-
-    title: "Petek Temizliği İstanbul | Vora Teknik Servis",
-
-    description:
-      "İstanbul ve Bahçelievler çevresinde petek temizliği, ısıtma sistemi kontrolü ve tesisat servis hizmetleri.",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "İstanbul Petek Temizliği ve Tesisat Bakımı | Vora Teknik",
+  description,
+  path: "/petek-temizligi",
+});
 
 export default function ServiceLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const serviceJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-
-    "@id": "https://vorateknik.com/petek-temizligi#service",
-
-    name: "Petek Temizliği",
-
-    serviceType: "Petek Temizliği",
-
-    description:
-      "İstanbul ve Bahçelievler çevresinde petek temizliği, ısıtma sistemi kontrolü ve tesisat servis hizmetleri.",
-
-    url: "https://vorateknik.com/petek-temizligi",
-
-    provider: {
-      "@id": "https://vorateknik.com/#business",
-    },
-
-    areaServed: {
-      "@type": "City",
-      name: "İstanbul",
-    },
-  };
-
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Script
-        id="schema-petek-service"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceJsonLd),
-        }}
+      <StructuredData
+        id="vora-petek-service-schema"
+        data={createServiceSchema({ name: "Petek temizliği ve tesisat bakımı", description, path: "/petek-temizligi" })}
       />
-
       {children}
     </>
   );

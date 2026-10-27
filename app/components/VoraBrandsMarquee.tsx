@@ -28,26 +28,21 @@ export default function VoraBrandsMarquee({ service = "all" }: { service?: "all"
     <section
       id="markalar"
       aria-labelledby="markalar-baslik"
-      className="relative isolate w-full overflow-hidden border-y border-cyan-400/10 bg-[#061426] py-11 text-white sm:py-14 lg:py-16"
+      className="relative isolate w-full overflow-hidden border-y border-[#dbe5ee] bg-[#eef5fb] py-12 text-[#0b2343] sm:py-16 lg:py-20"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
-      />
-
       <div className="relative mx-auto w-full max-w-[1600px] px-4 sm:px-8 lg:px-12 2xl:px-16">
         <div className="mb-7 flex flex-col items-start justify-between gap-5 sm:mb-9 lg:flex-row lg:items-end lg:gap-8">
           <div className="min-w-0 max-w-3xl">
-            <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.19em] text-cyan-300 sm:text-xs">
+            <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.19em] text-[#0068c9] sm:text-xs">
               VORA TEKNİK SERVİS
             </p>
             <h2
               id="markalar-baslik"
-              className="text-[clamp(1.65rem,3vw,2.55rem)] font-black leading-[1.12] tracking-tight text-white"
+              className="text-[clamp(1.65rem,3vw,2.55rem)] font-medium leading-[1.12] tracking-[-0.04em] text-[#0b2343]"
             >
-              {isKombi ? "Kombi Servisi" : "Servis Verilen"} <span className="text-vora-cyan">{isKombi ? "Markaları" : "Markalar"}</span>
+              {isKombi ? "Kombi Servisi" : "Servis Verilen"} <span className="text-[#0068c9]">{isKombi ? "Markaları" : "Markalar"}</span>
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#52657b] sm:text-base">
               {isKombi
                 ? "Bosch, Vaillant, Buderus ve diğer kombi markalarında bakım ve arıza tespiti taleplerini marka ve modele göre değerlendiriyoruz."
                 : "Kombi, klima ve petek/radyatör sistemleri için marka ve modele göre servis taleplerini değerlendiriyoruz."}
@@ -56,7 +51,7 @@ export default function VoraBrandsMarquee({ service = "all" }: { service?: "all"
 
           <Link
             href="/#servis-talebi"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-sm font-bold text-cyan-100 transition hover:border-cyan-300 hover:bg-cyan-400/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-[#0b2343]/25 px-5 py-2.5 text-sm font-medium text-[#0b2343] transition hover:border-[#0068c9] hover:bg-[#00d9ff]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0068c9]"
           >
             {isKombi ? "Kombi Markamı Sor" : "Markamı Sor"} <ArrowRight size={17} aria-hidden="true" />
           </Link>
@@ -74,7 +69,7 @@ export default function VoraBrandsMarquee({ service = "all" }: { service?: "all"
                 {displayedBrands.map((brand) => (
                   <li
                     key={brand}
-                    className="flex min-h-15 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-extrabold tracking-tight text-slate-100 shadow-sm transition-colors hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-white sm:min-h-17 sm:rounded-2xl sm:px-7 sm:text-base lg:px-8 lg:text-lg"
+                    className="flex min-h-16 shrink-0 items-center justify-center whitespace-nowrap border-r border-[#d3deea] px-6 py-3 text-lg font-semibold tracking-tight text-[#243f5b] sm:px-8 sm:text-xl lg:px-10 lg:text-2xl"
                   >
                     {brand}
                   </li>
@@ -84,14 +79,14 @@ export default function VoraBrandsMarquee({ service = "all" }: { service?: "all"
           </div>
         </div>
 
-        <div className="mt-7 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:gap-6">
-          <p className="max-w-4xl text-xs leading-relaxed text-slate-400 sm:text-sm">
+        <div className="mt-7 flex flex-col justify-between gap-3 border-t border-[#dbe5ee] pt-5 sm:flex-row sm:items-center sm:gap-6">
+          <p className="max-w-4xl text-xs leading-relaxed text-[#52657b] sm:text-sm">
             Marka isimleri ilgili üreticilere aittir. Listede yer almak yetkili servislik
             veya üretici iş ortaklığı anlamına gelmez. Hizmet kapsamı marka ve modele göre teyit edilir.
           </p>
           <a
             href="tel:+905388188236"
-            className="inline-flex min-h-10 shrink-0 items-center gap-2 self-start text-sm font-bold text-cyan-200 transition-colors hover:text-white sm:self-auto"
+            className="inline-flex min-h-10 shrink-0 items-center gap-2 self-start text-sm font-bold text-[#0068c9] transition-colors hover:text-[#0b2343] sm:self-auto"
           >
             <Phone size={16} aria-hidden="true" /> 0538 818 82 36
           </a>

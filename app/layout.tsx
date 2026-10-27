@@ -1,130 +1,104 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import StructuredData from "./components/StructuredData";
+import { site } from "./lib/seo";
 import "./globals.css";
-import Script from "next/script";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vorateknik.com"),
+  metadataBase: new URL(site.url),
+  title: "Vora Teknik Servis",
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "Ev ve teknik servis hizmetleri",
+  formatDetection: { telephone: false },
+};
 
-  title: "Vora Teknik Servis | İstanbul Kombi, Klima ve Petek Servisi",
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000d26",
+  colorScheme: "light",
+};
 
-  description:
-    "Bahçelievler merkezli Vora Teknik Servis ile İstanbul genelinde kombi bakım ve arıza tespiti, klima servisi ve petek temizliği için servis talebi oluşturun.",
-
-  keywords: [
-    "kombi servisi",
-    "klima tamiri",
-    "petek temizliği",
-    "İstanbul kombi servisi",
-    "İstanbul klima servisi",
-    "İstanbul petek temizliği",
-    "İstanbul acil servis",
-    "Bahçelievler kombi servisi",
-    "Bosch kombi servisi",
-    "Demirdöküm servisi",
-    "Vaillant servisi",
-    "Daikin klima tamiri",
-    "klima montajı",
-  ],
-
-  authors: [{ name: "Vora Teknik Servis" }],
-  creator: "Vora Teknik Servis",
-  publisher: "Vora Teknik Servis",
-
-  alternates: {
-    canonical: "/",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HVACBusiness",
+      "@id": `${site.url}/#business`,
+      name: site.name,
+      url: site.url,
+      image: `${site.url}/opengraph-image`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/images/vora-logo-header.webp`,
+        width: 900,
+        height: 409,
+      },
+      description:
+        "İstanbul genelinde kombi servisi, klima bakım ve onarımı ile petek temizliği hizmetleri.",
+      telephone: site.phones,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Kocasinan Merkez Mah. Irmak Sokak",
+        addressLocality: "Bahçelievler",
+        addressRegion: "İstanbul",
+        addressCountry: "TR",
+      },
+      areaServed: { "@type": "City", name: "İstanbul" },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Teknik servis hizmetleri",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Kombi servisi",
+              url: `${site.url}/kombi-servisi`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Klima servisi",
+              url: `${site.url}/klima-servisi`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Petek temizliği",
+              url: `${site.url}/petek-temizligi`,
+            },
+          },
+        ],
+      },
     },
-  },
-
-  openGraph: {
-    title: "Vora Teknik Servis | Kombi, Klima ve Petek Servisi",
-    description:
-      "İstanbul geneli kombi, klima bakım ve onarımı ile petek temizliği hizmetleri.",
-    url: "https://vorateknik.com/",
-    siteName: "Vora Teknik Servis",
-    type: "website",
-    locale: "tr_TR",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Vora Teknik Servis | Kombi, Klima ve Petek Servisi",
-    description:
-      "İstanbul geneli kombi, klima ve petek temizliği servis hizmetleri.",
-  },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: "tr-TR",
+      publisher: { "@id": `${site.url}/#business` },
+    },
+  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "HVACBusiness",
-    "@id": "https://vorateknik.com/#business",
-
-    "name": "Vora Teknik Servis",
-
-    "url": "https://vorateknik.com/",
-
-    "description":
-      "İstanbul geneli profesyonel kombi, klima ve petek temizliği servis hizmetleri.",
-
-    "telephone": ["+905365281116", "+905388188236"],
-
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Kocasinan Merkez Mah. Irmak Sokak",
-      "addressLocality": "Bahçelievler",
-      "addressRegion": "İstanbul",
-      "addressCountry": "TR",
-    },
-
-    "areaServed": {
-      "@type": "City",
-      "name": "İstanbul",
-    },
-
-    "priceRange": "₺₺",
-
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      "opens": "00:00",
-      "closes": "23:59",
-    },
-  };
-
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr">
-      <body className={inter.className}>
-        <Script
-          id="schema-local-business"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
-          }}
-        />
-
+      <body>
+        <a href="#main-content" className="vora-skip-link">
+          Ana içeriğe geç
+        </a>
+        <StructuredData id="vora-business-schema" data={organizationSchema} />
         {children}
       </body>
     </html>

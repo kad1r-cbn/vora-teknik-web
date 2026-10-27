@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">Vora Teknik Servis</title>
+  <g transform="rotate(-8 128 128)">
+    <path fill="#000d26" d="M112 32H88a56 56 0 0 0-56 56v24h80Z"/>
+    <path fill="#000d26" d="M144 32h24a56 56 0 0 1 56 56v24h-80Z"/>
+    <path fill="#000d26" d="M32 144v24a56 56 0 0 0 56 56h24v-80Z"/>
+    <path fill="#00d9ff" d="M144 144h80v24a56 56 0 0 1-56 56h-24Z"/>
+  </g>
+</svg>

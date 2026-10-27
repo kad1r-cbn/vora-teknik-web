@@ -81,6 +81,11 @@ export const istanbulIlceleri: IstanbulIlce[] = [
     image: "/images/istanbul/catalca.webp",
   },
   {
+    name: "Çekmeköy",
+    slug: "cekmekoy",
+    image: "/images/istanbul/cekmekoy.webp",
+  },
+  {
     name: "Esenler",
     slug: "esenler",
     image: "/images/istanbul/esenler.webp",
@@ -121,6 +126,11 @@ export const istanbulIlceleri: IstanbulIlce[] = [
     image: "/images/istanbul/kagithane.webp",
   },
   {
+    name: "Kartal",
+    slug: "kartal",
+    image: "/images/istanbul/kartal.webp",
+  },
+  {
     name: "Küçükçekmece",
     slug: "kucukcekmece",
     image: "/images/istanbul/kucukcekmece.webp",
@@ -129,6 +139,16 @@ export const istanbulIlceleri: IstanbulIlce[] = [
     name: "Maltepe",
     slug: "maltepe",
     image: "/images/istanbul/maltepe.webp",
+  },
+  {
+    name: "Pendik",
+    slug: "pendik",
+    image: "/images/istanbul/pendik.webp",
+  },
+  {
+    name: "Sancaktepe",
+    slug: "sancaktepe",
+    image: "/images/istanbul/sancaktepe.webp",
   },
   {
     name: "Sarıyer",
@@ -141,14 +161,29 @@ export const istanbulIlceleri: IstanbulIlce[] = [
     image: "/images/istanbul/silivri.webp",
   },
   {
+    name: "Sultanbeyli",
+    slug: "sultanbeyli",
+    image: "/images/istanbul/sultanbeyli.webp",
+  },
+  {
     name: "Sultangazi",
     slug: "sultangazi",
     image: "/images/istanbul/sultangazi.webp",
   },
   {
+    name: "Şile",
+    slug: "sile",
+    image: "/images/istanbul/sile.webp",
+  },
+  {
     name: "Şişli",
     slug: "sisli",
     image: "/images/istanbul/sisli.webp",
+  },
+  {
+    name: "Tuzla",
+    slug: "tuzla",
+    image: "/images/istanbul/tuzla.webp",
   },
   {
     name: "Ümraniye",

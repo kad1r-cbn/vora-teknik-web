@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vora Teknik Web
 
-## Getting Started
+İstanbul kombi, klima ve petek servisleri için Next.js 16 / React 19 sitesi. Ana sayfa ve hizmet içerikleri sunucuda oluşturulur; kaydırma anlatımı, mobil menü, ilçe araması ve servis formu etkileşimli bileşenlerdir.
 
-First, run the development server:
+## Geliştirme
+
+Node.js 22 veya üzeri gerekir; Node.js 24 ile doğrulanmıştır.
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mevcut çalışma dizinini kullanın. Bulut görevleri zaten yalıtılmıştır; ayrıca Git worktree oluşturmak gerekmez.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase yapılandırması
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Değerleri bulut ortamı / dağıtım ayarlarında tanımlayın veya yerel geliştirmede Git tarafından yok sayılan `.env.local` dosyasında tutun:
 
-## Learn More
+- `NEXT_PUBLIC_SUPABASE_URL`: gerçek Supabase proje URL’si.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: projenin public anon/publishable anahtarı. Service-role anahtarı kullanmayın.
 
-To learn more about Next.js, take a look at the following resources:
+Gerçek değerleri kaynak koda, belgelere veya Git geçmişine eklemeyin. `.env*` dosyaları `.gitignore` kapsamındadır. Değerler değiştiğinde sunucuyu yeniden başlatın; dağıtımda yeniden derleyin.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Form, aynı origin üzerindeki `POST /api/service-request` uç noktasını kullanır. Supabase istemcisi yalnızca sunucuda oluşturulur. İstekler ad, Türkiye telefon numarası, hizmet türü ve iletişim onayı için doğrulanır. Kayıt hedefi mevcut `web_requests` tablosundaki `full_name`, `phone_number`, `device_type` sütunlarıdır; proje erişim politikaları bu işlemi desteklemelidir.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Yapılandırma eksikse site içeriği açılmaya devam eder; form açık bir hata mesajıyla telefon/WhatsApp seçeneklerini gösterir. Başarı mesajı yalnızca kayıt onaylandığında gösterilir. Canlı sisteme test müşteri talepleri göndermeyin.
 
-## Deploy on Vercel
+## Kontroller
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+npx next typegen
+npx tsc --noEmit --incremental false
+npm run build
+npm run start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tarayıcıda mobil menü ve Escape/focus davranışını, ilçe aramasını, SSS açılırlarını, üç adımlı kaydırma anlatımını ve formun doğrulama/hata/başarı durumlarını kontrol edin. Başarı akışını ağ isteğini taklit ederek test edin; üretim veritabanına sahte kayıt yazmayın. Hareket azaltma tercihi ve JavaScript kapalıyken temel içerik/telefon erişimi korunur.
+
+## SEO ve içerik
+
+Ana adres `https://vorateknik.com` olarak `app/lib/seo.ts` içinde tanımlıdır. Her hizmet ve ilçe sayfası kendi canonical, başlık ve açıklamasını üretir. İşletme/hizmet/SSS yapılandırılmış verileri, 44 mevcut adreslik sitemap ve yerel üretilen sosyal paylaşım görseli bulunur. Harici font isteği gerekmez.
+
+Telefon, adres veya hizmet kapsamı değiştiğinde görünür içerik ile yapılandırılmış verileri birlikte güncelleyin. Araştırma kaynakları ve tasarım kararları: [docs/design-research.md](docs/design-research.md).

@@ -8,28 +8,34 @@ type Props = {
   districtName: string;
 };
 
-/**
- * Displays the district photograph when available.
- * If the image is missing, replaces it with an illustrated Istanbul backdrop
- * rather than leaving a broken or empty hero section.
- */
+/** Existing licensed photos are preserved; newly generated district scenes are identified. */
+const originalDistrictPhotos = new Set([
+  "/images/istanbul/uskudar.webp",
+  "/images/istanbul/kadikoy.webp",
+  "/images/istanbul/bakirkoy.webp",
+  "/images/istanbul/besiktas.webp",
+  "/images/istanbul/bagcilar.webp",
+]);
+
 export default function DistrictHeroImage({ src, districtName }: Props) {
   const [imageFailed, setImageFailed] = useState(false);
+  const isGenerated = !originalDistrictPhotos.has(src);
+  const imageSrc = imageFailed ? "/images/istanbul-hero.webp" : src;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#081a2b]">
+    <div className="absolute inset-0 overflow-hidden bg-[#000d26]">
       {/* Fallback is always underneath the image, avoiding blank flashes. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 72% 28%, rgba(8,145,178,.36) 0%, transparent 70%), linear-gradient(135deg, #071726 0%, #104563 52%, #071726 100%)",
+            "radial-gradient(ellipse 70% 50% at 72% 28%, rgba(0,184,245,.2) 0%, transparent 70%), linear-gradient(135deg, #000d26 0%, #0c446a 52%, #000d26 100%)",
         }}
         aria-hidden="true"
       />
 
       <svg
-        className="absolute inset-x-0 bottom-0 h-[65%] w-full text-[#09283e] opacity-80"
+        className="absolute inset-x-0 bottom-0 h-[65%] w-full text-[#0b2d52] opacity-80"
         viewBox="0 0 1440 500"
         preserveAspectRatio="xMidYMax slice"
         fill="currentColor"
@@ -43,27 +49,28 @@ export default function DistrictHeroImage({ src, districtName }: Props) {
       </svg>
 
       <span
-        className="pointer-events-none absolute left-[6%] right-[6%] top-[27%] block max-w-full wrap-break-word text-[clamp(2.8rem,9vw,9rem)] font-black leading-none tracking-tight text-cyan-100/15"
+        className="pointer-events-none absolute left-[6%] right-[6%] top-[27%] block max-w-full wrap-break-word text-[clamp(2.8rem,9vw,9rem)] font-black leading-none tracking-tight text-[#00d9ff]/15"
         aria-hidden="true"
       >
         {districtName.toLocaleUpperCase("tr-TR")}
       </span>
 
       {/* Telefonda fotografi uzun hero boyunca esnetme: ustte sinirli yukseklikte goster. */}
-      {!imageFailed && (
+      <>
         <div className="absolute inset-x-0 top-0 h-102.5 overflow-hidden sm:h-127.5 lg:inset-0 lg:h-full">
           <Image
-            src={src}
-            alt={`${districtName} ilçe manzarası`}
+            src={imageSrc}
+            alt={imageFailed ? "İstanbul Boğazı ve şehir manzarası" : isGenerated ? `${districtName} ilçesinden ilham alan yapay zekâ ile oluşturulmuş temsili manzara` : `${districtName} ilçe manzarası`}
             fill
-            priority
+            preload
             sizes="100vw"
             className="object-cover object-center lg:scale-[1.02]"
             onError={() => setImageFailed(true)}
           />
-          <div className="absolute inset-0 bg-linear-to-b from-[#081a2b]/10 via-[#081a2b]/25 to-[#081a2b] lg:hidden" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#000d26]/10 via-[#000d26]/25 to-[#000d26] lg:hidden" />
         </div>
-      )}
+        {isGenerated && !imageFailed && <span className="absolute right-4 top-4 z-20 max-w-48 rounded-md border border-white/20 bg-[#000d26]/85 px-3 py-2 text-[9px] leading-relaxed text-[#c4f5ff] backdrop-blur-sm sm:right-6 sm:top-6">Yapay zekâyla oluşturulmuş<br />temsili ilçe görseli</span>}
+      </>
     </div>
   );
 }
