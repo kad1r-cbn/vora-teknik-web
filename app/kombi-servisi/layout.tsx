@@ -2,7 +2,7 @@ import StructuredData from "../components/StructuredData";
 import { createPageMetadata, createServiceSchema } from "../lib/seo";
 
 const description =
-  "İstanbul'da kombi bakımı, arıza tespiti ve onarım için Vora Teknik. Bahçelievler merkezli servis ekibiyle cihazınıza uygun servis planlaması yapın.";
+  "İstanbul'da kombi bakımı, arıza tespiti ve onarım için Vora Teknik. Hizmet bölgelerimizde cihazınıza ve adresinize uygun servis planlaması yapın.";
 
 export const metadata = createPageMetadata({
   title: "İstanbul Kombi Servisi ve Bakımı | Vora Teknik",

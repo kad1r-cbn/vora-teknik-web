@@ -2,7 +2,7 @@ import StructuredData from "../components/StructuredData";
 import { createPageMetadata, createServiceSchema } from "../lib/seo";
 
 const description =
-  "İstanbul'da petek temizliği, ısınma sorunlarının kontrolü ve ısıtma tesisatı bakımı. Bahçelievler merkezli Vora Teknik ile servis planlaması yapın.";
+  "İstanbul'da petek temizliği, ısınma sorunlarının kontrolü ve tesisat bakımı. Vora Teknik ile hizmet bölgenize uygun servis planlaması oluşturun.";
 
 export const metadata = createPageMetadata({
   title: "İstanbul Petek Temizliği ve Tesisat Bakımı | Vora Teknik",

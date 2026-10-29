@@ -22,9 +22,9 @@ Kaynak proje veri kökenleri arasında TÜİK MEDAS, PTT ve Harita Genel Müdür
 
 ## Uygulamadaki kapsam
 
-- `app/data/istanbul-ilceleri.ts`: 39 ilçe; önceki 32 kayda Çekmeköy, Kartal, Pendik, Sancaktepe, Sultanbeyli, Şile ve Tuzla eklendi.
-- `app/data/istanbul-mahalleleri.ts`: 39 ilçe için toplam 963 mahalle adı, Türkçe alfabetik sırada.
-- Her ilçe sayfasında mahalle adları sunucunun ilk HTML yanıtında bulunur. Uzun listelerde ilk 12 isim gösterilir, kalanı klavye ile de kullanılabilen yerel `details` öğesinden açılır.
+- `app/data/istanbul-ilceleri.ts`: kullanıcı tarafından belirtilen 32 aktif hizmet bölgesi. Çekmeköy, Kartal, Pendik, Sancaktepe, Sultanbeyli, Şile ve Tuzla aktif hizmet listesinin ve site haritasının dışındadır.
+- `app/data/istanbul-mahalleleri.ts`: kaynak arşivi olarak 39 ilçe için toplam 963 mahalle adı korunur. Aktif 32 hizmet bölgesinde bu kaynağın 773 mahalle adı kullanılır; adlar Türkçe alfabetik sıradadır.
+- Aktif her ilçe ve ilçe-hizmet sayfasında mahalle adları sunucunun ilk HTML yanıtında bulunur. Uzun listelerde ilk 12 isim gösterilir, kalanı klavye ile de kullanılabilen yerel `details` öğesinden açılır.
 - Mahalle listesi her adreste kesin servis verildiği anlamına gelmez. Görünür açıklama, adres için kapsamın ve randevunun telefonla doğrulanmasını ister.
 
 ## Kaynak lisansı

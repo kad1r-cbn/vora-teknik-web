@@ -443,7 +443,7 @@ export default function PetekTemizligiPage() {
               </div>
 
               <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
-                Bahçelievler ve İstanbul&apos;da Petek Temizliği
+                İstanbul’da Petek Temizliği
               </h2>
 
               <p className="text-[#a8bed4] leading-relaxed text-lg">
@@ -473,7 +473,7 @@ export default function PetekTemizligiPage() {
               ].map((district) => (
                 <Link
                   key={district.slug}
-                  href={`/istanbul/${district.slug}`}
+                  href={`/istanbul/${district.slug}/petek-temizligi`}
                   className="group flex min-h-12 items-center gap-3 rounded-xl border border-[#203b59] bg-[#071e3d] px-4 py-3 text-sm text-[#cbd5e1] transition hover:border-[#00b8f5] hover:text-white"
                 >
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#00d9ff]" />

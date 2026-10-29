@@ -290,6 +290,113 @@ img {
   inset: 0;
   background: linear-gradient(180deg, #000d2608 30%, #000d26a6 100%);
 }
+.hero-carousel {
+  position: absolute;
+  inset: 0;
+}
+.hero-carousel-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1);
+  transition:
+    opacity 0.65s ease,
+    transform 3s linear;
+}
+.hero-carousel-image.is-active {
+  opacity: 1;
+  transform: scale(1.035);
+}
+.hero-carousel .hero-photo-shade {
+  background: linear-gradient(180deg, #000d2600 28%, #000d26b3 100%);
+}
+.hero-carousel .hero-visual-bottom {
+  bottom: 79px;
+  align-items: end;
+}
+.hero-slide-caption {
+  display: grid;
+  gap: 7px;
+  animation: vora-slide-caption 0.45s ease both;
+}
+.hero-slide-caption > span {
+  display: block;
+}
+.hero-slide-caption em {
+  display: block;
+}
+.hero-carousel-controls {
+  position: absolute;
+  inset: auto 29px 17px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #ffffff40;
+  padding-top: 7px;
+  color: #fff;
+}
+.hero-slide-dots {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.hero-slide-dot {
+  width: 24px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.hero-slide-dot > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff70;
+  transition:
+    width 0.2s,
+    background 0.2s;
+}
+.hero-slide-dot[aria-pressed="true"] > span {
+  width: 18px;
+  border-radius: 3px;
+  background: #00d9ff;
+}
+.hero-slide-count {
+  margin-left: auto;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.hero-slide-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid #ffffff70;
+  background: #000d2650;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.hero-slide-toggle:hover {
+  background: #000d2699;
+}
+.hero-carousel :focus-visible {
+  outline: 2px solid #00d9ff;
+  outline-offset: 2px;
+}
+@keyframes vora-slide-caption {
+  from {
+    opacity: 0.35;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .hero-image-label {
   position: absolute;
   display: inline-flex;
@@ -1159,6 +1266,17 @@ img {
     width: 45px;
     height: 45px;
   }
+  .hero-carousel-controls {
+    inset-inline: 20px;
+    gap: 9px;
+  }
+  .hero-slide-dots {
+    gap: 0;
+  }
+  .hero-slide-toggle {
+    width: 36px;
+    height: 36px;
+  }
   .hero-promise {
     margin-top: 24px;
     padding-block: 18px;
@@ -1379,6 +1497,10 @@ img {
     transition-duration: 0.01ms !important;
   }
   .hero-photo-parallax {
+    transform: none !important;
+  }
+  .hero-carousel-image,
+  .hero-carousel-image.is-active {
     transform: none !important;
   }
 }

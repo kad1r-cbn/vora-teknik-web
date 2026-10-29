@@ -31,7 +31,7 @@ export default function VoraReviews() {
             değerlendirmelerden inceleyin.
           </p>
           <span className="inline-flex items-center gap-2.5 text-xs text-slate-400">
-            <MapPin size={16} aria-hidden="true" /> Bahçelievler / İstanbul
+            <MapPin size={16} aria-hidden="true" /> İstanbul / Google değerlendirmeleri
           </span>
         </VoraReveal>
 

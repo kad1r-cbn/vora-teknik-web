@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { VoraReveal, VoraScrollProgress } from '../components/VoraScrollEffects';
 import VoraHeader from '../components/VoraHeader';
 import VoraFooter from '../components/VoraFooter';
-import VoraBrandsMarquee from '../components/VoraBrandsMarquee';
 import { KombiV3QuickNav, KombiV3Insights } from '../components/VoraKombiV3'; // VORA_KOMBI_V3
 import {
   Phone,
@@ -304,7 +303,6 @@ export default function KombiServisiPage() {
       </VoraReveal>
 
       {/* BRANDS - VORA_KOMBI_MARKA_SERIDI_V3_1 */}
-      <VoraBrandsMarquee service="kombi" />
 
       {/* LOCAL SEO */}
       <section className="bg-[#000d26] py-20">
@@ -319,7 +317,7 @@ export default function KombiServisiPage() {
               </div>
 
               <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
-                Bahçelievler ve İstanbul&apos;da Kombi Servisi
+                İstanbul’da Kombi Servisi
               </h2>
 
               <p className="text-[#a8bed4] leading-relaxed text-lg">
@@ -347,7 +345,7 @@ export default function KombiServisiPage() {
               ].map((district) => (
                 <Link
                   key={district.slug}
-                  href={`/istanbul/${district.slug}`}
+                  href={`/istanbul/${district.slug}/kombi-servisi`}
                   className="group flex min-h-12 items-center gap-3 rounded-xl border border-white/10 bg-[#071e3d] px-4 py-3 text-sm font-semibold text-[#e2e8f0] transition hover:border-[#00b8f5]/35 hover:bg-[#00d9ff]/10 hover:text-white"
                 >
                   <span className="h-2 w-2 shrink-0 rounded-full bg-[#00d9ff]" />

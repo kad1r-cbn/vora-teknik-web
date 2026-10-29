@@ -40,6 +40,6 @@ Tarayıcıda mobil menü ve Escape/focus davranışını, ilçe aramasını, SSS
 
 ## SEO ve içerik
 
-Ana adres `https://vorateknik.com` olarak `app/lib/seo.ts` içinde tanımlıdır. Her hizmet ve ilçe sayfası kendi canonical, başlık ve açıklamasını üretir. İşletme/hizmet/SSS yapılandırılmış verileri, 44 mevcut adreslik sitemap ve yerel üretilen sosyal paylaşım görseli bulunur. Harici font isteği gerekmez.
+Ana adres `https://vorateknik.com` olarak `app/lib/seo.ts` içinde tanımlıdır. Kullanıcının belirlediği 32 aktif hizmet bölgesi ve bu bölgelerin 773 mahalle adı kullanılır; 39 ilçe / 963 mahallelik kaynak veri arşivi korunur. Her hizmet, ilçe, ilçe-hizmet ve blog sayfası kendi canonical, başlık ve açıklamasını üretir. İşletme/hizmet/SSS/Article yapılandırılmış verileri, 142 adreslik görselli sitemap ve yerel üretilen sosyal paylaşım görseli bulunur. Harici font isteği gerekmez.
 
 Telefon, adres veya hizmet kapsamı değiştiğinde görünür içerik ile yapılandırılmış verileri birlikte güncelleyin. Araştırma kaynakları ve tasarım kararları: [docs/design-research.md](docs/design-research.md).

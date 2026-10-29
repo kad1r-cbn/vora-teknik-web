@@ -379,10 +379,10 @@ export default async function IlcePage({ params }: Props) {
 
           <VoraReveal className="grid gap-6 md:grid-cols-3">
             <Link
-              href="/kombi-servisi"
+              href={`/istanbul/${ilce.slug}/kombi-servisi`}
               className="group rounded-2xl border border-[#203b59] bg-[#071e3d] p-7 hover:border-[#00b8f5]/50 transition-all"
             >
-              <h3 className="text-xl font-bold">Kombi Servisi</h3>
+              <h3 className="text-xl font-medium">{ilce.name} Kombi Servisi</h3>
 
               <p className="text-[#a8bed4] mt-3 leading-relaxed">
                 Kombi arıza tespiti, bakım ve teknik servis hizmetleri.
@@ -395,10 +395,10 @@ export default async function IlcePage({ params }: Props) {
             </Link>
 
             <Link
-              href="/klima-servisi"
+              href={`/istanbul/${ilce.slug}/klima-servisi`}
               className="group rounded-2xl border border-[#203b59] bg-[#071e3d] p-7 hover:border-[#00b8f5]/50 transition-all"
             >
-              <h3 className="text-xl font-bold">Klima Servisi</h3>
+              <h3 className="text-xl font-medium">{ilce.name} Klima Servisi</h3>
 
               <p className="text-[#a8bed4] mt-3 leading-relaxed">
                 Klima bakım, arıza tespiti ve teknik servis hizmetleri.
@@ -411,10 +411,12 @@ export default async function IlcePage({ params }: Props) {
             </Link>
 
             <Link
-              href="/petek-temizligi"
+              href={`/istanbul/${ilce.slug}/petek-temizligi`}
               className="group rounded-2xl border border-[#203b59] bg-[#071e3d] p-7 hover:border-[#00b8f5]/50 transition-all"
             >
-              <h3 className="text-xl font-bold">Petek Temizliği</h3>
+              <h3 className="text-xl font-medium">
+                {ilce.name} Petek Temizliği
+              </h3>
 
               <p className="text-[#a8bed4] mt-3 leading-relaxed">
                 Petek temizliği ve ısıtma sistemi kontrol hizmetleri.
@@ -484,28 +486,34 @@ export default async function IlcePage({ params }: Props) {
 
             <div className="grid md:grid-cols-3 gap-5 mt-10">
               <Link
-                href="/kombi-servisi"
+                href={`/istanbul/${ilce.slug}/kombi-servisi`}
                 className="rounded-2xl border border-[#203b59] bg-[#071e3d] p-6 hover:border-[#00b8f5]/50 transition-colors"
               >
-                <h3 className="text-xl font-bold">Kombi Servisi</h3>
+                <h3 className="text-xl font-medium">
+                  {ilce.name} Kombi Servisi
+                </h3>
                 <p className="text-[#a8bed4] mt-2">
                   İstanbul geneli kombi bakım ve teknik servis.
                 </p>
               </Link>
               <Link
-                href="/klima-servisi"
+                href={`/istanbul/${ilce.slug}/klima-servisi`}
                 className="rounded-2xl border border-[#203b59] bg-[#071e3d] p-6 hover:border-[#00b8f5]/50 transition-colors"
               >
-                <h3 className="text-xl font-bold">Klima Servisi</h3>
+                <h3 className="text-xl font-medium">
+                  {ilce.name} Klima Servisi
+                </h3>
                 <p className="text-[#a8bed4] mt-2">
                   Klima bakım, arıza tespiti ve teknik destek.
                 </p>
               </Link>
               <Link
-                href="/petek-temizligi"
+                href={`/istanbul/${ilce.slug}/petek-temizligi`}
                 className="rounded-2xl border border-[#203b59] bg-[#071e3d] p-6 hover:border-[#00b8f5]/50 transition-colors"
               >
-                <h3 className="text-xl font-bold">Petek Temizliği</h3>
+                <h3 className="text-xl font-medium">
+                  {ilce.name} Petek Temizliği
+                </h3>
                 <p className="text-[#a8bed4] mt-2">
                   Petek temizliği ve ısıtma sistemi kontrolü.
                 </p>

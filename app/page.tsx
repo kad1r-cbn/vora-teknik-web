@@ -19,18 +19,15 @@ import VoraServiceForm from "./components/VoraServiceForm";
 import VoraDistrictFinder from "./components/VoraDistrictFinder";
 import VoraComfortStory from "./components/VoraComfortStory";
 import VoraReviews from "./components/VoraReviews";
-import {
-  VoraHeroBackground,
-  VoraReveal,
-  VoraScrollProgress,
-} from "./components/VoraScrollEffects";
+import VoraHeroCarousel from "./components/VoraHeroCarousel";
+import { VoraReveal, VoraScrollProgress } from "./components/VoraScrollEffects";
 import StructuredData from "./components/StructuredData";
 import { createPageMetadata } from "./lib/seo";
 
 export const metadata = createPageMetadata({
   title: "İstanbul Kombi, Klima ve Petek Servisi | Vora Teknik",
   description:
-    "Evinizin konforu için kombi servisi, klima bakımı ve petek temizliği. Bahçelievler merkezli Vora Teknik ile İstanbul genelinde servis talebi oluşturun.",
+    "Evinizin konforu için kombi servisi, klima bakımı ve petek temizliği. Vora Teknik ile İstanbul’un hizmet verdiğimiz ilçelerinde servis talebi oluşturun.",
   path: "/",
 });
 
@@ -92,7 +89,7 @@ const faqs = [
   },
   {
     q: "İstanbul’un hangi bölgelerinde hizmet veriyorsunuz?",
-    a: "Bahçelievler merkezli olarak İstanbul’un farklı ilçelerinden kombi, klima ve petek servisi taleplerini değerlendiriyoruz. Hizmet bölgeleri sayfamızdan ilçenizi inceleyebilir, adresinize uygun servis kapsamını ve randevu durumunu telefonla teyit edebilirsiniz.",
+    a: "İstanbul’un hizmet verdiğimiz ilçelerinden kombi, klima ve petek servisi taleplerini değerlendiriyoruz. Hizmet bölgeleri sayfamızdan ilçenizi inceleyebilir, adresinize uygun servis kapsamını ve randevu durumunu telefonla teyit edebilirsiniz.",
   },
 ];
 
@@ -148,28 +145,12 @@ export default function Home() {
                 </a>
               </div>
               <div className="hero-visual">
-                <VoraHeroBackground />
-                <div className="hero-image-label">
-                  <span className="status-dot" /> HER MEVSİM, EVİNİZDE.
-                </div>
-                <div className="hero-visual-bottom">
-                  <span>
-                    Doğru bakım.
-                    <br />
-                    <em>Daha iyi bir yaşam alanı.</em>
-                  </span>
-                  <span className="hero-round-mark" aria-hidden="true">
-                    <ArrowUpRight size={31} strokeWidth={1.3} />
-                  </span>
-                </div>
-                <div className="hero-side-note" aria-hidden="true">
-                  VORA TEKNİK / KONFORUNUZ İÇİN
-                </div>
+                <VoraHeroCarousel />
               </div>
             </div>
             <div className="hero-promise">
               <span>
-                <MapPin size={16} /> Bahçelievler’den İstanbul’a
+                <MapPin size={16} /> İstanbul’da, iki yakada servis
               </span>
               <span>
                 <Check size={16} /> İşlem öncesi bilgilendirme
@@ -262,8 +243,8 @@ export default function Home() {
                 <em>evlerini biliyoruz.</em>
               </h2>
               <p>
-                Merkezimiz Bahçelievler. İstanbul’un farklı ilçelerinde,
-                evinizin ihtiyacına göre servis planlaması yapıyoruz.
+                İstanbul’un Avrupa ve Anadolu yakasında, hizmet verdiğimiz
+                ilçelerde evinizin ihtiyacına göre servis planlaması yapıyoruz.
               </p>
               <Link href="/hizmet-bolgeleri" className="vora-text-link">
                 Tüm hizmet bölgeleri <ArrowUpRight size={19} />
@@ -292,30 +273,6 @@ export default function Home() {
               </div>
               <VoraDistrictFinder />
             </VoraReveal>
-          </div>
-        </section>
-
-        <section className="vora-brands" aria-label="Marka ve model kapsamı">
-          <div className="vora-container">
-            <div className="brands-intro">
-              <span className="eyebrow">TANIDIĞINIZ MARKALAR</span>
-              <span>Marka değişir. Özenimiz değişmez.</span>
-            </div>
-            <div
-              className="home-brand-names"
-              aria-label="Servis talepleri değerlendirilen markalardan bazıları"
-            >
-              <span>BOSCH</span>
-              <span>Vaillant</span>
-              <span>DemirDöküm</span>
-              <span>Baymak</span>
-              <span>DAIKIN</span>
-              <span>Buderus</span>
-            </div>
-            <p>
-              Marka ve modele göre özel servis hizmeti. Marka adları ilgili
-              üreticilere aittir; yetkili servislik ilişkisi ifade etmez.
-            </p>
           </div>
         </section>
 

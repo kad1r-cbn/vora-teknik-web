@@ -1,0 +1,58 @@
+export const heroSlides = [
+  {
+    image: "/images/services/klima-ferahlik.webp",
+    position: "88% center",
+    alt: "Aydınlık bir yaşam alanında duvara monte klima",
+    label: "KLİMA SERVİSİ",
+    title: "İyi hava, iyi hissettirir.",
+    subtitle: "Her mevsim ferah bir yaşam alanı.",
+    href: "/klima-servisi",
+  },
+  {
+    image: "/images/services/kombi-konfor.webp",
+    position: "90% center",
+    alt: "Düzenli tesisat bağlantılarıyla modern bir kombi ve sıcak bir ev ortamı",
+    label: "KOMBİ SERVİSİ",
+    title: "Sıcak bir ev. Rahat bir kış.",
+    subtitle: "Konforunuza özenle bakalım.",
+    href: "/kombi-servisi",
+  },
+  {
+    image: "/images/services/petek-sicaklik.webp",
+    position: "70% center",
+    alt: "Güneş alan bir odada panel radyatör ve sıcak ahşap dokular",
+    label: "PETEK TEMİZLİĞİ",
+    title: "Isı, evin her köşesine.",
+    subtitle: "Daha dengeli bir yaşam alanı.",
+    href: "/petek-temizligi",
+  },
+  {
+    image: "/images/hizmet-klima.webp",
+    position: "center",
+    alt: "Oturma odasında duvara monte bir klima sistemi",
+    label: "KLİMA BAKIMI",
+    title: "Ferahlık, tam yerinde.",
+    subtitle: "Cihazınıza uygun bakım ve kontrol.",
+    href: "/klima-servisi",
+  },
+  {
+    image: "/images/hizmet-kombi.webp",
+    position: "center",
+    alt: "Duvara monte modern kombi ve bağlantı boruları",
+    label: "KOMBİ BAKIMI",
+    title: "Doğru bakım, doğru başlangıç.",
+    subtitle: "Kışa birlikte hazırlanalım.",
+    href: "/kombi-servisi",
+  },
+  {
+    image: "/images/hizmet-petek.webp",
+    position: "center",
+    alt: "Aydınlık bir odada temiz beyaz panel radyatör",
+    label: "ISITMA SİSTEMLERİ",
+    title: "Evinizin dengesini koruyalım.",
+    subtitle: "İhtiyacınıza göre teknik servis.",
+    href: "/petek-temizligi",
+  },
+] as const;
+
+export const HERO_SLIDE_INTERVAL = 2800;
